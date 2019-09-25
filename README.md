@@ -85,6 +85,37 @@ import { mdiAccount } from '@mdi/js';
 <ui-icon path={mdiAccount}></ui-icon>
 ```
 
+### List - `ui-list`
+
+List is often used with the `ui-card` component.
+
+```html
+<ui-list>
+  <ui-list-header>Items</ui-list-header>
+  <ui-list-item>Item 1</ui-list-item>
+  <ui-list-separator></ui-list-separator>
+  <ui-list-section>
+    <ui-list-header>Additional Items</ui-list-header>
+    <ui-list-item>
+        <ui-icon slot="left" path={mdiNumeric1}></ui-icon>
+        Item 2
+    </ui-list-item>
+  </ui-list-section>
+</ui-list>
+```
+
+### Menu - `ui-menu`
+
+The menu can be used by itself or with `ui-context-menu`, `ui-dropdown`, and `ui-picker`.
+
+```html
+<ui-menu>
+  <ui-menu-item>Option 1</ui-menu-item>
+  <ui-menu-separator></ui-menu-separator>
+  <ui-menu-item>Option 2</ui-menu-item>
+<ui-menu>
+```
+
 ### Modal - `ui-modal`
 
 ```html
@@ -109,3 +140,35 @@ Exact same as `ui-dropdown`, but does not cause a inner `ui-button` to render a 
   </div>
 </ui-dropdown>
 ```
+
+### Toast - `ui-toast`
+
+To use the toast service you must include one `ui-toast` component in the root of your app.
+
+```html
+<ui-toast></ui-toast>
+```
+
+```typescript
+import {
+    toast,
+    warningToast,
+    errorToast,
+    loadingToast,
+    removeToast,
+    removeAllToasts
+} from `lwc-ui`;
+// ...
+var id = toast('Saved');
+warningToast('Ehh... could be worse', 3);
+errorToast('No good.', 3);
+loadingToast('Soon...', 3);
+// Remove a specific toast
+removeToast(id);
+// Or remove all toasts
+removeAllToasts();
+```
+
+## Why?
+
+Mostly using this to try out ideas in TypeScript.

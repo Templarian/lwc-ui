@@ -19,6 +19,13 @@ npm install lwc-ui
 </ui-button>
 ```
 
+| Attribute  | Default | Values |
+|------------|---------|--------|
+| `block`    | `false` | `true`, `false` |
+| `onclick`  | n/a     | `MouseEvent`    |
+| `active`   | `null`  | index or `ui-button` name |
+| `onactive` | n/a     | `{ detail: true }` |
+
 ### ButtonGroup - `ui-button-group`
 
 ```html
@@ -27,6 +34,36 @@ npm install lwc-ui
   <ui-button>Button 2</ui-button>
 </ui-button-group>
 ```
+
+| Attribute  | Default | Values |
+|------------|---------|--------|
+| `block`    | `false` | `true`, `false` |
+| `active`   | `null`  | index or `ui-button` name |
+| `onactive` | n/a     | `{ detail: { index: 0, name: null }}` |
+
+> Note: `active` must be set for `onactive` to trigger.
+
+### Card - `ui-card`
+
+Cards can section content.
+
+```html
+<ui-card>
+  <ui-card-header>
+    Header
+  </ui-card-header>
+  <ui-card-body>
+    <p>Hello!</p>
+  </ui-card-body>
+  <ui-card-footer>
+    Footer
+  </ui-card-footer>
+</ui-card>
+```
+
+| Attribute | Default | Values |
+|-----------|---------|--------|
+| `shadow`  | `0`     | `0`, `1`, `2`, `3` |
 
 ### ContextMenu - `ui-context-menu`
 
@@ -41,9 +78,13 @@ Wrap any element to add a right click context menu.
 </ui-context-menu>
 ```
 
+| Attribute   | Default | Values |
+|-------------|---------|--------|
+| `placement` | `bottom-start` | [Popper Placement][popper-placement] |
+
 ### Dropdown - `ui-dropdown`
 
-This works the same as `ui-picker` but will flip
+This works the same as `ui-picker` but will display a caret on button elements that flips based on `placement`.
 
 ```html
 <ui-dropdown>
@@ -53,6 +94,10 @@ This works the same as `ui-picker` but will flip
   </ui-menu>
 </ui-dropdown>
 ```
+
+| Attribute   | Default | Values |
+|-------------|---------|--------|
+| `placement` | `bottom-start` | [Popper Placement][popper-placement] |
 
 > Note: The `menu` slot can be any element, but the most common will be `ui-menu`.
 
@@ -147,6 +192,10 @@ Exact same as `ui-dropdown`, but does not cause a inner `ui-button` to render a 
 </ui-dropdown>
 ```
 
+| Attribute   | Default | Values |
+|-------------|---------|--------|
+| `placement` | `bottom-start` | [Popper Placement][popper-placement] |
+
 ### Toast - `ui-toast`
 
 To use the toast service you must include one `ui-toast` component in the root of your app.
@@ -178,3 +227,5 @@ removeAllToasts();
 ## Why?
 
 Mostly using this to try out ideas in TypeScript.
+
+[popper-placement]: https://popper.js.org/popper-documentation.html#Popper.placements

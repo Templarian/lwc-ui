@@ -2,6 +2,12 @@
 
 Minimal UI Components for Prototypes.
 
+## Install
+
+```bash
+npm install lwc-ui
+```
+
 ## Components
 
 ### Button - `ui-button`

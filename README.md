@@ -106,7 +106,7 @@ This works the same as `ui-picker` but will display a caret on button elements t
 The form shold wrap any elements you plan to use. It will handle simple things like validation.
 
 ```html
-<ui-form>
+<ui-form onsubmit={handleFormSubmit} onchange={handleFormChange}>
   <ui-label>
     Type Textarea
     <ui-input type="textarea" value={value}></ui-textarea>

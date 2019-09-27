@@ -71,6 +71,10 @@ button.variant-error:hover svg.close {
     fill: #FFF;
 }
 
+button.variant-error::after {
+    background: rgba(0, 0, 0, 0.5);
+}
+
 button.variant-warning {
     background: #FDF7C2;
 }
@@ -83,6 +87,10 @@ button.variant-warning:hover svg.close {
     fill: #444;
 }
 
+button.variant-warning::after {
+    background: rgba(0, 0, 0, 0.5);
+}
+
 button.variant-loading svg.loading {
     display: initial;
 }
@@ -91,11 +99,11 @@ button.variant-loading svg.close {
     display: none;
 }
 
-button.seconds-1::after,
-button.seconds-2::after,
-button.seconds-3::after,
-button.seconds-4::after,
-button.seconds-5::after {
+.seconds-1::after,
+.seconds-2::after,
+.seconds-3::after,
+.seconds-4::after,
+.seconds-5::after {
     content: ' ';
     position: absolute;
     background: rgba(21, 146, 230, 0.5);

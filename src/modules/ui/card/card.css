@@ -4,7 +4,9 @@
   border: 1px solid #DDD;
   border-radius: 0.5rem;
 }
-
+:host(.no-footer) {
+  padding-bottom: 1rem;
+}
 :host(.shadow-1) {
   box-shadow: 0 1px 0.25rem rgba(0, 0, 0, 0.2);
 }

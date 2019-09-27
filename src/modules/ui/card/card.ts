@@ -20,4 +20,16 @@ export default class Card extends LightningElement {
     this.template.host.classList.add(`shadow-${this._shadow}`);
   }
 
+  handleSlotChange(e: Event) {
+    const slot = this.template.childNodes[1] as HTMLSlotElement;
+    const slotElements = slot.assignedElements();
+    const elementTagNames: string[] = [];
+    slotElements.forEach(element => {
+      elementTagNames.push(element.tagName.toLocaleLowerCase());
+    });
+    if (!elementTagNames.includes('ui-card-footer')) {
+      this.template.host.classList.add('no-footer');
+    }
+  }
+
 }

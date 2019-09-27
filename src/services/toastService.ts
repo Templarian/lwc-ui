@@ -12,12 +12,12 @@ export function getObservable(config: any) {
 let uniqueId = 0;
 
 function pushToast(toast: Toast) {
-  toast.id = uniqueId++;
+  toast.id = ++uniqueId;
   toasts.push(toast);
   subject.next(toasts);
   if (toast.seconds) {
     setTimeout(() => {
-      removeToast(toast.id)
+      removeToast(toast.id);
     }, toast.seconds * 1000);
   }
   return toast.id;

@@ -1,16 +1,51 @@
 <template>
-    <ui-toast></ui-toast>
-    <h1>Demo</h1>
-    <ui-card>
-        <ui-card-header>Card - <code>ui-card</code></ui-card-header>
-        <ui-card-body>
-            Example
-        </ui-card-body>
-    </ui-card>
-    <ui-card>
-        <ui-card-header>Toast - <code>ui-toast</code></ui-card-header>
-        <ui-card-body>
-            <ui-button onclick={handleToast}>Toast 3 Seconds</ui-button>
-        </ui-card-body>
-    </ui-card>
+  <ui-toast></ui-toast>
+  <h1><code>lwc-ui</code> Components</h1>
+  <p>Minimal UI Components for Prototypes. View <a href="https://github.com/Templarian/lwc-ui">readme.md</a> for the
+    full docs.</p>
+  <ui-card>
+    <ui-card-header>Button - <code>ui-button</code></ui-card-header>
+    <ui-card-body>
+      <ui-button>Button</ui-button>
+      &nbsp;
+      <ui-button>
+        <ui-icon slot="left" path={mdiAccount}></ui-icon>
+        Left Slot
+      </ui-button>
+      &nbsp;
+      <ui-button>
+        Right Slot
+        <ui-icon slot="right" path={mdiAccount}></ui-icon>
+      </ui-button>
+    </ui-card-body>
+  </ui-card>
+  <ui-card>
+    <ui-card-header>ButtonGroup - <code>ui-button-group</code></ui-card-header>
+    <ui-card-body>
+      <ui-button-group>
+        <ui-button>
+          <ui-icon path={mdiFormatAlignLeft}></ui-icon>
+        </ui-button>
+        <ui-button>
+          <ui-icon path={mdiFormatAlignCenter}></ui-icon>
+        </ui-button>
+        <ui-button>
+          <ui-icon path={mdiFormatAlignRight}></ui-icon>
+        </ui-button>
+      </ui-button-group>
+    </ui-card-body>
+  </ui-card>
+  <ui-card>
+    <ui-card-header>Toast - <code>ui-toast</code></ui-card-header>
+    <ui-card-body>
+      <ui-button onclick={handleToast}>Toast 3 Seconds</ui-button>
+      &nbsp;
+      <ui-button onclick={handleToastWarning}>Warning Toast 4 Seconds</ui-button>
+      &nbsp;
+      <ui-button onclick={handleToastError}>Error Toast 5 Seconds</ui-button>
+      &nbsp;
+      <ui-button if:false={loadingToastId} onclick={handleToastLoading}>Loading Toast</ui-button>
+      <ui-button if:true={loadingToastId} variant="primary" onclick={handleToastClose}>Close Loading Toast</ui-button>
+    </ui-card-body>
+  </ui-card>
 </template>

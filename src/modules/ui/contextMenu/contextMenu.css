@@ -1,0 +1,7 @@
+.opened {
+  display: block;
+}
+
+.closed {
+  display: inline-block;
+}

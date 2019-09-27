@@ -1,0 +1,20 @@
+:host {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+div {
+  align-self: center;
+  display: block;
+  background: #FFF;
+  width: 15rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.4);
+  padding: 1rem;
+}

@@ -1,0 +1,9 @@
+<template>
+    <ul>
+        <template for:each={toasts} for:item="toast">
+            <li key={toast.id}>
+                <ui-toast-item toast={toast}></ui-toast-item>
+            </li>
+        </template>
+    </ul>
+</template>

@@ -1,0 +1,14 @@
+:host {
+  display: flex;
+  flex: 1;
+}
+
+textarea {
+  width: calc(100% - 1rem - 2px);
+  font-size: 20px;
+  font-family: Consolas;
+  border: 1px solid #DDD;
+  height: 15rem;
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+}

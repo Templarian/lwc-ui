@@ -1,0 +1,5 @@
+:host {
+  display: flex;
+  border-top: 1px solid #DDD;
+  height: 0;
+}

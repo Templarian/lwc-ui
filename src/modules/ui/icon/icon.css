@@ -1,0 +1,47 @@
+:host {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+svg {
+  fill: #444;
+}
+
+/* Style in Slot */
+/* - button */
+:host(.button-slot),
+:host(.button-slot-left),
+:host(.button-slot-right) {
+  width: 1rem;
+  height: 1rem;
+}
+
+:host(.button-slot-left) {
+  margin-right: 0.25rem;
+}
+
+:host(.button-slot-right) {
+  margin-left: 0.25rem;
+}
+
+:host(.button-variant-primary) svg {
+  fill: #FFF;
+}
+/* - menuItem */
+:host(.menuItem-slot),
+:host(.menuItem-slot-left),
+:host(.menuItem-slot-right) {
+  width: 1rem;
+  height: 1rem;
+}
+
+:host(.menuItem-slot-left) {
+  margin-left: -0.75rem;
+  margin-right: 0.5rem;
+}
+
+:host(.menuItem-slot-right) {
+  margin-left: 0.5rem;
+  margin-right: -0.75rem;
+}

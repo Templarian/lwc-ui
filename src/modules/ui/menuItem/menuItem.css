@@ -1,0 +1,19 @@
+:host {
+  display: flex;
+}
+
+button {
+  border: 0;
+  background: #FFF;
+  color: #444;
+  padding: 0.75rem 1.25rem;
+  width: 100%;
+  text-align: left;
+}
+button:hover {
+  background: #EEE;
+}
+
+button > span {
+  display: flex;
+}

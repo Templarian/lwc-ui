@@ -1,0 +1,6 @@
+<template>
+  <slot onslotchange={handleSlotChange}></slot>
+  <template if:true={isOpen}>
+    <slot name="menu" onslotchange={handleMenuSlotChange}></slot>
+  </template>
+</template>

@@ -1,0 +1,12 @@
+:host {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    width: 20rem;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}

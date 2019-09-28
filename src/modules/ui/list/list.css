@@ -1,6 +1,8 @@
 :host {
   display: flex;
+  flex-direction: column;
 }
 :host(.variant-border) {
   border: 1px solid #DDD;
+  border-radius: 0.5rem;
 }

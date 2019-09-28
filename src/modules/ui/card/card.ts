@@ -27,6 +27,9 @@ export default class Card extends LightningElement {
     slotElements.forEach(element => {
       elementTagNames.push(element.tagName.toLocaleLowerCase());
     });
+    if (!elementTagNames.includes('ui-card-header')) {
+      this.template.host.classList.add('no-header');
+    }
     if (!elementTagNames.includes('ui-card-footer')) {
       this.template.host.classList.add('no-footer');
     }

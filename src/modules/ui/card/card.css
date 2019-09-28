@@ -4,6 +4,9 @@
   border: 1px solid #DDD;
   border-radius: 0.5rem;
 }
+:host(.no-header) {
+  padding-top: 1rem;
+}
 :host(.no-footer) {
   padding-bottom: 1rem;
 }

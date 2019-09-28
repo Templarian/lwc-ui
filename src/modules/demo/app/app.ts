@@ -38,4 +38,10 @@ export default class App extends LightningElement {
         errorToast('Testing 5 Seconds', 5);
     }
 
+    @track shadow: string = '0';
+    setShadowHandler(e: Event) {
+        const target = e.target as HTMLElement;
+        this.shadow = target.dataset.shadow as string;
+    }
+
 }

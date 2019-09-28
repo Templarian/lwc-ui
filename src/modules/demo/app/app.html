@@ -8,6 +8,8 @@
     <ui-card-body>
       <ui-button>Button</ui-button>
       &nbsp;
+      <ui-button variant="primary">Primary</ui-button>
+      &nbsp;
       <ui-button>
         <ui-icon slot="left" path={mdiAccount}></ui-icon>
         Left Slot
@@ -33,6 +35,21 @@
           <ui-icon path={mdiFormatAlignRight}></ui-icon>
         </ui-button>
       </ui-button-group>
+    </ui-card-body>
+  </ui-card>
+  <ui-card>
+    <ui-card-header>ButtonGroup - <code>ui-button-group</code></ui-card-header>
+    <ui-card-body>
+      <ui-button onclick={setShadowHandler} data-shadow="0">Set Shadow 0</ui-button>
+      &nbsp;
+      <ui-button onclick={setShadowHandler} data-shadow="1">Set Shadow 1</ui-button>
+      &nbsp;
+      <ui-button onclick={setShadowHandler} data-shadow="2">Set Shadow 2</ui-button>
+      &nbsp;
+      <ui-button onclick={setShadowHandler} data-shadow="3">Set Shadow 3</ui-button>
+      <ui-card style="margin:0.5rem 0 0 0" shadow={shadow}>
+        <ui-card-body>Card with Shadow</ui-card-body>
+      </ui-card>
     </ui-card-body>
   </ui-card>
   <ui-card>

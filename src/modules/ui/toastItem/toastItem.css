@@ -112,6 +112,7 @@ button.variant-loading svg.close {
     left: 0;
     bottom: 0;
     overflow: hidden;
+    border-radius: 0 0 0 0.25rem;
 }
 
 button.seconds-1::after {

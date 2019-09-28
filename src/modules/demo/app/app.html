@@ -38,7 +38,7 @@
     </ui-card-body>
   </ui-card>
   <ui-card>
-    <ui-card-header>ButtonGroup - <code>ui-button-group</code></ui-card-header>
+    <ui-card-header>Card - <code>ui-card</code></ui-card-header>
     <ui-card-body>
       <ui-button onclick={setShadowHandler} data-shadow="0">Set Shadow 0</ui-button>
       &nbsp;
@@ -50,6 +50,59 @@
       <ui-card style="margin:0.5rem 0 0 0" shadow={shadow}>
         <ui-card-body>Card with Shadow</ui-card-body>
       </ui-card>
+    </ui-card-body>
+  </ui-card>
+  <ui-card>
+    <ui-card-header>ContextMenu - <code>ui-context-menu</code></ui-card-header>
+    <ui-card-body>
+      <ui-context-menu>
+        <div style="border: 1px dashed #007bff;padding: 0.5rem;">Right Click Here</div>
+        <ui-menu slot="menu">
+          <ui-menu-item>Option 1</ui-menu-item>
+          <ui-menu-item>Option 2</ui-menu-item>
+        </ui-menu>
+      </ui-context-menu>
+    </ui-card-body>
+  </ui-card>
+  <ui-card>
+    <ui-card-header>Dropdown - <code>ui-dropdown</code></ui-card-header>
+    <ui-card-body>
+      <ui-dropdown>
+        <ui-button>Dropdown</ui-button>
+        <ui-menu slot="menu">
+          <ui-menu-item>Option 1</ui-menu-item>
+          <ui-menu-item>Option 2</ui-menu-item>
+        </ui-menu>
+      </ui-dropdown>
+      &nbsp;
+      <ui-dropdown>
+        <ui-button><ui-icon path={mdiAccount}></ui-icon></ui-button>
+        <ui-menu slot="menu">
+          <ui-menu-item>Option 1</ui-menu-item>
+          <ui-menu-item>Option 2</ui-menu-item>
+        </ui-menu>
+      </ui-dropdown>
+      &nbsp;
+      <ui-button-group>
+        <ui-button>Split Button</ui-button>
+        <ui-dropdown>
+          <ui-button></ui-button>
+          <ui-menu slot="menu">
+            <ui-menu-item>Option 1</ui-menu-item>
+            <ui-menu-item>Option 2</ui-menu-item>
+          </ui-menu>
+        </ui-dropdown>
+      </ui-button-group>
+    </ui-card-body>
+  </ui-card>
+  <ui-card>
+    <ui-card-header>Toast - <code>ui-toast</code></ui-card-header>
+    <ui-card-body>
+      <ui-list>
+        <ui-list-item>Item 1</ui-list-item>
+        <ui-list-item>Item 2</ui-list-item>
+        <ui-list-item>Item 3</ui-list-item>
+      </ui-list>
     </ui-card-body>
   </ui-card>
   <ui-card>

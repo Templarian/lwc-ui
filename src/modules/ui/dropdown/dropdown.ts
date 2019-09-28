@@ -1,5 +1,12 @@
 import { LightningElement, api, track } from 'lwc';
 import Popper, { Data, Placement } from 'popper.js';
+import { resolve } from 'dns';
+
+interface Slot {
+  component: string,
+  name: string | null,
+  variant: string | null
+}
 
 const DEFAULT_PLACEMENT = 'bottom-start';
 
@@ -37,6 +44,26 @@ export default class Dropdown extends LightningElement {
     }
   }
 
+  connectedCallback() {
+    this.addEventListener('slot', this.slot.bind(this) as EventListener);
+  }
+
+  slotClasses: string[] = [];
+  slot({ target, detail: slot }: CustomEvent<Slot>) {
+    const element = target as Element;
+    const slotName = slot.name ? `-${slot.name}` : '';
+    this.slotClasses = [
+      `${slot.component}-variant-${slot.variant}`,
+      `${slot.component}-slot${slotName}`
+    ];
+    element.className = this.slotClasses.join(' ');
+    this.afterMenuPromise.then((menu: any) => {
+      this.slotClasses.forEach(className => {
+        menu.classList.add(className);
+      });
+    });
+  }
+
   handleClick(e: MouseEvent) {
     const currentTarget = e.currentTarget as Element;
     console.log(e.target, currentTarget);
@@ -59,6 +86,7 @@ export default class Dropdown extends LightningElement {
     }
   }
 
+  afterMenuPromise: any;
   handleSlotChange(e: Event) {
     const slot = this.template.childNodes[1] as HTMLSlotElement;
     const slotElements = slot.assignedElements();
@@ -72,6 +100,9 @@ export default class Dropdown extends LightningElement {
       menuButton.classList.add(`block`);
     }
     this.$menuButton = menuButton;
+    this.afterMenuPromise = new Promise(resolve => {
+      resolve(menuButton);
+    });
   }
 
   handleMenuSlotChange(e: Event) {

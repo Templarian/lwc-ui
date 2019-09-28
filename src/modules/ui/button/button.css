@@ -111,6 +111,14 @@ button.variant-primary:hover {
   border-top-right-radius: 0.25rem;
   border-bottom-right-radius: 0.25rem;
 }
+:host(.buttonGroup-slot.dropdown:first-child) button {
+  border-radius: 0 0.25rem 0.25rem 0;
+  margin-right: 0;
+  padding-left: 0.25rem;
+}
+:host(.buttonGroup-slot.dropdown:first-child) button:focus::before {
+  border-radius: 0 0.25rem 0.25rem 0;
+}
 :host(.buttonGroup-slot) button:hover {
   position: relative;
   z-index: 1;

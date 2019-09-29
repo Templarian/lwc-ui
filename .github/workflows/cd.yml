@@ -20,7 +20,7 @@ jobs:
       run: |
         npm install
         npm run build
-        git checkout https://github.com/Templarian/templarian.github.io.git
+        git clone https://templarian:${{ secrets.GIT_TOKEN }}@github.com/Templarian/templarian.github.io
         cp dist templarian.github.io/lwc-ui
         cd templarian.github.io
         git status

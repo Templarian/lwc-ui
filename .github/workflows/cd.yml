@@ -23,4 +23,5 @@ jobs:
         git clone https://${{ secrets.GIT_USER }}:${{ secrets.GIT_TOKEN }}@github.com/Templarian/templarian.github.io
         cp -rf dist/ templarian.github.io/lwc-ui/
         cd templarian.github.io
+        git add .
         git status

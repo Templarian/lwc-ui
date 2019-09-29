@@ -7,6 +7,7 @@ import {
     mdiFormatAlignCenter,
     mdiFormatAlignRight,
     mdiPackageVariant,
+    mdiPackageVariantClosed,
     mdiGithubCircle
 } from '@mdi/js';
 
@@ -18,6 +19,7 @@ export default class App extends LightningElement {
     @track mdiFormatAlignCenter: string = mdiFormatAlignCenter;
     @track mdiFormatAlignRight: string = mdiFormatAlignRight;
     @track mdiPackageVariant: string = mdiPackageVariant;
+    @track mdiPackageVariantClosed: string = mdiPackageVariantClosed;
     @track mdiGithubCircle: string = mdiGithubCircle;
 
     handleToast() {

@@ -20,7 +20,7 @@ jobs:
       run: |
         npm install
         npm run build
-        git checkout git@github.com:Templarian/templarian.github.io.git
+        git checkout https://github.com/Templarian/templarian.github.io.git
         cp dist templarian.github.io/lwc-ui
         cd templarian.github.io
         git status

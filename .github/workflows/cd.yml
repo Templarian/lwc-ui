@@ -25,4 +25,5 @@ jobs:
         cd templarian.github.io
         sed -i 's/"\///g' lwc-ui/index.html
         git add .
-        git status
+        git commit -m "Deploy lwc-ui"
+        git push

@@ -2,19 +2,19 @@ import { LightningElement, track } from 'lwc';
 import { toast, errorToast, warningToast, loadingToast, removeToast } from 'ui/toastService';
 import {
     mdiAccount,
+    mdiAccountBox,
     mdiFormatAlignLeft,
     mdiFormatAlignCenter,
-    mdiFormatAlignRight,
-    mdiOpenInNew
+    mdiFormatAlignRight
 } from '@mdi/js';
 
 export default class App extends LightningElement {
 
     @track mdiAccount: string = mdiAccount;
+    @track mdiAccountBox: string = mdiAccountBox;
     @track mdiFormatAlignLeft: string = mdiFormatAlignLeft;
     @track mdiFormatAlignCenter: string = mdiFormatAlignCenter;
     @track mdiFormatAlignRight: string = mdiFormatAlignRight;
-    @track mdiOpenInNew: string = mdiOpenInNew;
 
     handleToast() {
         toast('Testing 3 Seconds', 3);

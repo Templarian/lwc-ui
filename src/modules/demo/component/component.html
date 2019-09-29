@@ -1,0 +1,14 @@
+<template>
+  <ui-card>
+    <ui-card-header>
+      {name} - <code>{tag}</code>
+      <ui-button slot="right" href={href} target="_blank">
+        View Docs
+        <ui-icon slot="right" path={mdiOpenInNew}></ui-icon>
+      </ui-button>
+    </ui-card-header>
+    <ui-card-body>
+      <slot></slot>
+    </ui-card-body>
+  </ui-card>
+</template>

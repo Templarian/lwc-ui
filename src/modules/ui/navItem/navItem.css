@@ -1,3 +1,23 @@
 :host {
     display: flex;
+    font-size: 1rem;
+}
+
+:host a {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    color: #222;
+    padding: 0.5rem;
+    padding: 0 0.5rem;
+    border-radius: 0.25rem;
+    border: 1px solid transparent;
+}
+:host a:hover {
+    border-color: #DDD;
+}
+:host a:active {
+    border-color: #FFF;
+    box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.3) inset;
+    background: #F1F1F1;
 }

@@ -1,4 +1,6 @@
 :host {
+  font-family: -apple-system, system-ui, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 1.25rem;
   padding: 1rem 1rem 0.5rem 1rem;
   display: flex;

@@ -25,7 +25,7 @@ jobs:
         cd templarian.github.io
         git config --global user.email "${{ secrets.GIT_EMAIL }}"
         git config --global user.name "${{ secrets.GIT_NAME }}"
-        sed -i 's/"\///g' lwc-ui/index.html
+        sed -i 's/"\//"/g' lwc-ui/index.html
         git add .
         git commit -m "Deploy lwc-ui"
         git push

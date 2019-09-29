@@ -2,10 +2,15 @@
   <ui-card>
     <ui-card-header>
       {name} - <code>{tag}</code>
-      <ui-button slot="right" href={href} target="_blank">
-        View Docs
-        <ui-icon slot="right" path={mdiOpenInNew}></ui-icon>
-      </ui-button>
+      <ui-button-group slot="right">
+        <ui-button href={codeHref} target="_blank">
+          <ui-icon path={mdiFileDocument}></ui-icon>
+        </ui-button>
+        <ui-button href={docHref} target="_blank">
+          View Docs
+          <ui-icon slot="right" path={mdiOpenInNew}></ui-icon>
+        </ui-button>
+      </ui-button-group>
     </ui-card-header>
     <ui-card-body>
       <slot></slot>

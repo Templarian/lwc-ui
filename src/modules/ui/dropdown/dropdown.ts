@@ -1,6 +1,5 @@
 import { LightningElement, api, track } from 'lwc';
 import Popper, { Data, Placement } from 'popper.js';
-import { resolve } from 'dns';
 
 interface Slot {
   component: string,

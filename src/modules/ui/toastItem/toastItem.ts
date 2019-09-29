@@ -1,5 +1,5 @@
 import { LightningElement, api } from 'lwc';
-import { removeToast } from 'services/toastService';
+import { removeToast } from 'ui/toastService';
 
 export default class ToastItem extends LightningElement {
 

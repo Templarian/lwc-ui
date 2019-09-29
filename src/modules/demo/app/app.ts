@@ -1,5 +1,5 @@
 import { LightningElement, track } from 'lwc';
-import { toast, errorToast, warningToast, loadingToast, removeToast } from 'services/toastService';
+import { toast, errorToast, warningToast, loadingToast, removeToast } from 'ui/toastService';
 import {
     mdiAccount,
     mdiFormatAlignLeft,

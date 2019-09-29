@@ -31,6 +31,11 @@ button:focus {
   position: relative;
 }
 
+button:active {
+  background-color: #DDD;
+  border-color: #CCC;
+}
+
 button:focus::before {
   z-index: 1;
   content: ' ';
@@ -65,6 +70,11 @@ button.variant-primary {
 button.variant-primary:hover {
   background-color: #0069d9;
   border-color: #0062cc;
+}
+
+button.variant-primary:active {
+  background-color: #0062cc;
+  border-color: #005cbf;
 }
 
 .caret-left,

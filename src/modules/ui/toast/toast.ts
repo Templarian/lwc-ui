@@ -1,5 +1,5 @@
 import { LightningElement, wire } from 'lwc';
-import { getToasts } from 'services/toastService';
+import { getToasts } from 'ui/toastService';
 
 export default class Toast extends LightningElement {
 

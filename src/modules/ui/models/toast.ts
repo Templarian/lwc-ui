@@ -1,4 +1,4 @@
-export default class Toast {
+export class Toast {
   public id: number = 0;
   public message: string = '';
   public seconds: number = 0;
@@ -13,4 +13,8 @@ export default class Toast {
     this.dismissable = toast.dismissable;
     return this;
   }
+}
+
+export default {
+  Toast
 }

@@ -4,4 +4,4 @@ export {
     errorToast,
     loadingToast,
     removeToast
-} from './services/toastService';
+} from 'ui/toastService';

@@ -1,6 +1,6 @@
 import { register, ValueChangedEvent } from '@lwc/wire-service';
 import { getSubject } from './util';
-import Toast from 'models/toast';
+import { Toast } from 'ui/models';
 
 const toasts: Toast[] = [];
 const subject = getSubject([], undefined);

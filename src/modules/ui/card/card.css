@@ -3,6 +3,7 @@
   flex-direction: column;
   border: 1px solid #DDD;
   border-radius: 0.5rem;
+  background-color: #FFF;
 }
 :host(.no-header) {
   padding-top: 1rem;

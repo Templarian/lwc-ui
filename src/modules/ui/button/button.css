@@ -14,6 +14,7 @@
   border: #FFF;
 }
 
+a,
 button {
   border: 1px solid #DDD;
   border-radius: 0.25rem;
@@ -21,21 +22,26 @@ button {
   padding: 0.4rem 0.5rem;
   color: #222;
   outline: 0;
+  text-decoration: none;
 }
 
+a:hover,
 button:hover {
   border-color: #BBB;
 }
 
+a:focus,
 button:focus {
   position: relative;
 }
 
+a:active,
 button:active {
   background-color: #DDD;
   border-color: #CCC;
 }
 
+a:focus::before,
 button:focus::before {
   z-index: 1;
   content: ' ';
@@ -49,11 +55,13 @@ button:focus::before {
   box-shadow: 0 0 0.25rem #007bff;
 }
 
+a > span,
 button > span {
   display: flex;
   align-items: center;
   line-height: 1rem;
 }
+a > span > span,
 button > span > span {
   display: flex;
   align-items: center;
@@ -61,17 +69,20 @@ button > span > span {
   justify-content: center;
 }
 
+a.variant-primary,
 button.variant-primary {
   border-color: #007bff;
   background-color: #007bff;
   color: #FFF;
 }
 
+a.variant-primary:hover,
 button.variant-primary:hover {
   background-color: #0069d9;
   border-color: #0062cc;
 }
 
+a.variant-primary:active,
 button.variant-primary:active {
   background-color: #0062cc;
   border-color: #005cbf;

@@ -12,6 +12,8 @@ const DEFAULT_VARIANT = 'default';
 export default class Button extends LightningElement {
   @api variant: string = DEFAULT_VARIANT;
   @api submit: boolean = false;
+  @api href: string | null = null;
+  @api target: string | null = null;
 
   _block: boolean = false;
   @api
@@ -34,10 +36,6 @@ export default class Button extends LightningElement {
   }
   
   mdiMenuDown: string = mdiMenuDown;
-
-  handleClick(e: Event) {
-    //this.dispatchEvent(e);
-  }
 
   get computedClass() {
     return `variant-${this.variant}`;

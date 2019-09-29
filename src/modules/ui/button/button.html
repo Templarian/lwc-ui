@@ -1,11 +1,24 @@
 <template>
-  <button onclick={handleClick} class={computedClass}>
-    <span>
-      <ui-icon class={computedCaretLeft} path={mdiMenuDown}></ui-icon>
-      <slot name="left" onslotchange={handleLeftSlotChange}></slot>
-      <span><slot onslotchange={handleSlotChange}></slot></span>
-      <slot name="right" onslotchange={handleRightSlotChange}></slot>
-      <ui-icon class={computedCaretRight} path={mdiMenuDown}></ui-icon>
-    </span>
-  </button>
+  <template if:true={href}>
+    <a class={computedClass} href={href} target={target}>
+      <span>
+        <ui-icon class={computedCaretLeft} path={mdiMenuDown}></ui-icon>
+        <slot name="left" onslotchange={handleLeftSlotChange}></slot>
+        <span><slot onslotchange={handleSlotChange}></slot></span>
+        <slot name="right" onslotchange={handleRightSlotChange}></slot>
+        <ui-icon class={computedCaretRight} path={mdiMenuDown}></ui-icon>
+      </span>
+    </a>
+  </template>
+  <template if:false={href}>
+    <button class={computedClass}>
+      <span>
+        <ui-icon class={computedCaretLeft} path={mdiMenuDown}></ui-icon>
+        <slot name="left" onslotchange={handleLeftSlotChange}></slot>
+        <span><slot onslotchange={handleSlotChange}></slot></span>
+        <slot name="right" onslotchange={handleRightSlotChange}></slot>
+        <ui-icon class={computedCaretRight} path={mdiMenuDown}></ui-icon>
+      </span>
+    </button>
+  </template>
 </template>

@@ -4,7 +4,13 @@
   <p>Minimal UI Components for Prototypes. View <a href="https://github.com/Templarian/lwc-ui">readme.md</a> for the
     full docs.</p>
   <ui-card>
-    <ui-card-header>Button - <code>ui-button</code></ui-card-header>
+    <ui-card-header>
+      Button - <code>ui-button</code>
+      <ui-button slot="right" href="https://github.com/Templarian/lwc-ui#button---ui-button" target="_blank">
+        View Docs
+        <ui-icon slot="right" path={mdiOpenInNew}></ui-icon>
+      </ui-button>
+    </ui-card-header>
     <ui-card-body>
       <ui-button>Button</ui-button>
       &nbsp;

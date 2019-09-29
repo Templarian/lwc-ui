@@ -1,4 +1,12 @@
 <template>
-    <slot name="logo"></slot>
-    <slot></slot>
+  <template if:true={href}>
+    <a href={href}>
+      <slot name="logo" onslotchange={handleLogoSlotChange}></slot>
+      <span><slot></slot></span>
+    </a>
+  </template>
+  <template if:false={href}>
+    <slot name="logo" onslotchange={handleLogoSlotChange}></slot>
+    <span><slot></slot></span>
+  </template>
 </template>

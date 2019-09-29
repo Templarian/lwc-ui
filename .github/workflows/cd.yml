@@ -21,11 +21,6 @@ jobs:
         npm install
         npm run build
         git clone https://${{ secrets.GIT_USER }}:${{ secrets.GIT_TOKEN }}@github.com/Templarian/templarian.github.io
-        echo "init"
-        ls -la
-        cd $GITHUB_WORKSPACE
-        echo "workspace"
-        ls -la
-        cp dist templarian.github.io/lwc-ui
+        cp -rf dist/ templarian.github.io/lwc-ui/
         cd templarian.github.io
         git status

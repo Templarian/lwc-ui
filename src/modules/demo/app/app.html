@@ -143,22 +143,9 @@
     </demo-component>
 
     <demo-component
-      name="Menu"
-      tag="ui-menu"
-      file="menu">
-      <ui-picker>
-        <ui-button><ui-icon path={mdiAccount}></ui-icon></ui-button>
-        <ui-menu slot="menu">
-          <ui-menu-item>Option 1</ui-menu-item>
-          <ui-menu-item>Option 2</ui-menu-item>
-        </ui-menu>
-      </ui-picker>
-    </demo-component>
-
-    <demo-component
-      name="List"
-      tag="ui-list"
-      file="list">
+      name="Toast"
+      tag="ui-toast"
+      file="toast">
       <ui-button onclick={handleToast}>Toast 3 Seconds</ui-button>
       &nbsp;
       <ui-button onclick={handleToastWarning}>Warning Toast 4 Seconds</ui-button>
@@ -167,6 +154,16 @@
       &nbsp;
       <ui-button if:false={loadingToastId} onclick={handleToastLoading}>Loading Toast</ui-button>
       <ui-button if:true={loadingToastId} variant="primary" onclick={handleToastClose}>Close Loading Toast</ui-button>
+    </demo-component>
+
+    <demo-component
+      name="Menu"
+      tag="ui-menu"
+      file="menu">
+      <ui-menu>
+        <ui-menu-item>Option 1</ui-menu-item>
+        <ui-menu-item>Option 2</ui-menu-item>
+      </ui-menu>
     </demo-component>
 
     <demo-component
@@ -183,6 +180,19 @@
           <ui-icon path={mdiGithubCircle}></ui-icon>
         </ui-nav-item>
       </ui-nav>
+    </demo-component>
+
+    <demo-component
+      name="Picker"
+      tag="ui-picker"
+      file="picker">
+      <ui-picker>
+        <ui-button><ui-icon path={mdiAccount}></ui-icon></ui-button>
+        <ui-menu slot="menu">
+          <ui-menu-item>Option 1</ui-menu-item>
+          <ui-menu-item>Option 2</ui-menu-item>
+        </ui-menu>
+      </ui-picker>
     </demo-component>
 
     <ui-card>

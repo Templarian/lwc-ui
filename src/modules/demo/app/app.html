@@ -1,142 +1,160 @@
 <template>
   <ui-toast></ui-toast>
-  <h1><code>lwc-ui</code> Components</h1>
-  <p>Minimal UI Components for Prototypes. View <a href="https://github.com/Templarian/lwc-ui">readme.md</a> for the
-    full docs.</p>
-  <demo-component
-    name="Button"
-    tag="ui-button"
-    file="button">
-    <ui-button>Button</ui-button>
-    &nbsp;
-    <ui-button variant="primary">Primary</ui-button>
-    &nbsp;
-    <ui-button>
-      <ui-icon slot="left" path={mdiAccount}></ui-icon>
-      Left Slot
-    </ui-button>
-    &nbsp;
-    <ui-button>
-      Right Slot
-      <ui-icon slot="right" path={mdiAccount}></ui-icon>
-    </ui-button>
-  </demo-component>
-  <demo-component
-    name="Button Group"
-    tag="ui-button-group"
-    file="buttonGroup">
-    <ui-button-group>
+  <ui-nav style="margin-bottom: 1rem;">
+    <ui-nav-brand>
+      <ui-icon slot="logo" path={mdiPackageVariant}></ui-icon>
+      <code>lwc-ui</code> Components
+    </ui-nav-brand>
+    <ui-nav-item href="https://github.com/Templarian/lwc-ui">View Docs</ui-nav-item>
+  </ui-nav>
+  <div class="container">
+    <demo-component
+      name="Button"
+      tag="ui-button"
+      file="button">
+      <ui-button>Button</ui-button>
+      &nbsp;
+      <ui-button variant="primary">Primary</ui-button>
+      &nbsp;
       <ui-button>
-        <ui-icon path={mdiFormatAlignLeft}></ui-icon>
+        <ui-icon slot="left" path={mdiAccount}></ui-icon>
+        Left Slot
       </ui-button>
+      &nbsp;
       <ui-button>
-        <ui-icon path={mdiFormatAlignCenter}></ui-icon>
+        Right Slot
+        <ui-icon slot="right" path={mdiAccount}></ui-icon>
       </ui-button>
-      <ui-button>
-        <ui-icon path={mdiFormatAlignRight}></ui-icon>
-      </ui-button>
-    </ui-button-group>
-  </demo-component>
-  <demo-component
-    name="Card"
-    tag="ui-card"
-    file="card">
-    <ui-button onclick={setShadowHandler} data-shadow="0">Set Shadow 0</ui-button>
-    &nbsp;
-    <ui-button onclick={setShadowHandler} data-shadow="1">Set Shadow 1</ui-button>
-    &nbsp;
-    <ui-button onclick={setShadowHandler} data-shadow="2">Set Shadow 2</ui-button>
-    &nbsp;
-    <ui-button onclick={setShadowHandler} data-shadow="3">Set Shadow 3</ui-button>
-    <ui-card style="margin:0.5rem 0 0 0" shadow={shadow}>
-      <ui-card-body>Card with Shadow</ui-card-body>
-    </ui-card>
-  </demo-component>
-  <demo-component
-    name="Context Menu"
-    tag="ui-context-menu"
-    file="contextMenu">
-    <ui-context-menu>
-      <div style="border: 1px dashed #007bff;padding: 0.5rem;">Right Click Here</div>
-      <ui-menu slot="menu">
-        <ui-menu-item>Option 1</ui-menu-item>
-        <ui-menu-item>Option 2</ui-menu-item>
-      </ui-menu>
-    </ui-context-menu>
-  </demo-component>
-  <demo-component
-    name="Dropdown"
-    tag="ui-dropdown"
-    file="dropdown">
-    <ui-dropdown>
-      <ui-button>Dropdown</ui-button>
-      <ui-menu slot="menu">
-        <ui-menu-item>Option 1</ui-menu-item>
-        <ui-menu-item>Option 2</ui-menu-item>
-      </ui-menu>
-    </ui-dropdown>
-    &nbsp;
-    <ui-dropdown>
-      <ui-button><ui-icon path={mdiAccount}></ui-icon></ui-button>
-      <ui-menu slot="menu">
-        <ui-menu-item>Option 1</ui-menu-item>
-        <ui-menu-item>Option 2</ui-menu-item>
-      </ui-menu>
-    </ui-dropdown>
-    &nbsp;
-    <ui-button-group>
-      <ui-button>Split Button</ui-button>
+    </demo-component>
+
+    <demo-component
+      name="Button Group"
+      tag="ui-button-group"
+      file="buttonGroup">
+      <ui-button-group>
+        <ui-button>
+          <ui-icon path={mdiFormatAlignLeft}></ui-icon>
+        </ui-button>
+        <ui-button>
+          <ui-icon path={mdiFormatAlignCenter}></ui-icon>
+        </ui-button>
+        <ui-button>
+          <ui-icon path={mdiFormatAlignRight}></ui-icon>
+        </ui-button>
+      </ui-button-group>
+    </demo-component>
+
+    <demo-component
+      name="Card"
+      tag="ui-card"
+      file="card">
+      <ui-button onclick={setShadowHandler} data-shadow="0">Set Shadow 0</ui-button>
+      &nbsp;
+      <ui-button onclick={setShadowHandler} data-shadow="1">Set Shadow 1</ui-button>
+      &nbsp;
+      <ui-button onclick={setShadowHandler} data-shadow="2">Set Shadow 2</ui-button>
+      &nbsp;
+      <ui-button onclick={setShadowHandler} data-shadow="3">Set Shadow 3</ui-button>
+      <ui-card style="margin:0.5rem 0 0 0" shadow={shadow}>
+        <ui-card-body>Card with Shadow</ui-card-body>
+      </ui-card>
+    </demo-component>
+
+    <demo-component
+      name="Context Menu"
+      tag="ui-context-menu"
+      file="contextMenu">
+      <ui-context-menu>
+        <div style="border: 1px dashed #007bff;padding: 0.5rem;">Right Click Here</div>
+        <ui-menu slot="menu">
+          <ui-menu-item>Option 1</ui-menu-item>
+          <ui-menu-item>Option 2</ui-menu-item>
+        </ui-menu>
+      </ui-context-menu>
+    </demo-component>
+
+    <demo-component
+      name="Dropdown"
+      tag="ui-dropdown"
+      file="dropdown">
       <ui-dropdown>
-        <ui-button></ui-button>
+        <ui-button>Dropdown</ui-button>
         <ui-menu slot="menu">
           <ui-menu-item>Option 1</ui-menu-item>
           <ui-menu-item>Option 2</ui-menu-item>
         </ui-menu>
       </ui-dropdown>
-    </ui-button-group>
-  </demo-component>
-  <demo-component
-    name="Icon"
-    tag="ui-icon"
-    file="icon">
-    <ui-icon path={mdiAccount}></ui-icon>
-    <ui-icon path={mdiAccountBox}></ui-icon>
-  </demo-component>
-  <demo-component
-    name="List"
-    tag="ui-list"
-    file="list">
-    <ui-list>
-      <ui-list-item>Item 1</ui-list-item>
-      <ui-list-item>Item 2</ui-list-item>
-      <ui-list-item>Item 3</ui-list-item>
-    </ui-list>
-  </demo-component>
-  <demo-component
-    name="Menu"
-    tag="ui-menu"
-    file="menu">
-    <ui-picker>
-      <ui-button><ui-icon path={mdiAccount}></ui-icon></ui-button>
-      <ui-menu slot="menu">
-        <ui-menu-item>Option 1</ui-menu-item>
-        <ui-menu-item>Option 2</ui-menu-item>
-      </ui-menu>
-    </ui-picker>
-  </demo-component>
-  <demo-component
-    name="List"
-    tag="ui-list"
-    file="list">
-    <ui-button onclick={handleToast}>Toast 3 Seconds</ui-button>
-    &nbsp;
-    <ui-button onclick={handleToastWarning}>Warning Toast 4 Seconds</ui-button>
-    &nbsp;
-    <ui-button onclick={handleToastError}>Error Toast 5 Seconds</ui-button>
-    &nbsp;
-    <ui-button if:false={loadingToastId} onclick={handleToastLoading}>Loading Toast</ui-button>
-    <ui-button if:true={loadingToastId} variant="primary" onclick={handleToastClose}>Close Loading Toast</ui-button>
-  </demo-component>
-  <h2>Why?</h2>
-  <p>Mostly using this to try out ideas in TypeScript and finding areas that may need standard utilities.</p>
+      &nbsp;
+      <ui-dropdown>
+        <ui-button><ui-icon path={mdiAccount}></ui-icon></ui-button>
+        <ui-menu slot="menu">
+          <ui-menu-item>Option 1</ui-menu-item>
+          <ui-menu-item>Option 2</ui-menu-item>
+        </ui-menu>
+      </ui-dropdown>
+      &nbsp;
+      <ui-button-group>
+        <ui-button>Split Button</ui-button>
+        <ui-dropdown>
+          <ui-button></ui-button>
+          <ui-menu slot="menu">
+            <ui-menu-item>Option 1</ui-menu-item>
+            <ui-menu-item>Option 2</ui-menu-item>
+          </ui-menu>
+        </ui-dropdown>
+      </ui-button-group>
+    </demo-component>
+
+    <demo-component
+      name="Icon"
+      tag="ui-icon"
+      file="icon">
+      <ui-icon path={mdiAccount}></ui-icon>
+      <ui-icon path={mdiAccountBox}></ui-icon>
+    </demo-component>
+    <demo-component
+      name="List"
+      tag="ui-list"
+      file="list">
+      <ui-list>
+        <ui-list-item>Item 1</ui-list-item>
+        <ui-list-item>Item 2</ui-list-item>
+        <ui-list-item>Item 3</ui-list-item>
+      </ui-list>
+    </demo-component>
+
+    <demo-component
+      name="Menu"
+      tag="ui-menu"
+      file="menu">
+      <ui-picker>
+        <ui-button><ui-icon path={mdiAccount}></ui-icon></ui-button>
+        <ui-menu slot="menu">
+          <ui-menu-item>Option 1</ui-menu-item>
+          <ui-menu-item>Option 2</ui-menu-item>
+        </ui-menu>
+      </ui-picker>
+    </demo-component>
+
+    <demo-component
+      name="List"
+      tag="ui-list"
+      file="list">
+      <ui-button onclick={handleToast}>Toast 3 Seconds</ui-button>
+      &nbsp;
+      <ui-button onclick={handleToastWarning}>Warning Toast 4 Seconds</ui-button>
+      &nbsp;
+      <ui-button onclick={handleToastError}>Error Toast 5 Seconds</ui-button>
+      &nbsp;
+      <ui-button if:false={loadingToastId} onclick={handleToastLoading}>Loading Toast</ui-button>
+      <ui-button if:true={loadingToastId} variant="primary" onclick={handleToastClose}>Close Loading Toast</ui-button>
+    </demo-component>
+
+    <ui-card>
+      <ui-card-header>Why?</ui-card-header>
+      <ui-card-body>
+          <p>Mostly using this to try out ideas in TypeScript and finding areas that may need standard utilities.</p>
+      </ui-card-body>
+    </ui-card>
+  </div>
 </template>

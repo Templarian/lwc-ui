@@ -5,7 +5,8 @@ import {
     mdiAccountBox,
     mdiFormatAlignLeft,
     mdiFormatAlignCenter,
-    mdiFormatAlignRight
+    mdiFormatAlignRight,
+    mdiPackageVariant
 } from '@mdi/js';
 
 export default class App extends LightningElement {
@@ -15,6 +16,7 @@ export default class App extends LightningElement {
     @track mdiFormatAlignLeft: string = mdiFormatAlignLeft;
     @track mdiFormatAlignCenter: string = mdiFormatAlignCenter;
     @track mdiFormatAlignRight: string = mdiFormatAlignRight;
+    @track mdiPackageVariant: string = mdiPackageVariant;
 
     handleToast() {
         toast('Testing 3 Seconds', 3);

@@ -1,6 +1,7 @@
 import { LightningElement, api } from 'lwc';
-import { updateClass } from 'ui/util';
+import { updateVariant, inArrayOrDefault } from 'ui/util';
 
+const COMPONENT: string = 'attention';
 const VARIANTS: string[] = [
   'default',
   'primary',
@@ -19,12 +20,14 @@ export default class Attention extends LightningElement {
     return this._variant;
   }
   set variant(variant) {
-    this._variant = variant;
-    this.updateHostClass();
+    this._variant = inArrayOrDefault(variant, VARIANTS, DEFAULT_VARIANT);
+    updateVariant(COMPONENT, this.template.host.classList, this._variant, VARIANTS);
   }
 
   connectedCallback() {
-    this.updateHostClass();
+    if (this._variant === DEFAULT_VARIANT) {
+      updateVariant(COMPONENT, this.template.host.classList, this._variant, VARIANTS);
+    }
   }
 
   handleLeftSlotChange(e: Event) {
@@ -33,7 +36,7 @@ export default class Attention extends LightningElement {
     leftSlotElements.forEach(element => {
       element.dispatchEvent(new CustomEvent('slot', {
         detail: {
-          component: 'attention',
+          component: COMPONENT,
           name: 'left',
           variant: this.variant
         }
@@ -47,20 +50,12 @@ export default class Attention extends LightningElement {
     rightSlotElements.forEach(element => {
       element.dispatchEvent(new CustomEvent('slot', {
         detail: {
-          component: 'attention',
+          component: COMPONENT,
           name: 'right',
           variant: this.variant
         }
       }));
     });
-  }
-
-  updateHostClass() {
-    const variants = VARIANTS.reduce<object>((acc: object, variant: string) => {
-      const cls = `attention-variant-${variant}`;
-      return { ...acc, [cls]: variant === this._variant };
-    }, {});
-    updateClass(this.template.host.classList, variants);
   }
 
 }

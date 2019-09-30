@@ -19,20 +19,27 @@
       &nbsp;
       <ui-button variant="primary">Primary</ui-button>
       &nbsp;
-      <ui-button>
-        <ui-icon slot="left" path={mdiAccount}></ui-icon>
-        Left Slot
-      </ui-button>
+      <ui-button variant="warning">Warning</ui-button>
       &nbsp;
-      <ui-button>
-        Right Slot
-        <ui-icon slot="right" path={mdiAccount}></ui-icon>
-      </ui-button>
-      <ui-button block style="margin-top: 0.5rem">
-        <ui-icon slot="left" path={mdiAccount}></ui-icon>
-        Block Button
-        <ui-icon slot="right" path={mdiAccount}></ui-icon>
-      </ui-button>
+      <ui-button variant="danger">Danger</ui-button>
+      &nbsp;
+      <ui-button variant="dark">Dark</ui-button>
+      <div style="margin-top: 0.5rem">
+        <ui-button>
+          <ui-icon slot="left" path={mdiAccount}></ui-icon>
+          Left Slot
+        </ui-button>
+        &nbsp;
+        <ui-button>
+          Right Slot
+          <ui-icon slot="right" path={mdiAccount}></ui-icon>
+        </ui-button>
+        <ui-button block style="margin-top: 0.5rem">
+          <ui-icon slot="left" path={mdiAccount}></ui-icon>
+          Block Button
+          <ui-icon slot="right" path={mdiAccount}></ui-icon>
+        </ui-button>
+      </div>
     </demo-component>
 
     <demo-component

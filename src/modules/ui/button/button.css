@@ -71,6 +71,7 @@ button > span > span {
   justify-content: center;
 }
 
+/* Primary */
 a.variant-primary,
 button.variant-primary {
   border-color: #007bff;
@@ -88,6 +89,66 @@ a.variant-primary:active,
 button.variant-primary:active {
   background-color: #0062cc;
   border-color: #005cbf;
+}
+
+/* Danger */
+a.variant-danger,
+button.variant-danger {
+  border-color: #dc3545;
+  background-color: #dc3545;
+  color: #FFF;
+}
+
+a.variant-danger:hover,
+button.variant-danger:hover {
+  background-color: #c82333;
+  border-color: #bd2130;
+}
+
+a.variant-danger:active,
+button.variant-danger:active {
+  background-color: #bd2130;
+  border-color: #b21f2d;
+}
+
+/* Warning */
+a.variant-warning,
+button.variant-warning {
+  border-color: #ffc107;
+  background-color: #ffc107;
+  color: #222;
+}
+
+a.variant-warning:hover,
+button.variant-warning:hover {
+  background-color: #e0a800;
+  border-color: #d39e00;
+}
+
+a.variant-warning:active,
+button.variant-warning:active {
+  background-color: #d39e00;
+  border-color: #c69500;
+}
+
+/* Dark */
+a.variant-dark,
+button.variant-dark {
+  border-color: #343a40;
+  background-color: #343a40;
+  color: #FFF;
+}
+
+a.variant-dark:hover,
+button.variant-dark:hover {
+  background-color: #23272b;
+  border-color: #1d2124;
+}
+
+a.variant-dark:active,
+button.variant-dark:active {
+  background-color: #1d2124;
+  border-color: #171a1d;
 }
 
 .caret-left,

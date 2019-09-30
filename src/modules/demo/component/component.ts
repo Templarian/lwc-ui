@@ -13,8 +13,8 @@ export default class Component extends LightningElement {
     @track mdiFileDocument: string = mdiFileDocument;
     
     get docHref() {
-        const tagNoHyphen = this.tag.replace(/-/g, '');
-        return `https://github.com/Templarian/lwc-ui#${tagNoHyphen}---${this.tag}`;
+        const fileLower = this.file.toLowerCase();
+        return `https://github.com/Templarian/lwc-ui#${fileLower}---${this.tag}`;
     }
 
     get codeHref() {

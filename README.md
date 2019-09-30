@@ -19,12 +19,11 @@ npm install lwc-ui
 </ui-attention>
 ```
 
-| Attribute  | Default | Values |
-|------------|---------|--------|
-| `block`    | `false` | `true`, `false` |
-| `onclick`  | n/a     | `MouseEvent`    |
-| `active`   | `null`  | index or `ui-button` name |
-| `onactive` | n/a     | `{ detail: true }` |
+| Slot    | Components |
+|---------|------------|
+| `left`  | `ui-icon`  |
+| default | Text       |
+| `right` | `ui-icon`  |
 
 ### Button - `ui-button`
 

@@ -28,6 +28,7 @@ svg {
 :host(.button-variant-primary) svg {
   fill: #FFF;
 }
+
 /* - menuItem */
 :host(.menuItem-slot),
 :host(.menuItem-slot-left),
@@ -45,8 +46,30 @@ svg {
   margin-left: 0.5rem;
   margin-right: -0.75rem;
 }
+
 /* - navBrand */
 :host(.navBrand-slot-logo) {
   width: 2rem;
   height: 2rem;
+}
+
+/* - attention */
+:host(.attention-slot-left) {
+  margin-left: -0.25rem;
+  margin-right: 0.5rem;
+}
+:host(.attention-variant-primary) svg {
+  fill: #004085;
+}
+:host(.attention-variant-success) svg {
+  fill: #155724;
+}
+:host(.attention-variant-warning) svg {
+  fill: #856404;
+}
+:host(.attention-variant-danger) svg {
+  fill: #721c24;
+}
+:host(.attention-variant-info) svg {
+  fill: #0c5460;
 }

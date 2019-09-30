@@ -32,4 +32,12 @@ export default class Modal extends LightningElement {
     ele.style.width = this.width;
     ele.style.height = this.height;
   }
+
+  connectedCallback() {
+    document.body.style.overflow = 'hidden';
+  }
+
+  disconnectedCallback() {
+    document.body.style.overflow = 'initial';
+  }
 }

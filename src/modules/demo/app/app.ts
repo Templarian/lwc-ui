@@ -8,7 +8,11 @@ import {
     mdiFormatAlignRight,
     mdiPackageVariant,
     mdiPackageVariantClosed,
-    mdiGithubCircle
+    mdiGithubCircle,
+    mdiAlert,
+    mdiAlertOctagon,
+    mdiCheckCircle,
+    mdiInformation
 } from '@mdi/js';
 
 export default class App extends LightningElement {
@@ -21,6 +25,10 @@ export default class App extends LightningElement {
     @track mdiPackageVariant: string = mdiPackageVariant;
     @track mdiPackageVariantClosed: string = mdiPackageVariantClosed;
     @track mdiGithubCircle: string = mdiGithubCircle;
+    @track mdiAlert: string = mdiAlert;
+    @track mdiAlertOctagon: string = mdiAlertOctagon;
+    @track mdiCheckCircle: string = mdiCheckCircle;
+    @track mdiInformation: string = mdiInformation;
 
     handleToast() {
         toast('Testing 3 Seconds', 3);
@@ -52,4 +60,12 @@ export default class App extends LightningElement {
         this.shadow = target.dataset.shadow as string;
     }
 
+    @track isModalOpen: boolean = false;
+    openModal() {
+        this.isModalOpen = true;
+    }
+
+    closeModal() {
+        this.isModalOpen = false;
+    }
 }

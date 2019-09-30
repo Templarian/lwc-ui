@@ -10,6 +10,22 @@ npm install lwc-ui
 
 ## Components
 
+### Attention - `ui-attention`
+
+```html
+<ui-attention variant="danger">
+  <ui-icon slot="left" path={mdiAlertOctagon}></ui-icon>
+  Attention danger text.
+</ui-attention>
+```
+
+| Attribute  | Default | Values |
+|------------|---------|--------|
+| `block`    | `false` | `true`, `false` |
+| `onclick`  | n/a     | `MouseEvent`    |
+| `active`   | `null`  | index or `ui-button` name |
+| `onactive` | n/a     | `{ detail: true }` |
+
 ### Button - `ui-button`
 
 ```html

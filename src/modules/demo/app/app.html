@@ -11,6 +11,29 @@
     </ui-nav-item>
   </ui-nav>
   <div class="container">
+      <demo-component
+      name="Attention"
+      tag="ui-attention"
+      file="attention">
+      <ui-attention>Attention text.</ui-attention>
+      <ui-attention variant="primary">Attention primary text.</ui-attention>
+      <ui-attention variant="success">
+        <ui-icon slot="left" path={mdiCheckCircle}></ui-icon>
+        Attention success text.
+      </ui-attention>
+      <ui-attention variant="warning">
+        <ui-icon slot="left" path={mdiAlert}></ui-icon>
+        Attention warning text.</ui-attention>
+      <ui-attention variant="danger">
+        <ui-icon slot="left" path={mdiAlertOctagon}></ui-icon>
+        Attention danger text.
+      </ui-attention>
+      <ui-attention variant="info">
+        <ui-icon slot="left" path={mdiInformation}></ui-icon>
+        Attention info text.
+      </ui-attention>
+    </demo-component>
+
     <demo-component
       name="Button"
       tag="ui-button"
@@ -132,12 +155,23 @@
     </demo-component>
 
     <demo-component
+      name="Form"
+      tag="ui-form"
+      file="form">
+      <ui-form>
+        <ui-textarea value="foo"></ui-textarea>
+        <ui-button submit>Submit</ui-button>
+      </ui-form>
+    </demo-component>
+
+    <demo-component
       name="Icon"
       tag="ui-icon"
       file="icon">
       <ui-icon path={mdiAccount}></ui-icon>
       <ui-icon path={mdiAccountBox}></ui-icon>
     </demo-component>
+
     <demo-component
       name="List"
       tag="ui-list"
@@ -150,20 +184,6 @@
     </demo-component>
 
     <demo-component
-      name="Toast"
-      tag="ui-toast"
-      file="toast">
-      <ui-button onclick={handleToast}>Toast 3 Seconds</ui-button>
-      &nbsp;
-      <ui-button onclick={handleToastWarning}>Warning Toast 4 Seconds</ui-button>
-      &nbsp;
-      <ui-button onclick={handleToastError}>Error Toast 5 Seconds</ui-button>
-      &nbsp;
-      <ui-button if:false={loadingToastId} onclick={handleToastLoading}>Loading Toast</ui-button>
-      <ui-button if:true={loadingToastId} variant="primary" onclick={handleToastClose}>Close Loading Toast</ui-button>
-    </demo-component>
-
-    <demo-component
       name="Menu"
       tag="ui-menu"
       file="menu">
@@ -171,6 +191,23 @@
         <ui-menu-item>Option 1</ui-menu-item>
         <ui-menu-item>Option 2</ui-menu-item>
       </ui-menu>
+    </demo-component>
+
+    <demo-component
+      name="Modal"
+      tag="ui-modal"
+      file="modal">
+      <ui-button onclick={openModal}>Show Modal</ui-button>
+      <template if:true={isModalOpen}>
+        <ui-modal>
+          <ui-modal-header>Sample Modal</ui-modal-header>
+          <ui-modal-body>Modal Content</ui-modal-body>
+          <ui-modal-footer>
+            <ui-button onclick={closeModal}>Cancel</ui-button>
+            <ui-button variant="primary" onclick={closeModal}>Done</ui-button>
+          </ui-modal-footer>
+        </ui-modal>
+      </template>
     </demo-component>
 
     <demo-component
@@ -200,6 +237,20 @@
           <ui-menu-item>Option 2</ui-menu-item>
         </ui-menu>
       </ui-picker>
+    </demo-component>
+
+    <demo-component
+      name="Toast"
+      tag="ui-toast"
+      file="toast">
+      <ui-button onclick={handleToast}>Toast 3 Seconds</ui-button>
+      &nbsp;
+      <ui-button onclick={handleToastWarning}>Warning Toast 4 Seconds</ui-button>
+      &nbsp;
+      <ui-button onclick={handleToastError}>Error Toast 5 Seconds</ui-button>
+      &nbsp;
+      <ui-button if:false={loadingToastId} onclick={handleToastLoading}>Loading Toast</ui-button>
+      <ui-button if:true={loadingToastId} variant="primary" onclick={handleToastClose}>Close Loading Toast</ui-button>
     </demo-component>
 
     <ui-card>

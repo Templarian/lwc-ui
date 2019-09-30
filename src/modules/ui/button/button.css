@@ -72,81 +72,81 @@ button > span > span {
 }
 
 /* Primary */
-a.variant-primary,
-button.variant-primary {
+:host(.variant-primary) a,
+:host(.variant-primary) button {
   border-color: #007bff;
   background-color: #007bff;
   color: #FFF;
 }
 
-a.variant-primary:hover,
-button.variant-primary:hover {
+:host(.variant-primary) a:hover,
+:host(.variant-primary) button:hover {
   background-color: #0069d9;
   border-color: #0062cc;
 }
 
-a.variant-primary:active,
-button.variant-primary:active {
+:host(.variant-primary) a:active,
+:host(.variant-primary) button:active {
   background-color: #0062cc;
   border-color: #005cbf;
 }
 
 /* Danger */
-a.variant-danger,
-button.variant-danger {
+:host(.variant-danger) a,
+:host(.variant-danger) button {
   border-color: #dc3545;
   background-color: #dc3545;
   color: #FFF;
 }
 
-a.variant-danger:hover,
-button.variant-danger:hover {
+:host(.variant-danger) a:hover,
+:host(.variant-danger) button:hover {
   background-color: #c82333;
   border-color: #bd2130;
 }
 
-a.variant-danger:active,
-button.variant-danger:active {
+:host(.variant-danger) a:active,
+:host(.variant-danger) button:active {
   background-color: #bd2130;
   border-color: #b21f2d;
 }
 
 /* Warning */
-a.variant-warning,
-button.variant-warning {
+:host(.variant-warning) a,
+:host(.variant-warning) button {
   border-color: #ffc107;
   background-color: #ffc107;
   color: #222;
 }
 
-a.variant-warning:hover,
-button.variant-warning:hover {
+:host(.variant-warning) a:hover,
+:host(.variant-warning) button:hover {
   background-color: #e0a800;
   border-color: #d39e00;
 }
 
-a.variant-warning:active,
-button.variant-warning:active {
+:host(.variant-warning) a:active,
+:host(.variant-warning) button:active {
   background-color: #d39e00;
   border-color: #c69500;
 }
 
 /* Dark */
-a.variant-dark,
-button.variant-dark {
+:host(.variant-dark) a,
+:host(.variant-dark) button {
   border-color: #343a40;
   background-color: #343a40;
   color: #FFF;
 }
 
-a.variant-dark:hover,
-button.variant-dark:hover {
+:host(.variant-dark) a:hover,
+:host(.variant-dark) button:hover {
   background-color: #23272b;
   border-color: #1d2124;
 }
 
-a.variant-dark:active,
-button.variant-dark:active {
+:host(.variant-dark) a:active,
+:host(.variant-dark) button:active {
   background-color: #1d2124;
   border-color: #171a1d;
 }

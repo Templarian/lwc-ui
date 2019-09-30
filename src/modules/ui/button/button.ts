@@ -1,4 +1,5 @@
 import { LightningElement, api } from 'lwc';
+import { updateVariant, inArrayOrDefault } from 'ui/util';
 import { mdiMenuDown } from '@mdi/js';
 
 interface Slot {
@@ -7,13 +8,30 @@ interface Slot {
   variant: string | null
 }
 
-const DEFAULT_VARIANT = 'default';
+const VARIANTS = [
+  'default',
+  'primary',
+  'warning',
+  'danger',
+  'info',
+  'dark'
+];
+const DEFAULT_VARIANT = VARIANTS[0];
 
 export default class Button extends LightningElement {
-  @api variant: string = DEFAULT_VARIANT;
   @api submit: boolean = false;
   @api href: string | null = null;
   @api target: string | null = null;
+
+  _variant: string = DEFAULT_VARIANT;
+  @api
+  get variant() {
+    return this._variant;
+  }
+  set variant(variant: string) {
+    this._variant = inArrayOrDefault(variant, VARIANTS, DEFAULT_VARIANT);
+    updateVariant(this.template.host.classList, this._variant, VARIANTS);
+  }
 
   _block: boolean = false;
   @api
@@ -37,10 +55,6 @@ export default class Button extends LightningElement {
   
   mdiMenuDown: string = mdiMenuDown;
 
-  get computedClass() {
-    return `variant-${this.variant}`;
-  }
-
   get computedCaretLeft() {
     return `caret-left button-variant-${this.variant}`;
   }
@@ -50,6 +64,9 @@ export default class Button extends LightningElement {
   }
 
   connectedCallback() {
+    if (this._variant === DEFAULT_VARIANT) {
+      updateVariant(this.template.host.classList, this._variant, VARIANTS);
+    }
     this.addEventListener('slot', this.slot as EventListener);
     if (this.submit) {
       this.addEventListener('click', () => {

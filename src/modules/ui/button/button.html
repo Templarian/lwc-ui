@@ -1,6 +1,6 @@
 <template>
   <template if:true={href}>
-    <a class={computedClass} href={href} target={target}>
+    <a href={href} target={target}>
       <span>
         <ui-icon class={computedCaretLeft} path={mdiMenuDown}></ui-icon>
         <slot name="left" onslotchange={handleLeftSlotChange}></slot>
@@ -11,7 +11,7 @@
     </a>
   </template>
   <template if:false={href}>
-    <button class={computedClass}>
+    <button>
       <span>
         <ui-icon class={computedCaretLeft} path={mdiMenuDown}></ui-icon>
         <slot name="left" onslotchange={handleLeftSlotChange}></slot>

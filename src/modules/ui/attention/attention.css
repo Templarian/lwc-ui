@@ -11,37 +11,37 @@
   flex: 1;
 }
 
-:host(.attention-variant-default) {
+:host(.variant-default) {
   color: #383d41;
   background-color: #e2e3e5;
   border-color: #d6d8db;
 }
 
-:host(.attention-variant-primary) {
+:host(.variant-primary) {
   color: #004085;
   background-color: #cce5ff;
   border-color: #b8daff;
 }
 
-:host(.attention-variant-success) {
+:host(.variant-success) {
   color: #155724;
   background-color: #d4edda;
   border-color: #c3e6cb;
 }
 
-:host(.attention-variant-warning) {
+:host(.variant-warning) {
   color: #856404;
   background-color: #fff3cd;
   border-color: #ffeeba;
 }
 
-:host(.attention-variant-danger) {
+:host(.variant-danger) {
   color: #721c24;
   background-color: #f8d7da;
   border-color: #f5c6cb;
 }
 
-:host(.attention-variant-info) {
+:host(.variant-info) {
   color: #0c5460;
   background-color: #d1ecf1;
   border-color: #bee5eb;

@@ -25,6 +25,17 @@ npm install lwc-ui
 | default | Text       |
 | `right` | `ui-icon`  |
 
+### Badge - `ui-badge`
+
+Work in Progress...
+
+```html
+<ui-button>
+  Button with Badge
+  <ui-badge slot="right">42</ui-badge>
+</ui-button>
+```
+
 ### Button - `ui-button`
 
 ```html

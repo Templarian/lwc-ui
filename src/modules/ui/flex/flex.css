@@ -1,11 +1,11 @@
 :host {
-  display: flex;
+    display: flex;
 }
 
 :host(.flex-column) {
-  flex-direction: column;
+    flex-direction: column;
 }
 
 :host(.flex-row) {
-  flex-direction: row;
+    flex-direction: row;
 }

@@ -1,49 +1,49 @@
 :host {
-  display: flex;
-  flex-direction: row;
-  padding: 0.75rem 1rem;
-  border-radius: 0.5rem;
-  border-width: 1px;
-  border-style: solid;
+    display: flex;
+    flex-direction: row;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    border-width: 1px;
+    border-style: solid;
 }
 
 :host span {
-  flex: 1;
-  align-self: center;
+    flex: 1;
+    align-self: center;
 }
 
 :host(.variant-default) {
-  color: #383d41;
-  background-color: #e2e3e5;
-  border-color: #d6d8db;
+    color: #383d41;
+    background-color: #e2e3e5;
+    border-color: #d6d8db;
 }
 
 :host(.variant-primary) {
-  color: #004085;
-  background-color: #cce5ff;
-  border-color: #b8daff;
+    color: #004085;
+    background-color: #cce5ff;
+    border-color: #b8daff;
 }
 
 :host(.variant-success) {
-  color: #155724;
-  background-color: #d4edda;
-  border-color: #c3e6cb;
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
 }
 
 :host(.variant-warning) {
-  color: #856404;
-  background-color: #fff3cd;
-  border-color: #ffeeba;
+    color: #856404;
+    background-color: #fff3cd;
+    border-color: #ffeeba;
 }
 
 :host(.variant-danger) {
-  color: #721c24;
-  background-color: #f8d7da;
-  border-color: #f5c6cb;
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
 }
 
 :host(.variant-info) {
-  color: #0c5460;
-  background-color: #d1ecf1;
-  border-color: #bee5eb;
+    color: #0c5460;
+    background-color: #d1ecf1;
+    border-color: #bee5eb;
 }

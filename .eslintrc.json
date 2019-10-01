@@ -1,4 +1,5 @@
 {
+    "parser": "@typescript-eslint/parser",
     "extends": ["@salesforce/eslint-config-lwc/recommended"],
     "rules": {
         "@lwc/lwc/no-async-operation": "warn",

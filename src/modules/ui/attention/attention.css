@@ -9,6 +9,7 @@
 
 :host span {
   flex: 1;
+  align-self: center;
 }
 
 :host(.variant-default) {

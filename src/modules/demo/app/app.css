@@ -14,3 +14,8 @@
 ui-attention:not(:last-child) {
     margin-bottom: 0.5rem;
 }
+
+.border {
+    border: 1px dashed rgb(0, 123, 255);
+    padding: 0.25rem 0.5rem;
+}

@@ -47,9 +47,7 @@ this.afterMenuPromise.then((menu: any) => {
 });*/
   }
 
-  handleClick(e: MouseEvent) {
-    const currentTarget = e.currentTarget as Element;
-    console.log(e.target, currentTarget);
+  handleClick() {
     if (this.isOpen && this.$menuFocus) {
       this.isOpen = false;
     } else {

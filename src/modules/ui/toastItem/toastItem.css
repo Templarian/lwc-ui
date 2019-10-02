@@ -34,7 +34,8 @@ button svg.loading {
 }
 
 span {
-    display: block;
+    display: flex;
+    align-items: center;
     text-align: left;
     position: relative;
     border-radius: 0.25rem;
@@ -148,7 +149,6 @@ svg.loading {
     width: 1.5rem;
     height: 1.5rem;
     left: 0.75rem;
-    top: 0.75rem;
     animation: spin 2s infinite linear;
 }
 

@@ -37,9 +37,7 @@ export default class Picker extends LightningElement {
     }
   }
 
-  handleClick(e: MouseEvent) {
-    const currentTarget = e.currentTarget as Element;
-    console.log(e.target, currentTarget);
+  handleClick() {
     if (this.isOpen && this.$menuFocus) {
       this.isOpen = false;
     } else {

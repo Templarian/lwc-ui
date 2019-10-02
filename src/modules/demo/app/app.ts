@@ -73,4 +73,12 @@ export default class App extends LightningElement {
   closeModal() {
     this.isModalOpen = false;
   }
+
+  handleSelect({ target }: Event) {
+    var range = document.createRange();
+    range.selectNode(target as HTMLElement);
+    const selection = window.getSelection() as Selection;
+    selection.removeAllRanges();
+    selection.addRange(range);
+  }
 }

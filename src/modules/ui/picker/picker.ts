@@ -51,7 +51,7 @@ export default class Picker extends LightningElement {
     this.isOpen = false;
   }
 
-  handleMouseDown(e: MouseEvent) {
+  handleMouseDown() {
     if (!this.$menuFocus) {
       this.isOpen = false;
       document.removeEventListener('mousedown', this.mouseDownHandler);
@@ -59,7 +59,7 @@ export default class Picker extends LightningElement {
     }
   }
 
-  handleSlotChange(e: Event) {
+  handleSlotChange() {
     const slot = this.template.childNodes[1] as HTMLSlotElement;
     const slotElements = slot.assignedElements();
     const menuButton = slotElements[0];
@@ -74,7 +74,7 @@ export default class Picker extends LightningElement {
     this.$menuButton = menuButton;
   }
 
-  handleMenuSlotChange(e: Event) {
+  handleMenuSlotChange() {
     const slot = this.template.childNodes[2] as HTMLSlotElement;
     if (slot) {
       const slotElements = slot.assignedElements() as HTMLElement[];
@@ -87,6 +87,7 @@ export default class Picker extends LightningElement {
       const menu = slotElements[0];
       document.addEventListener('mousedown', this.mouseDownHandler);
       document.addEventListener('contextmenu', this.contextMenuHandler);
+      /* eslint-disable-next-line no-new */
       new Popper(this.$menuButton as Element, menu as Element, {
         placement: this.placement,
         modifiers: {

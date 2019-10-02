@@ -1,5 +1,5 @@
 import { LightningElement, api } from 'lwc';
-import { updateVariant, inArrayOrDefault } from 'ui/util';
+import { updateVariant, inArrayOrDefault, dispatchSlot } from 'ui/util';
 
 const COMPONENT: string = 'attention';
 const VARIANTS: string[] = [
@@ -30,31 +30,27 @@ export default class Attention extends LightningElement {
     }
   }
 
-  handleLeftSlotChange(e: Event) {
+  handleLeftSlotChange() {
     const leftSlot = this.template.childNodes[1] as HTMLSlotElement;
     const leftSlotElements = leftSlot.assignedElements();
     leftSlotElements.forEach(element => {
-      element.dispatchEvent(new CustomEvent('slot', {
-        detail: {
-          component: COMPONENT,
-          name: 'left',
-          variant: this.variant
-        }
-      }));
+      dispatchSlot(element, {
+        component: COMPONENT,
+        name: 'left',
+        variant: this.variant
+      })
     });
   }
 
-  handleRightSlotChange(e: Event) {
+  handleRightSlotChange() {
     const rightSlot = this.template.childNodes[3] as HTMLSlotElement;
     const rightSlotElements = rightSlot.assignedElements();
     rightSlotElements.forEach(element => {
-      element.dispatchEvent(new CustomEvent('slot', {
-        detail: {
-          component: COMPONENT,
-          name: 'right',
-          variant: this.variant
-        }
-      }));
+      dispatchSlot(element, {
+        component: COMPONENT,
+        name: 'right',
+        variant: this.variant
+      });
     });
   }
 

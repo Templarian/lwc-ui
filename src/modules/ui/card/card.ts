@@ -20,7 +20,7 @@ export default class Card extends LightningElement {
     this.template.host.classList.add(`shadow-${this._shadow}`);
   }
 
-  handleSlotChange(e: Event) {
+  handleSlotChange() {
     const slot = this.template.childNodes[1] as HTMLSlotElement;
     const slotElements = slot.assignedElements();
     const elementTagNames: string[] = [];

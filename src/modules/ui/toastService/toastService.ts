@@ -5,7 +5,7 @@ import { Toast } from 'ui/models';
 const toasts: Toast[] = [];
 const subject = getSubject([], undefined);
 
-export function getObservable(config: any) {
+export function getObservable() {
   return subject.observable;
 }
 
@@ -16,6 +16,7 @@ function pushToast(toast: Toast) {
   toasts.push(toast);
   subject.next(toasts);
   if (toast.seconds) {
+    // eslint-disable-next-line @lwc/lwc/no-async-operation
     setTimeout(() => {
       removeToast(toast.id);
     }, toast.seconds * 1000);
@@ -23,14 +24,14 @@ function pushToast(toast: Toast) {
   return toast.id;
 }
 
-export function toast(message: string, seconds = 0) {
+export function showToast(message: string, seconds = 0) {
   var toast = new Toast();
   toast.message = message;
   toast.seconds = seconds;
   return pushToast(toast);
 }
 
-export function errorToast(message: string, seconds = 0) {
+export function showErrorToast(message: string, seconds = 0) {
   var toast = new Toast();
   toast.message = message;
   toast.seconds = seconds;
@@ -38,7 +39,7 @@ export function errorToast(message: string, seconds = 0) {
   return pushToast(toast);
 }
 
-export function warningToast(message: string, seconds = 0) {
+export function showWarningToast(message: string, seconds = 0) {
   var toast = new Toast();
   toast.message = message;
   toast.seconds = seconds;
@@ -46,7 +47,7 @@ export function warningToast(message: string, seconds = 0) {
   return pushToast(toast);
 }
 
-export function loadingToast(message: string, seconds = 0) {
+export function showLoadingToast(message: string, seconds = 0) {
   var toast = new Toast();
   toast.message = message;
   toast.seconds = seconds;
@@ -66,11 +67,11 @@ export function removeAllToasts() {
   })
 }
 
-export function getToasts(config: any) {
+export function getToasts() {
   return new Promise((resolve, reject) => {
-    const observable = getObservable(config);
+    const observable = getObservable();
     if (!observable) {
-      return reject(new Error('Dev: invalid observable'));
+      reject(new Error('Dev: invalid observable'));
     }
 
     observable.subscribe({
@@ -83,7 +84,6 @@ export function getToasts(config: any) {
 
 register(getToasts, function getMapWireAdapter(wiredEventTarget) {
   let subscription: any;
-  let config: any;
 
   wiredEventTarget.dispatchEvent(new ValueChangedEvent({ data: undefined, error: undefined }));
 
@@ -95,7 +95,7 @@ register(getToasts, function getMapWireAdapter(wiredEventTarget) {
   };
 
   wiredEventTarget.addEventListener('connect', () => {
-    const observable = getObservable(config);
+    const observable = getObservable();
     if (observable) {
       subscription = observable.subscribe(observer);
     }
@@ -105,13 +105,13 @@ register(getToasts, function getMapWireAdapter(wiredEventTarget) {
     subscription.unsubscribe();
   });
 
-  wiredEventTarget.addEventListener('config', newConfig => {
-    config = newConfig;
+  wiredEventTarget.addEventListener('config', () => {
+    // config = newConfig;
     if (subscription) {
       subscription.unsubscribe();
       subscription = undefined;
     }
-    const observable = getObservable(config);
+    const observable = getObservable();
     if (observable) {
       subscription = observable.subscribe(observer);
     }

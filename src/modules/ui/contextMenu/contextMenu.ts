@@ -28,14 +28,14 @@ export default class ContextMenu extends LightningElement {
     e.preventDefault();
   }
 
-  handleMouseDown(e: MouseEvent) {
+  handleMouseDown() {
     if (!this.$menuFocus) {
       this.isOpen = false;
       document.removeEventListener('mousedown', this.mouseDownHandler);
     }
   }
 
-  handleSlotChange(e: Event) {
+  handleSlotChange() {
     const slot = this.template.childNodes[1] as HTMLSlotElement;
     const slotElements = slot.assignedElements();
     slotElements.forEach(element => {
@@ -43,7 +43,7 @@ export default class ContextMenu extends LightningElement {
     });
   }
 
-  handleMenuSlotChange(e: Event) {
+  handleMenuSlotChange() {
     const slot = this.template.childNodes[2] as HTMLSlotElement;
     if (slot) {
       console.log('menu slot changed');

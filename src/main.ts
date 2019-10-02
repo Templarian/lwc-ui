@@ -1,7 +1,7 @@
 export {
-    toast,
-    warningToast,
-    errorToast,
-    loadingToast,
+    showToast as toast,
+    showWarningToast as warningToast,
+    showErrorToast as errorToast,
+    showLoadingToast as loadingToast,
     removeToast
 } from 'ui/toastService';

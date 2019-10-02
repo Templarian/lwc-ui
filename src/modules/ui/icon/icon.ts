@@ -1,4 +1,5 @@
 import { LightningElement, api } from 'lwc';
+import { handleSlot } from 'ui/util';
 
 interface Slot {
   component: string,
@@ -6,7 +7,7 @@ interface Slot {
   variant: string | null
 }
 
-export default class Tile extends LightningElement {
+export default class Icon extends LightningElement {
 
   _path: string = '';
 
@@ -19,17 +20,7 @@ export default class Tile extends LightningElement {
   }
 
   connectedCallback() {
-    this.addEventListener('slot', this.slot as EventListener);
-  }
-
-  slot({ target, detail: slot }: CustomEvent<Slot>) {
-    const iconElement = target as Element;
-    const slotName = slot.name ? `-${slot.name}` : '';
-    const classes = [
-      `${slot.component}-variant-${slot.variant}`,
-      `${slot.component}-slot${slotName}`
-    ];
-    iconElement.className = classes.join(' ');
+    this.addEventListener('slot', handleSlot);
   }
 
 }

@@ -1,12 +1,6 @@
 import { LightningElement, api } from 'lwc';
-import { updateVariant, inArrayOrDefault } from 'ui/util';
+import { updateVariant, inArrayOrDefault, handleSlot, dispatchSlot } from 'ui/util';
 import { mdiMenuDown } from '@mdi/js';
-
-interface Slot {
-  component: string,
-  name: string | null,
-  variant: string | null
-}
 
 const VARIANTS = [
   'default',
@@ -67,7 +61,7 @@ export default class Button extends LightningElement {
     if (this._variant === DEFAULT_VARIANT) {
       updateVariant(this.template.host.classList, this._variant, VARIANTS);
     }
-    this.addEventListener('slot', this.slot as EventListener);
+    this.addEventListener('slot', handleSlot);
     if (this.submit) {
       this.addEventListener('click', () => {
         this.dispatchEvent(new CustomEvent('form_submit', {
@@ -90,58 +84,42 @@ export default class Button extends LightningElement {
     }
   }
 
-  slot({ target, detail: slot }: CustomEvent<Slot>) {
-    const iconElement = target as Element;
-    const slotName = slot.name ? `-${slot.name}` : '';
-    const classes = [
-      `${slot.component}-variant-${slot.variant}`,
-      `${slot.component}-slot${slotName}`
-    ];
-    iconElement.className = classes.join(' ');
-  }
-
-  handleLeftSlotChange(e: Event) {
+  handleLeftSlotChange() {
     const button = this.template.childNodes[1].childNodes[0];
     const leftSlot = button.childNodes[1] as HTMLSlotElement;
     const leftSlotElements = leftSlot.assignedElements();
     leftSlotElements.forEach(element => {
-      element.dispatchEvent(new CustomEvent('slot', {
-        detail: {
-          component: 'button',
-          name: 'left',
-          variant: this.variant
-        }
-      }));
+      dispatchSlot(element, {
+        component: 'button',
+        name: 'left',
+        variant: this.variant
+      });
     });
   }
 
-  handleSlotChange(e: Event) {
+  handleSlotChange() {
     const button = this.template.childNodes[1].childNodes[0];
     const slot = button.childNodes[2].childNodes[0] as HTMLSlotElement;
     const slotElements = slot.assignedElements();
     slotElements.forEach(element => {
-      element.dispatchEvent(new CustomEvent('slot', {
-        detail: {
-          component: 'button',
-          name: null,
-          variant: this.variant
-        }
-      }));
+      dispatchSlot(element, {
+        component: 'button',
+        name: null,
+        variant: this.variant
+      });
     });
   }
 
-  handleRightSlotChange(e: Event) {
+  handleRightSlotChange() {
     const button = this.template.childNodes[1].childNodes[0];
     const rightSlot = button.childNodes[3] as HTMLSlotElement;
     const rightSlotElements = rightSlot.assignedElements();
     rightSlotElements.forEach(element => {
-      element.dispatchEvent(new CustomEvent('slot', {
-        detail: {
-          component: 'button',
-          name: 'right',
-          variant: this.variant
-        }
-      }));
+      dispatchSlot(element, {
+        component: 'button',
+        name: 'right',
+        variant: this.variant
+      });
     });
   }
 

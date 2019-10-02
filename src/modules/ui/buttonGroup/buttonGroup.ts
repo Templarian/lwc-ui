@@ -1,4 +1,5 @@
 import { LightningElement, api } from 'lwc';
+import { dispatchSlot } from 'ui/util';
 
 const VARIANT_DEFAULT = 'default';
 const DEFAULT_VARIANT = VARIANT_DEFAULT;
@@ -17,17 +18,17 @@ export default class ButtonGroup extends LightningElement {
     }
   }
 
-  handleSlotChange(e: Event) {
+  handleSlotChange() {
     const slot = this.template.childNodes[1] as HTMLSlotElement;
     const slotElements = slot.assignedElements();
-    slotElements.forEach(element => {
-      element.dispatchEvent(new CustomEvent('slot', {
-        detail: {
-          component: 'buttonGroup',
-          name: null,
-          variant: this.variant
-        }
-      }));
+    slotElements.forEach((element, i) => {
+      dispatchSlot(element, {
+        component: 'buttonGroup',
+        name: null,
+        variant: this.variant,
+        first: i === 0,
+        last: i === slotElements.length - 1
+      });
       if (this.block) {
         (element as any).block = true;
       }

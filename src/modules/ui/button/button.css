@@ -176,12 +176,12 @@ button > span > span {
 :host(.buttonGroup-slot) button:focus::before {
   border-radius: 0;
 }
-:host(.buttonGroup-slot:first-child) a,
-:host(.buttonGroup-slot:first-child) button {
+:host(.buttonGroup-slot:not(.last):first-child) a,
+:host(.buttonGroup-slot:not(.last):first-child) button {
   border-radius: 0.25rem 0 0 0.25rem;
 }
-:host(.buttonGroup-slot:first-child) a:focus::before,
-:host(.buttonGroup-slot:first-child) button:focus::before {
+:host(.buttonGroup-slot:not(.last):first-child) a:focus::before,
+:host(.buttonGroup-slot:not(.last):first-child) button:focus::before {
   border-top-left-radius: 0.25rem;
   border-bottom-left-radius: 0.25rem;
 }
@@ -195,15 +195,29 @@ button > span > span {
   border-top-right-radius: 0.25rem;
   border-bottom-right-radius: 0.25rem;
 }
-:host(.buttonGroup-slot.dropdown:first-child) a,
-:host(.buttonGroup-slot.dropdown:first-child) button {
-  border-radius: 0 0.25rem 0.25rem 0;
+:host(.buttonGroup-slot.first) a,
+:host(.buttonGroup-slot.first) button {
+  border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+  margin-left: 0;
+  padding-left: 0.25rem;
+}
+:host(.buttonGroup-slot.first) a:focus::before,
+:host(.buttonGroup-slot.first) button:focus::before {
+  border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+}
+:host(.buttonGroup-slot.last) a,
+:host(.buttonGroup-slot.last) button {
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
   margin-right: 0;
   padding-left: 0.25rem;
 }
-:host(.buttonGroup-slot.dropdown:first-child) a:focus::before,
-:host(.buttonGroup-slot.dropdown:first-child) button:focus::before {
-  border-radius: 0 0.25rem 0.25rem 0;
+:host(.buttonGroup-slot.last) a:focus::before,
+:host(.buttonGroup-slot.last) button:focus::before {
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
 }
 :host(.buttonGroup-slot) a:hover,
 :host(.buttonGroup-slot) button:hover {

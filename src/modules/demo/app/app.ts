@@ -1,5 +1,5 @@
 import { LightningElement, track } from 'lwc';
-import { toast, errorToast, warningToast, loadingToast, removeToast } from 'ui/toastService';
+import { showToast, showErrorToast, showWarningToast, showLoadingToast, removeToast } from 'ui/toastService';
 import {
     mdiAccount,
     mdiAccountBox,
@@ -31,12 +31,12 @@ export default class App extends LightningElement {
     @track mdiInformation: string = mdiInformation;
 
     handleToast() {
-        toast('Testing 3 Seconds', 3);
+        showToast('Testing 3 Seconds', 3);
     }
 
     @track loadingToastId: number = 0;
     handleToastLoading() {
-        this.loadingToastId = loadingToast('Loading Stuff...');
+        this.loadingToastId = showLoadingToast('Loading Stuff...');
         console.log(`Toast Opened: ${this.loadingToastId}`);
     }
 
@@ -47,11 +47,11 @@ export default class App extends LightningElement {
     }
 
     handleToastWarning() {
-        warningToast('Testing 4 Seconds', 4);
+        showWarningToast('Testing 4 Seconds', 4);
     }
 
     handleToastError() {
-        errorToast('Testing 5 Seconds', 5);
+        showErrorToast('Testing 5 Seconds', 5);
     }
 
     @track shadow: string = '0';

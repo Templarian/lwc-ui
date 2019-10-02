@@ -1,11 +1,6 @@
 import { LightningElement, api, track } from 'lwc';
+import { handleSlot, handleSlotParentClass } from 'ui/util';
 import Popper, { Data, Placement } from 'popper.js';
-
-interface Slot {
-  component: string,
-  name: string | null,
-  variant: string | null
-}
 
 const DEFAULT_PLACEMENT = 'bottom-start';
 
@@ -44,23 +39,12 @@ export default class Dropdown extends LightningElement {
   }
 
   connectedCallback() {
-    this.addEventListener('slot', this.slot.bind(this) as EventListener);
-  }
-
-  slotClasses: string[] = [];
-  slot({ target, detail: slot }: CustomEvent<Slot>) {
-    const element = target as Element;
-    const slotName = slot.name ? `-${slot.name}` : '';
-    this.slotClasses = [
-      `${slot.component}-variant-${slot.variant}`,
-      `${slot.component}-slot${slotName}`
-    ];
-    element.className = this.slotClasses.join(' ');
+    this.addEventListener('slot', handleSlot);
+    /*this.addEventListener('slot', handleSlot)
     this.afterMenuPromise.then((menu: any) => {
-      this.slotClasses.forEach(className => {
+      assignSlotClass(menu)
         menu.classList.add(className);
-      });
-    });
+    });*/
   }
 
   handleClick(e: MouseEvent) {
@@ -77,7 +61,7 @@ export default class Dropdown extends LightningElement {
     this.isOpen = false;
   }
 
-  handleMouseDown(e: MouseEvent) {
+  handleMouseDown() {
     if (!this.$menuFocus) {
       this.isOpen = false;
       document.removeEventListener('mousedown', this.mouseDownHandler);
@@ -86,7 +70,7 @@ export default class Dropdown extends LightningElement {
   }
 
   afterMenuPromise: any;
-  handleSlotChange(e: Event) {
+  handleSlotChange() {
     const slot = this.template.childNodes[1] as HTMLSlotElement;
     const slotElements = slot.assignedElements();
     const menuButton = slotElements[0];
@@ -99,12 +83,13 @@ export default class Dropdown extends LightningElement {
       menuButton.classList.add(`block`);
     }
     this.$menuButton = menuButton;
+    this.addEventListener('slot', handleSlotParentClass(menuButton));
     this.afterMenuPromise = new Promise(resolve => {
       resolve(menuButton);
     });
   }
 
-  handleMenuSlotChange(e: Event) {
+  handleMenuSlotChange() {
     const slot = this.template.childNodes[2] as HTMLSlotElement;
     if (slot) {
       const slotElements = slot.assignedElements() as HTMLElement[];

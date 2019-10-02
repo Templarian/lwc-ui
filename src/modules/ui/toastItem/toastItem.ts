@@ -19,7 +19,7 @@ export default class ToastItem extends LightningElement {
   }
 
   handleClick(e: any) {
-    const id = parseInt(e.target.dataset.id);
+    const id = parseInt(e.target.dataset.id, 10);
     removeToast(id);
   }
 

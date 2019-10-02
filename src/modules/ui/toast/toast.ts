@@ -3,11 +3,11 @@ import { getToasts } from 'ui/toastService';
 
 export default class Toast extends LightningElement {
 
-    @wire(getToasts)
-    toastWire: any;
+  @wire(getToasts)
+  toastWire: any;
 
-    get toasts() {
-        return this.toastWire.data;
-    }
+  get toasts() {
+    return this.toastWire.data;
+  }
 
 }

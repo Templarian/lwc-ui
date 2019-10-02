@@ -3,6 +3,7 @@
     "plugins": ["@typescript-eslint"],
     "extends": ["@salesforce/eslint-config-lwc/recommended"],
     "rules": {
+        "indent": ["error", 2],
         "@lwc/lwc/no-async-operation": "warn",
         "@lwc/lwc/no-inner-html": "warn",
         "@lwc/lwc/no-document-query": "warn",

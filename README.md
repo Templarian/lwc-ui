@@ -232,18 +232,18 @@ To use the toast service you must include one `ui-toast` component in the root o
 
 ```typescript
 import {
-    toast,
-    warningToast,
-    errorToast,
-    loadingToast,
+    showToast,
+    showWarningToast,
+    showErrorToast,
+    showLoadingToast,
     removeToast,
     removeAllToasts
 } from `lwc-ui`;
 // ...
-var id = toast('Saved');
-warningToast('Ehh... could be worse', 3);
-errorToast('No good.', 3);
-loadingToast('Soon...', 3);
+var id = showToast('Saved');
+showWarningToast('Ehh... could be worse', 3);
+showErrorToast('No good.', 3);
+showLoadingToast('Soon...', 3);
 // Remove a specific toast
 removeToast(id);
 // Or remove all toasts

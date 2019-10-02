@@ -63,10 +63,7 @@ this.afterMenuPromise.then((menu: any) => {
     if (!this.$menuFocus) {
       this.isOpen = false;
       document.removeEventListener('mousedown', this.mouseDownHandler);
-      document.removeEventListener(
-        'contextmenu',
-        this.contextMenuHandler
-      );
+      document.removeEventListener('contextmenu', this.contextMenuHandler);
     }
   }
 
@@ -118,14 +115,8 @@ this.afterMenuPromise.then((menu: any) => {
         onCreate: this.onPopperCreate.bind(this),
         onUpdate: this.onPopperUpdate.bind(this)
       });
-      menu.addEventListener(
-        'mouseenter',
-        this.handleMouseEnter.bind(this)
-      );
-      menu.addEventListener(
-        'mouseleave',
-        this.handleMouseLeave.bind(this)
-      );
+      menu.addEventListener('mouseenter', this.handleMouseEnter.bind(this));
+      menu.addEventListener('mouseleave', this.handleMouseLeave.bind(this));
       menu.addEventListener('click', this.handleMouseClick.bind(this));
       this.$menu = menu;
     }

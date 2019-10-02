@@ -1,103 +1,103 @@
 button {
-    display: block;
-    width: 100%;
-    text-align: left;
-    position: relative;
-    border-radius: 0.25rem;
-    margin-bottom: 0.5rem;
-    background: #FFF;
-    border: 0;
-    padding: 1rem;
-    box-shadow: 0 1px 0.5rem rgba(0, 0, 0, 0.3);
-    outline: 0;
-    cursor: pointer;
+  display: block;
+  width: 100%;
+  text-align: left;
+  position: relative;
+  border-radius: 0.25rem;
+  margin-bottom: 0.5rem;
+  background: #fff;
+  border: 0;
+  padding: 1rem;
+  box-shadow: 0 1px 0.5rem rgba(0, 0, 0, 0.3);
+  outline: 0;
+  cursor: pointer;
 }
 
 button:hover {
-    box-shadow: 0 1px 0.5rem rgba(0, 0, 0, 0.4);
+  box-shadow: 0 1px 0.5rem rgba(0, 0, 0, 0.4);
 }
 
 button svg {
-    fill: #444;
+  fill: #444;
 }
 
 button:hover svg {
-    fill: rgba(21, 146, 230, 1);
+  fill: rgba(21, 146, 230, 1);
 }
 
 button:active {
-    box-shadow: 0 1px 0.5rem rgba(0, 0, 0, 0.5);
+  box-shadow: 0 1px 0.5rem rgba(0, 0, 0, 0.5);
 }
 
 button svg.loading {
-    display: none;
+  display: none;
 }
 
 span {
-    display: flex;
-    align-items: center;
-    text-align: left;
-    position: relative;
-    border-radius: 0.25rem;
-    margin-bottom: 0.5rem;
-    background: #FFF;
-    border: 0;
-    padding: 1rem;
-    box-shadow: 0 1px 0.5rem rgba(0, 0, 0, 0.3);
-    outline: 0;
+  display: flex;
+  align-items: center;
+  text-align: left;
+  position: relative;
+  border-radius: 0.25rem;
+  margin-bottom: 0.5rem;
+  background: #fff;
+  border: 0;
+  padding: 1rem;
+  box-shadow: 0 1px 0.5rem rgba(0, 0, 0, 0.3);
+  outline: 0;
 }
 
 span.variant-loading {
-    padding-left: 2.75rem;
+  padding-left: 2.75rem;
 }
 
 span.variant-loading svg.loading {
-    fill: rgba(21, 146, 230, 1);
+  fill: rgba(21, 146, 230, 1);
 }
 
 button.variant-loading svg.loading {
-    display: none;
+  display: none;
 }
 
 button.variant-error {
-    background: #FF6961;
-    color: #FFF;
+  background: #ff6961;
+  color: #fff;
 }
 
 button.variant-error svg.close {
-    fill: #C23B23;
+  fill: #c23b23;
 }
 
 button.variant-error:hover svg.close {
-    fill: #FFF;
+  fill: #fff;
 }
 
 button.variant-error::after {
-    background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.5);
 }
 
 button.variant-warning {
-    background: #FDF7C2;
+  background: #fdf7c2;
 }
 
 button.variant-warning svg.close {
-    fill: #cec78d;
+  fill: #cec78d;
 }
 
 button.variant-warning:hover svg.close {
-    fill: #444;
+  fill: #444;
 }
 
 button.variant-warning::after {
-    background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.5);
 }
 
 button.variant-loading svg.loading {
-    display: initial;
+  display: initial;
 }
 
 button.variant-loading svg.close {
-    display: none;
+  display: none;
 }
 
 .seconds-1::after,
@@ -105,63 +105,67 @@ button.variant-loading svg.close {
 .seconds-3::after,
 .seconds-4::after,
 .seconds-5::after {
-    content: ' ';
-    position: absolute;
-    background: rgba(21, 146, 230, 0.5);
-    height: 0.25rem;
-    width: 2rem;
-    left: 0;
-    bottom: 0;
-    overflow: hidden;
-    border-radius: 0 0 0 0.25rem;
+  content: ' ';
+  position: absolute;
+  background: rgba(21, 146, 230, 0.5);
+  height: 0.25rem;
+  width: 2rem;
+  left: 0;
+  bottom: 0;
+  overflow: hidden;
+  border-radius: 0 0 0 0.25rem;
 }
 
 button.seconds-1::after {
-    animation: progress 1s linear;
+  animation: progress 1s linear;
 }
 
 button.seconds-2::after {
-    animation: progress 2s linear;
+  animation: progress 2s linear;
 }
 
 button.seconds-3::after {
-    animation: progress 3s linear;
+  animation: progress 3s linear;
 }
 
 button.seconds-4::after {
-    animation: progress 4s linear;
+  animation: progress 4s linear;
 }
 
 button.seconds-5::after {
-    animation: progress 5s linear;
+  animation: progress 5s linear;
 }
 
 svg.close {
-    position: absolute;
-    width: 1.5rem;
-    height: 1.5rem;
-    right: 0.5rem;
-    top: 0.75rem;
+  position: absolute;
+  width: 1.5rem;
+  height: 1.5rem;
+  right: 0.5rem;
+  top: 0.75rem;
 }
 
 svg.loading {
-    position: absolute;
-    width: 1.5rem;
-    height: 1.5rem;
-    left: 0.75rem;
-    animation: spin 2s infinite linear;
+  position: absolute;
+  width: 1.5rem;
+  height: 1.5rem;
+  left: 0.75rem;
+  animation: spin 2s infinite linear;
 }
 
 @keyframes progress {
-    from { width: 0; }
-    to   { width: 20rem; }
+  from {
+    width: 0;
+  }
+  to {
+    width: 20rem;
+  }
 }
 
 @keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(359deg);
-    }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(359deg);
+  }
 }

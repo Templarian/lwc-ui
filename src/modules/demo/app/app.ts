@@ -1,5 +1,11 @@
 import { LightningElement, track } from 'lwc';
-import { showToast, showErrorToast, showWarningToast, showLoadingToast, removeToast } from 'ui/toastService';
+import {
+    showToast,
+    showErrorToast,
+    showWarningToast,
+    showLoadingToast,
+    removeToast
+} from 'ui/toastService';
 import {
     mdiAccount,
     mdiAccountBox,
@@ -16,7 +22,6 @@ import {
 } from '@mdi/js';
 
 export default class App extends LightningElement {
-
     @track mdiAccount: string = mdiAccount;
     @track mdiAccountBox: string = mdiAccountBox;
     @track mdiFormatAlignLeft: string = mdiFormatAlignLeft;

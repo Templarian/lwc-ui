@@ -1,317 +1,307 @@
 <template>
-    <ui-toast></ui-toast>
-    <ui-nav style="margin-bottom: 1rem;">
+  <ui-toast></ui-toast>
+  <ui-nav style="margin-bottom: 1rem;">
+    <ui-nav-brand href="/lwc-ui">
+      <ui-icon slot="logo" path={mdiPackageVariant}></ui-icon>
+      <code>lwc-ui</code> Components
+    </ui-nav-brand>
+    <code class="npm">npm install lwc-ui</code>
+    <ui-nav-item href="https://github.com/Templarian/lwc-ui#components">
+      View Docs
+    </ui-nav-item>
+    <ui-nav-item href="https://github.com/Templarian/lwc-ui">
+      <ui-icon path={mdiGithubCircle}></ui-icon>
+    </ui-nav-item>
+  </ui-nav>
+  <div class="container">
+    <demo-component name="Attention" tag="ui-attention" file="attention">
+      <ui-attention>Attention text.</ui-attention>
+      <ui-attention variant="primary">Attention primary text.</ui-attention>
+      <ui-attention variant="success">
+        <ui-icon slot="left" path={mdiCheckCircle}></ui-icon>
+        Attention success text.
+      </ui-attention>
+      <ui-attention variant="warning">
+        <ui-icon slot="left" path={mdiAlert}></ui-icon>
+        Attention warning text.
+      </ui-attention>
+      <ui-attention variant="danger">
+        <ui-icon slot="left" path={mdiAlertOctagon}></ui-icon>
+        Attention danger text.
+      </ui-attention>
+      <ui-attention variant="info">
+        <ui-icon slot="left" path={mdiInformation}></ui-icon>
+        Attention info text.
+      </ui-attention>
+    </demo-component>
+
+    <demo-component name="Badge" tag="ui-badge" file="badge">
+      <ui-button>
+        Button with Badge
+        <ui-badge slot="right">42</ui-badge>
+      </ui-button>
+      &nbsp;
+      <ui-button variant="primary">
+        Primary
+        <ui-badge slot="right">42</ui-badge>
+      </ui-button>
+      &nbsp;
+      <ui-button variant="warning">
+        Warning
+        <ui-badge slot="right">42</ui-badge>
+      </ui-button>
+      &nbsp;
+      <ui-button variant="danger">
+        Danger
+        <ui-badge slot="right">42</ui-badge>
+      </ui-button>
+      &nbsp;
+      <ui-button variant="dark">
+        Dark
+        <ui-badge slot="right">42</ui-badge>
+      </ui-button>
+    </demo-component>
+
+    <demo-component name="Button" tag="ui-button" file="button">
+      <ui-button>Button</ui-button>
+      &nbsp;
+      <ui-button variant="primary">Primary</ui-button>
+      &nbsp;
+      <ui-button variant="warning">Warning</ui-button>
+      &nbsp;
+      <ui-button variant="danger">Danger</ui-button>
+      &nbsp;
+      <ui-button variant="dark">Dark</ui-button>
+      <div style="margin-top: 0.5rem">
+        <ui-button>
+          <ui-icon slot="left" path={mdiAccount}></ui-icon>
+          Left Slot
+        </ui-button>
+        &nbsp;
+        <ui-button>
+          Right Slot
+          <ui-icon slot="right" path={mdiAccount}></ui-icon>
+        </ui-button>
+        <ui-button block style="margin-top: 0.5rem">
+          <ui-icon slot="left" path={mdiAccount}></ui-icon>
+          Block Button
+          <ui-icon slot="right" path={mdiAccount}></ui-icon>
+        </ui-button>
+      </div>
+    </demo-component>
+
+    <demo-component
+      name="Button Group"
+      tag="ui-button-group"
+      file="buttonGroup"
+    >
+      <ui-button-group>
+        <ui-button>
+          <ui-icon path={mdiFormatAlignLeft}></ui-icon>
+        </ui-button>
+        <ui-button>
+          <ui-icon path={mdiFormatAlignCenter}></ui-icon>
+        </ui-button>
+        <ui-button>
+          <ui-icon path={mdiFormatAlignRight}></ui-icon>
+        </ui-button>
+      </ui-button-group>
+      <ui-button-group block style="margin-top: 0.5rem">
+        <ui-button>
+          Block Group
+        </ui-button>
+        <ui-button>
+          <ui-icon path={mdiFormatAlignCenter}></ui-icon>
+        </ui-button>
+        <ui-button>
+          <ui-icon path={mdiFormatAlignRight}></ui-icon>
+        </ui-button>
+      </ui-button-group>
+    </demo-component>
+
+    <demo-component name="Card" tag="ui-card" file="card">
+      <ui-button onclick={setShadowHandler} data-shadow="0"
+        >Set Shadow 0</ui-button
+      >
+      &nbsp;
+      <ui-button onclick={setShadowHandler} data-shadow="1"
+        >Set Shadow 1</ui-button
+      >
+      &nbsp;
+      <ui-button onclick={setShadowHandler} data-shadow="2"
+        >Set Shadow 2</ui-button
+      >
+      &nbsp;
+      <ui-button onclick={setShadowHandler} data-shadow="3"
+        >Set Shadow 3</ui-button
+      >
+      <ui-card style="margin:0.5rem 0 0 0" shadow={shadow}>
+        <ui-card-body>Card with Shadow</ui-card-body>
+      </ui-card>
+    </demo-component>
+
+    <demo-component
+      name="Context Menu"
+      tag="ui-context-menu"
+      file="contextMenu"
+    >
+      <ui-context-menu>
+        <div style="border: 1px dashed #007bff;padding: 0.5rem;">
+          Right Click Here
+        </div>
+        <ui-menu slot="menu">
+          <ui-menu-item>Option 1</ui-menu-item>
+          <ui-menu-item>Option 2</ui-menu-item>
+        </ui-menu>
+      </ui-context-menu>
+    </demo-component>
+
+    <demo-component name="Dropdown" tag="ui-dropdown" file="dropdown">
+      <ui-dropdown>
+        <ui-button>Dropdown</ui-button>
+        <ui-menu slot="menu">
+          <ui-menu-item>Option 1</ui-menu-item>
+          <ui-menu-item>Option 2</ui-menu-item>
+        </ui-menu>
+      </ui-dropdown>
+      &nbsp;
+      <ui-dropdown>
+        <ui-button>
+          <ui-icon path={mdiAccount}></ui-icon>
+        </ui-button>
+        <ui-menu slot="menu">
+          <ui-menu-item>Option 1</ui-menu-item>
+          <ui-menu-item>Option 2</ui-menu-item>
+        </ui-menu>
+      </ui-dropdown>
+      &nbsp;
+      <ui-button-group>
+        <ui-dropdown>
+          <ui-button></ui-button>
+          <ui-menu slot="menu">
+            <ui-menu-item>Option 1</ui-menu-item>
+            <ui-menu-item>Option 2</ui-menu-item>
+          </ui-menu>
+        </ui-dropdown>
+        <ui-button>Split Button</ui-button>
+      </ui-button-group>
+      &nbsp;
+      <ui-button-group>
+        <ui-button>Split Button</ui-button>
+        <ui-dropdown>
+          <ui-button></ui-button>
+          <ui-menu slot="menu">
+            <ui-menu-item>Option 1</ui-menu-item>
+            <ui-menu-item>Option 2</ui-menu-item>
+          </ui-menu>
+        </ui-dropdown>
+      </ui-button-group>
+    </demo-component>
+
+    <demo-component name="Form" tag="ui-form" file="form">
+      <ui-form>
+        <ui-textarea value="foo"></ui-textarea>
+        <ui-button submit>Submit</ui-button>
+      </ui-form>
+    </demo-component>
+
+    <demo-component name="Flex" tag="ui-flex" file="flex">
+      <ui-flex>
+        <ui-flex class="border" flex="1">Column 1 (flex=1)</ui-flex>
+        <ui-flex class="border" flex="2">Column 2 (flex=2)</ui-flex>
+        <ui-flex class="border">Column 3 (flex=content)</ui-flex>
+      </ui-flex>
+    </demo-component>
+
+    <demo-component name="Icon" tag="ui-icon" file="icon">
+      <ui-icon path={mdiAccount}></ui-icon>
+      <ui-icon path={mdiAccountBox}></ui-icon>
+    </demo-component>
+
+    <demo-component name="List" tag="ui-list" file="list">
+      <ui-list>
+        <ui-list-item>Item 1</ui-list-item>
+        <ui-list-item>Item 2</ui-list-item>
+        <ui-list-item>Item 3</ui-list-item>
+      </ui-list>
+    </demo-component>
+
+    <demo-component name="Menu" tag="ui-menu" file="menu">
+      <ui-menu>
+        <ui-menu-item>Option 1</ui-menu-item>
+        <ui-menu-item>Option 2</ui-menu-item>
+      </ui-menu>
+    </demo-component>
+
+    <demo-component name="Modal" tag="ui-modal" file="modal">
+      <ui-button onclick={openModal}>Show Modal</ui-button>
+      <template if:true={isModalOpen}>
+        <ui-modal>
+          <ui-modal-header>Sample Modal</ui-modal-header>
+          <ui-modal-body>Modal Content</ui-modal-body>
+          <ui-modal-footer>
+            <ui-button onclick={closeModal}>Cancel</ui-button>
+            <ui-button variant="primary" onclick={closeModal}>Done</ui-button>
+          </ui-modal-footer>
+        </ui-modal>
+      </template>
+    </demo-component>
+
+    <demo-component name="Nav" tag="ui-nav" file="nav">
+      <ui-nav>
         <ui-nav-brand href="/lwc-ui">
-            <ui-icon slot="logo" path={mdiPackageVariant}></ui-icon>
-            <code>lwc-ui</code> Components
+          <ui-icon slot="logo" path={mdiPackageVariantClosed}></ui-icon>
+          Brand
         </ui-nav-brand>
-        <code class="npm">npm install lwc-ui</code>
-        <ui-nav-item href="https://github.com/Templarian/lwc-ui#components">
-            View Docs
-        </ui-nav-item>
+        <ui-nav-item href="https://github.com/Templarian/lwc-ui#components"
+          >View Docs</ui-nav-item
+        >
         <ui-nav-item href="https://github.com/Templarian/lwc-ui">
-            <ui-icon path={mdiGithubCircle}></ui-icon>
+          <ui-icon path={mdiGithubCircle}></ui-icon>
         </ui-nav-item>
-    </ui-nav>
-    <div class="container">
-        <demo-component name="Attention" tag="ui-attention" file="attention">
-            <ui-attention>Attention text.</ui-attention>
-            <ui-attention variant="primary"
-                >Attention primary text.</ui-attention
-            >
-            <ui-attention variant="success">
-                <ui-icon slot="left" path={mdiCheckCircle}></ui-icon>
-                Attention success text.
-            </ui-attention>
-            <ui-attention variant="warning">
-                <ui-icon slot="left" path={mdiAlert}></ui-icon>
-                Attention warning text.
-            </ui-attention>
-            <ui-attention variant="danger">
-                <ui-icon slot="left" path={mdiAlertOctagon}></ui-icon>
-                Attention danger text.
-            </ui-attention>
-            <ui-attention variant="info">
-                <ui-icon slot="left" path={mdiInformation}></ui-icon>
-                Attention info text.
-            </ui-attention>
-        </demo-component>
+      </ui-nav>
+    </demo-component>
 
-        <demo-component name="Badge" tag="ui-badge" file="badge">
-            <ui-button>
-                Button with Badge
-                <ui-badge slot="right">42</ui-badge>
-            </ui-button>
-            &nbsp;
-            <ui-button variant="primary">
-                Primary
-                <ui-badge slot="right">42</ui-badge>
-            </ui-button>
-            &nbsp;
-            <ui-button variant="warning">
-                Warning
-                <ui-badge slot="right">42</ui-badge>
-            </ui-button>
-            &nbsp;
-            <ui-button variant="danger">
-                Danger
-                <ui-badge slot="right">42</ui-badge>
-            </ui-button>
-            &nbsp;
-            <ui-button variant="dark">
-                Dark
-                <ui-badge slot="right">42</ui-badge>
-            </ui-button>
-        </demo-component>
+    <demo-component name="Picker" tag="ui-picker" file="picker">
+      <ui-picker>
+        <ui-button>
+          <ui-icon path={mdiAccount}></ui-icon>
+        </ui-button>
+        <ui-menu slot="menu">
+          <ui-menu-item>Option 1</ui-menu-item>
+          <ui-menu-item>Option 2</ui-menu-item>
+        </ui-menu>
+      </ui-picker>
+    </demo-component>
 
-        <demo-component name="Button" tag="ui-button" file="button">
-            <ui-button>Button</ui-button>
-            &nbsp;
-            <ui-button variant="primary">Primary</ui-button>
-            &nbsp;
-            <ui-button variant="warning">Warning</ui-button>
-            &nbsp;
-            <ui-button variant="danger">Danger</ui-button>
-            &nbsp;
-            <ui-button variant="dark">Dark</ui-button>
-            <div style="margin-top: 0.5rem">
-                <ui-button>
-                    <ui-icon slot="left" path={mdiAccount}></ui-icon>
-                    Left Slot
-                </ui-button>
-                &nbsp;
-                <ui-button>
-                    Right Slot
-                    <ui-icon slot="right" path={mdiAccount}></ui-icon>
-                </ui-button>
-                <ui-button block style="margin-top: 0.5rem">
-                    <ui-icon slot="left" path={mdiAccount}></ui-icon>
-                    Block Button
-                    <ui-icon slot="right" path={mdiAccount}></ui-icon>
-                </ui-button>
-            </div>
-        </demo-component>
+    <demo-component name="Toast" tag="ui-toast" file="toast">
+      <ui-button onclick={handleToast}>Toast 3 Seconds</ui-button>
+      &nbsp;
+      <ui-button onclick={handleToastWarning}
+        >Warning Toast 4 Seconds</ui-button
+      >
+      &nbsp;
+      <ui-button onclick={handleToastError}>Error Toast 5 Seconds</ui-button>
+      &nbsp;
+      <ui-button if:false={loadingToastId} onclick={handleToastLoading}
+        >Loading Toast</ui-button
+      >
+      <ui-button
+        if:true={loadingToastId}
+        variant="primary"
+        onclick={handleToastClose}
+        >Close Loading Toast</ui-button
+      >
+    </demo-component>
 
-        <demo-component
-            name="Button Group"
-            tag="ui-button-group"
-            file="buttonGroup"
-        >
-            <ui-button-group>
-                <ui-button>
-                    <ui-icon path={mdiFormatAlignLeft}></ui-icon>
-                </ui-button>
-                <ui-button>
-                    <ui-icon path={mdiFormatAlignCenter}></ui-icon>
-                </ui-button>
-                <ui-button>
-                    <ui-icon path={mdiFormatAlignRight}></ui-icon>
-                </ui-button>
-            </ui-button-group>
-            <ui-button-group block style="margin-top: 0.5rem">
-                <ui-button>
-                    Block Group
-                </ui-button>
-                <ui-button>
-                    <ui-icon path={mdiFormatAlignCenter}></ui-icon>
-                </ui-button>
-                <ui-button>
-                    <ui-icon path={mdiFormatAlignRight}></ui-icon>
-                </ui-button>
-            </ui-button-group>
-        </demo-component>
-
-        <demo-component name="Card" tag="ui-card" file="card">
-            <ui-button onclick={setShadowHandler} data-shadow="0"
-                >Set Shadow 0</ui-button
-            >
-            &nbsp;
-            <ui-button onclick={setShadowHandler} data-shadow="1"
-                >Set Shadow 1</ui-button
-            >
-            &nbsp;
-            <ui-button onclick={setShadowHandler} data-shadow="2"
-                >Set Shadow 2</ui-button
-            >
-            &nbsp;
-            <ui-button onclick={setShadowHandler} data-shadow="3"
-                >Set Shadow 3</ui-button
-            >
-            <ui-card style="margin:0.5rem 0 0 0" shadow={shadow}>
-                <ui-card-body>Card with Shadow</ui-card-body>
-            </ui-card>
-        </demo-component>
-
-        <demo-component
-            name="Context Menu"
-            tag="ui-context-menu"
-            file="contextMenu"
-        >
-            <ui-context-menu>
-                <div style="border: 1px dashed #007bff;padding: 0.5rem;">
-                    Right Click Here
-                </div>
-                <ui-menu slot="menu">
-                    <ui-menu-item>Option 1</ui-menu-item>
-                    <ui-menu-item>Option 2</ui-menu-item>
-                </ui-menu>
-            </ui-context-menu>
-        </demo-component>
-
-        <demo-component name="Dropdown" tag="ui-dropdown" file="dropdown">
-            <ui-dropdown>
-                <ui-button>Dropdown</ui-button>
-                <ui-menu slot="menu">
-                    <ui-menu-item>Option 1</ui-menu-item>
-                    <ui-menu-item>Option 2</ui-menu-item>
-                </ui-menu>
-            </ui-dropdown>
-            &nbsp;
-            <ui-dropdown>
-                <ui-button>
-                    <ui-icon path={mdiAccount}></ui-icon>
-                </ui-button>
-                <ui-menu slot="menu">
-                    <ui-menu-item>Option 1</ui-menu-item>
-                    <ui-menu-item>Option 2</ui-menu-item>
-                </ui-menu>
-            </ui-dropdown>
-            &nbsp;
-            <ui-button-group>
-                <ui-dropdown>
-                    <ui-button></ui-button>
-                    <ui-menu slot="menu">
-                        <ui-menu-item>Option 1</ui-menu-item>
-                        <ui-menu-item>Option 2</ui-menu-item>
-                    </ui-menu>
-                </ui-dropdown>
-                <ui-button>Split Button</ui-button>
-            </ui-button-group>
-            &nbsp;
-            <ui-button-group>
-                <ui-button>Split Button</ui-button>
-                <ui-dropdown>
-                    <ui-button></ui-button>
-                    <ui-menu slot="menu">
-                        <ui-menu-item>Option 1</ui-menu-item>
-                        <ui-menu-item>Option 2</ui-menu-item>
-                    </ui-menu>
-                </ui-dropdown>
-            </ui-button-group>
-        </demo-component>
-
-        <demo-component name="Form" tag="ui-form" file="form">
-            <ui-form>
-                <ui-textarea value="foo"></ui-textarea>
-                <ui-button submit>Submit</ui-button>
-            </ui-form>
-        </demo-component>
-
-        <demo-component name="Flex" tag="ui-flex" file="flex">
-            <ui-flex>
-                <ui-flex class="border" flex="1">Column 1 (flex=1)</ui-flex>
-                <ui-flex class="border" flex="2">Column 2 (flex=2)</ui-flex>
-                <ui-flex class="border">Column 3 (flex=content)</ui-flex>
-            </ui-flex>
-        </demo-component>
-
-        <demo-component name="Icon" tag="ui-icon" file="icon">
-            <ui-icon path={mdiAccount}></ui-icon>
-            <ui-icon path={mdiAccountBox}></ui-icon>
-        </demo-component>
-
-        <demo-component name="List" tag="ui-list" file="list">
-            <ui-list>
-                <ui-list-item>Item 1</ui-list-item>
-                <ui-list-item>Item 2</ui-list-item>
-                <ui-list-item>Item 3</ui-list-item>
-            </ui-list>
-        </demo-component>
-
-        <demo-component name="Menu" tag="ui-menu" file="menu">
-            <ui-menu>
-                <ui-menu-item>Option 1</ui-menu-item>
-                <ui-menu-item>Option 2</ui-menu-item>
-            </ui-menu>
-        </demo-component>
-
-        <demo-component name="Modal" tag="ui-modal" file="modal">
-            <ui-button onclick={openModal}>Show Modal</ui-button>
-            <template if:true={isModalOpen}>
-                <ui-modal>
-                    <ui-modal-header>Sample Modal</ui-modal-header>
-                    <ui-modal-body>Modal Content</ui-modal-body>
-                    <ui-modal-footer>
-                        <ui-button onclick={closeModal}>Cancel</ui-button>
-                        <ui-button variant="primary" onclick={closeModal}
-                            >Done</ui-button
-                        >
-                    </ui-modal-footer>
-                </ui-modal>
-            </template>
-        </demo-component>
-
-        <demo-component name="Nav" tag="ui-nav" file="nav">
-            <ui-nav>
-                <ui-nav-brand href="/lwc-ui">
-                    <ui-icon
-                        slot="logo"
-                        path={mdiPackageVariantClosed}
-                    ></ui-icon>
-                    Brand
-                </ui-nav-brand>
-                <ui-nav-item
-                    href="https://github.com/Templarian/lwc-ui#components"
-                    >View Docs</ui-nav-item
-                >
-                <ui-nav-item href="https://github.com/Templarian/lwc-ui">
-                    <ui-icon path={mdiGithubCircle}></ui-icon>
-                </ui-nav-item>
-            </ui-nav>
-        </demo-component>
-
-        <demo-component name="Picker" tag="ui-picker" file="picker">
-            <ui-picker>
-                <ui-button>
-                    <ui-icon path={mdiAccount}></ui-icon>
-                </ui-button>
-                <ui-menu slot="menu">
-                    <ui-menu-item>Option 1</ui-menu-item>
-                    <ui-menu-item>Option 2</ui-menu-item>
-                </ui-menu>
-            </ui-picker>
-        </demo-component>
-
-        <demo-component name="Toast" tag="ui-toast" file="toast">
-            <ui-button onclick={handleToast}>Toast 3 Seconds</ui-button>
-            &nbsp;
-            <ui-button onclick={handleToastWarning}
-                >Warning Toast 4 Seconds</ui-button
-            >
-            &nbsp;
-            <ui-button onclick={handleToastError}
-                >Error Toast 5 Seconds</ui-button
-            >
-            &nbsp;
-            <ui-button if:false={loadingToastId} onclick={handleToastLoading}
-                >Loading Toast</ui-button
-            >
-            <ui-button
-                if:true={loadingToastId}
-                variant="primary"
-                onclick={handleToastClose}
-                >Close Loading Toast</ui-button
-            >
-        </demo-component>
-
-        <ui-card>
-            <ui-card-header>Why?</ui-card-header>
-            <ui-card-body>
-                <p>
-                    Mostly using this to try out ideas in TypeScript and finding
-                    areas that may need standard utilities.
-                </p>
-            </ui-card-body>
-        </ui-card>
-    </div>
+    <ui-card>
+      <ui-card-header>Why?</ui-card-header>
+      <ui-card-body>
+        <p>
+          Mostly using this to try out ideas in TypeScript and finding areas
+          that may need standard utilities.
+        </p>
+      </ui-card-body>
+    </ui-card>
+  </div>
 </template>

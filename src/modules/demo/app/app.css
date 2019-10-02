@@ -1,33 +1,33 @@
 :host {
-    font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI',
-        Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
 }
 
 .container {
-    max-width: 960px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    padding: 0 1rem 2rem 1rem;
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  padding: 0 1rem 2rem 1rem;
 }
 
 ui-attention:not(:last-child) {
-    margin-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .border {
-    border: 1px dashed rgb(0, 123, 255);
-    padding: 0.25rem 0.5rem;
+  border: 1px dashed rgb(0, 123, 255);
+  padding: 0.25rem 0.5rem;
 }
 
 .npm {
-    font-size: 1rem;
-    padding: 0 0.75rem;
-    height: 1.75rem;
-    line-height: 1.8rem;
-    align-self: center;
-    margin-right: 0.5rem;
-    border-radius: 0.25rem;
-    color: #fff;
-    background: #222;
+  font-size: 1rem;
+  padding: 0 0.75rem;
+  height: 1.75rem;
+  line-height: 1.8rem;
+  align-self: center;
+  margin-right: 0.5rem;
+  border-radius: 0.25rem;
+  color: #fff;
+  background: #222;
 }

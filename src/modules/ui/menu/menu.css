@@ -1,8 +1,8 @@
 :host {
   display: inline-flex;
   flex-direction: column;
-  border: 1px solid #BBB;
-  background: #FFF;
+  border: 1px solid #bbb;
+  background: #fff;
   border-radius: 0.25rem;
   box-shadow: 0 0 1.5rem rgba(0, 0, 0, 0.4);
   max-width: 15rem;

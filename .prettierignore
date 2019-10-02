@@ -9,3 +9,6 @@ dist/
 
 # Default resources folder
 src/resources
+
+# Prettier acting weird will figure out later
+**/*.html

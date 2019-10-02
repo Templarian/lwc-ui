@@ -8,7 +8,7 @@
 textarea {
   width: calc(100% - 1rem - 2px);
   font-family: Consolas;
-  border: 1px solid #DDD;
+  border: 1px solid #ddd;
   border-radius: 0.25rem;
   padding: 0.5rem;
   outline: 0;

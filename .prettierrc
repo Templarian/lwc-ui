@@ -6,6 +6,10 @@
         {
             "files": "**/*.html",
             "options": { "parser": "lwc" }
+        },
+        {
+            "files": "**/*.md",
+            "quoteProps": "as-needed"
         }
     ]
 }

@@ -19,3 +19,15 @@ ui-attention:not(:last-child) {
     border: 1px dashed rgb(0, 123, 255);
     padding: 0.25rem 0.5rem;
 }
+
+.npm {
+    font-size: 1rem;
+    padding: 0 0.75rem;
+    height: 1.75rem;
+    line-height: 1.8rem;
+    align-self: center;
+    margin-right: 0.5rem;
+    border-radius: 0.25rem;
+    color: #fff;
+    background: #222;
+}

@@ -1,12 +1,6 @@
 import { LightningElement, api } from 'lwc';
 import { handleSlot } from 'ui/util';
 
-interface Slot {
-  component: string;
-  name: string | null;
-  variant: string | null;
-}
-
 export default class Icon extends LightningElement {
   _path: string = '';
 

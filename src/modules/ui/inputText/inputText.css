@@ -5,7 +5,7 @@
 
 input {
   width: calc(100% - 0.75rem - 4px);
-  border: 1px solid #DDD;
+  border: 1px solid #ddd;
   padding: 0.5em;
   border-radius: 0.25rem;
   outline: 0;

@@ -199,10 +199,25 @@
     </demo-component>
 
     <demo-component name="Form" tag="ui-form" file="form">
-      <ui-form>
-        <ui-textarea value="foo"></ui-textarea>
+      <ui-form onchange={handleFormChange} onsubmit={handleFormSubmit}>
+        <ui-label>
+          Text
+          <ui-input-text name="text" value="foo"></ui-input-text>
+        </ui-label>
+        <ui-label>
+          Textarea
+          <ui-textarea name="textarea" value="bar"></ui-textarea>
+        </ui-label>
         <ui-button submit>Submit</ui-button>
       </ui-form>
+      <div>
+        <strong>Form Change Value:</strong>
+        <pre style="white-space: normal;">{formChangeValue}</pre>
+      </div>
+      <div>
+        <strong>Form Submit Value:</strong>
+        <pre style="white-space: normal;">{formSubmitValue}</pre>
+      </div>
     </demo-component>
 
     <demo-component name="Flex" tag="ui-flex" file="flex">

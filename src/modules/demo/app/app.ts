@@ -81,4 +81,16 @@ export default class App extends LightningElement {
     selection.removeAllRanges();
     selection.addRange(range);
   }
+
+  // Form
+  @track formChangeValue: string = '';
+  @track formSubmitValue: string = '';
+
+  handleFormChange(e: any) {
+    this.formChangeValue = JSON.stringify(e.detail);
+  }
+
+  handleFormSubmit(e: any) {
+    this.formSubmitValue = JSON.stringify(e.detail);
+  }
 }

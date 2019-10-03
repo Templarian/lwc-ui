@@ -1,0 +1,14 @@
+<template>
+  <ui-button-group block>
+    <ui-button onclick={handleMinusClick}>
+      <ui-icon path={mdiMinus}></ui-icon>
+    </ui-button>
+    <div>
+      <input type="text" value={value} />
+      <span></span>
+    </div>
+    <ui-button onclick={handlePlusClick}>
+      <ui-icon path={mdiPlus}></ui-icon>
+    </ui-button>
+  </ui-button-group>
+</template>

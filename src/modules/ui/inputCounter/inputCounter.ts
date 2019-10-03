@@ -1,11 +1,7 @@
 import { LightningElement, api, track } from 'lwc';
-import {
-  mdiPlus,
-  mdiMinus
-} from '@mdi/js';
+import { mdiPlus, mdiMinus } from '@mdi/js';
 
 export default class InputCounter extends LightningElement {
-
   @api value: number = 0;
   @api step: number = 1;
 
@@ -19,5 +15,4 @@ export default class InputCounter extends LightningElement {
   handleMinusClick() {
     this.value -= this.step;
   }
-
 }

@@ -33,7 +33,9 @@ export default class Nav extends LightningElement {
       updateClass(element.classList, {
         'nav-item': this._type === 'nav',
         'tab-item': this._type === 'tab',
-        selected: this._selectedIndex === i
+        'selected': this._selectedIndex === i,
+        'selected-before': (this._selectedIndex - 1) === i,
+        'selected-after': (this._selectedIndex + 1) === i
       });
       element.onclick = () => {
         this._selectedIndex = i;
@@ -42,7 +44,9 @@ export default class Nav extends LightningElement {
         });
         elements.forEach((fElement, fI) => {
           updateClass(fElement.classList, {
-            selected: this._selectedIndex === fI
+            'selected': this._selectedIndex === fI,
+            'selected-before': (this._selectedIndex - 1) === fI,
+            'selected-after': (this._selectedIndex + 1) === fI
           });
         });
       };

@@ -22,10 +22,8 @@
   background: #f1f1f1;
 }
 
-:host(.tab-item:not(.selcted)) button {
-  border-top: 1px solid #eee;
-  border-right: 1px solid #eee;
-  border-left: 0;
+:host(.tab-item:not(.selected)) button {
+  border: 1px solid #eee;
   border-bottom: 1px solid transparent;
   margin-bottom: -1px;
   background: transparent;
@@ -33,6 +31,19 @@
   font-size: 1rem;
   color: #222;
   outline: 0;
+}
+:host(.tab-item:not(.selected).selected-before) button {
+  background: linear-gradient(270deg, #EEE 0%, transparent 0.5rem);
+  background-clip: padding-box;
+  border-right: 0;
+}
+:host(.tab-item:not(.selected).selected-after) button {
+  background: linear-gradient(90deg, #EEE 0%, transparent 0.5rem);
+  background-clip: padding-box;
+  border-left: 0;
+}
+:host(.tab-item:not(.selected):not(:last-of-type)) button {
+  border-right: 0;
 }
 :host(.tab-item:not(.selected)) button:hover {
   border-top-color: #eee;

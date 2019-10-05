@@ -33,12 +33,12 @@
   outline: 0;
 }
 :host(.tab-item:not(.selected).selected-before) button {
-  background: linear-gradient(270deg, #EEE 0%, transparent 0.5rem);
+  background: linear-gradient(270deg, #eee 0%, transparent 0.5rem);
   background-clip: padding-box;
   border-right: 0;
 }
 :host(.tab-item:not(.selected).selected-after) button {
-  background: linear-gradient(90deg, #EEE 0%, transparent 0.5rem);
+  background: linear-gradient(90deg, #eee 0%, transparent 0.5rem);
   background-clip: padding-box;
   border-left: 0;
 }

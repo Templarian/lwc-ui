@@ -18,7 +18,9 @@ import {
   mdiAlert,
   mdiAlertOctagon,
   mdiCheckCircle,
-  mdiInformation
+  mdiInformation,
+  mdiClose,
+  mdiPlus
 } from '@mdi/js';
 import { FormEvent } from 'ui/form';
 
@@ -35,6 +37,8 @@ export default class App extends LightningElement {
   @track mdiAlertOctagon: string = mdiAlertOctagon;
   @track mdiCheckCircle: string = mdiCheckCircle;
   @track mdiInformation: string = mdiInformation;
+  @track mdiClose: string = mdiClose;
+  @track mdiPlus: string = mdiPlus;
 
   handleToast() {
     showToast('Testing 3 Seconds', 3);

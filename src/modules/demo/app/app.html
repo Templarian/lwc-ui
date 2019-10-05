@@ -331,12 +331,25 @@
           <ui-nav-item>
             Tab 2
           </ui-nav-item>
+          <ui-nav-item>
+            Tab 3
+            <ui-dropdown slot="right">
+              <ui-button></ui-button>
+              <ui-menu slot="menu">
+                <ui-menu-item>Option 1</ui-menu-item>
+                <ui-menu-item>Option 2</ui-menu-item>
+              </ui-menu>
+            </ui-dropdown>
+          </ui-nav-item>
         </ui-nav>
         <ui-tab-item>
           Tab 1 content
         </ui-tab-item>
         <ui-tab-item>
           Tab 2 content
+        </ui-tab-item>
+        <ui-tab-item>
+          Tab 3. Notice dropdown does not select tab.
         </ui-tab-item>
       </ui-tab>
     </demo-component>

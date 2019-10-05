@@ -22,7 +22,7 @@
   background: #f1f1f1;
 }
 
-:host(.tab-item) button {
+:host(.tab-item:not(.selcted)) button {
   border: 1px solid transparent;
   margin-bottom: -1px;
   background: transparent;
@@ -30,6 +30,12 @@
   font-size: 1rem;
   color: #222;
   outline: 0;
+}
+:host(.tab-item:not(.selcted)) button:hover {
+  border-top-color: #eee;
+  border-right-color: #eee;
+  border-left-color: #eee;
+  border-radius: 0.25rem 0.25rem 0 0;
 }
 
 :host(.tab-item.selected) button {

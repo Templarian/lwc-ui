@@ -107,17 +107,20 @@ export default class App extends LightningElement {
 
   // Tab
   tabUniqueId = 3;
-  @track tabItems = [{
-    id: 1,
-    label: 'Tab 1',
-    icon: mdiAccount,
-    content: 'Tab Content 1'
-  }, {
-    id: 2,
-    label: 'Tab 2',
-    icon: mdiWorker,
-    content: 'Tab Content 2'
-  }];
+  @track tabItems = [
+    {
+      id: 1,
+      label: 'Tab 1',
+      icon: mdiAccount,
+      content: 'Tab Content 1'
+    },
+    {
+      id: 2,
+      label: 'Tab 2',
+      icon: mdiWorker,
+      content: 'Tab Content 2'
+    }
+  ];
 
   addTab() {
     const id = this.tabUniqueId++;
@@ -125,7 +128,7 @@ export default class App extends LightningElement {
       id,
       label: `Tab ${id}`,
       icon: mdiAccount,
-      content: `Tab Content ${id}`,
+      content: `Tab Content ${id}`
     });
   }
 

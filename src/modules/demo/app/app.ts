@@ -20,7 +20,8 @@ import {
   mdiCheckCircle,
   mdiInformation,
   mdiClose,
-  mdiPlus
+  mdiPlus,
+  mdiWorker
 } from '@mdi/js';
 import { FormEvent } from 'ui/form';
 
@@ -102,5 +103,37 @@ export default class App extends LightningElement {
 
   handleFormSubmit(e: FormEvent) {
     this.formSubmitValue = JSON.stringify(e.detail);
+  }
+
+  // Tab
+  tabUniqueId = 3;
+  @track tabItems = [{
+    id: 1,
+    label: 'Tab 1',
+    icon: mdiAccount,
+    content: 'Tab Content 1'
+  }, {
+    id: 2,
+    label: 'Tab 2',
+    icon: mdiWorker,
+    content: 'Tab Content 2'
+  }];
+
+  addTab() {
+    const id = this.tabUniqueId++;
+    this.tabItems.push({
+      id,
+      label: `Tab ${id}`,
+      icon: mdiAccount,
+      content: `Tab Content ${id}`,
+    });
+  }
+
+  removeTab(e: MouseEvent) {
+    const target = e.target as HTMLElement;
+    const id = parseInt(target.dataset.id as string, 10);
+    const index = this.tabItems.findIndex(t => t.id === id);
+    this.tabItems.splice(index, 1);
+    e.stopPropagation();
   }
 }

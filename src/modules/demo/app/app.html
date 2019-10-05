@@ -325,37 +325,35 @@
       <ui-tab>
         <ui-nav>
           <ui-nav-item>
-            <ui-icon slot="left" path={mdiAccount}></ui-icon>
-            Tab 1
+            Basic Tab 1
           </ui-nav-item>
           <ui-nav-item>
-            Tab 2
+            Basic Tab 2
           </ui-nav-item>
-          <ui-nav-item>
-            Tab 3
-            <ui-dropdown slot="right">
-              <ui-button></ui-button>
-              <ui-menu slot="menu">
-                <ui-menu-item>Option 1</ui-menu-item>
-                <ui-menu-item>Option 2</ui-menu-item>
-              </ui-menu>
-            </ui-dropdown>
-            <ui-button slot="right">
+        </ui-nav>
+        <ui-tab-item>
+          Basic Tab 1 content
+        </ui-tab-item>
+        <ui-tab-item>
+          Basic Tab 2 content
+        </ui-tab-item>
+      </ui-tab>
+      <br/>
+      <ui-tab>
+        <ui-nav>
+          <ui-nav-item for:each={tabItems} for:item="item" key={item.id}>
+            <ui-icon slot="left" path={item.icon}></ui-icon>
+            {item.label}
+            <ui-button slot="right" onclick={removeTab} data-id={item.id}>
               <ui-icon path={mdiClose}></ui-icon>
             </ui-button>
           </ui-nav-item>
-          <ui-button slot="right">
+          <ui-button slot="right" onclick={addTab}>
             <ui-icon path={mdiPlus}></ui-icon>
           </ui-button>
         </ui-nav>
-        <ui-tab-item>
-          Tab 1 content
-        </ui-tab-item>
-        <ui-tab-item>
-          Tab 2 content
-        </ui-tab-item>
-        <ui-tab-item>
-          Tab 3. Notice dropdown does not select tab.
+        <ui-tab-item for:each={tabItems} for:item="item" key={item.id}>
+          {item.content}
         </ui-tab-item>
       </ui-tab>
     </demo-component>

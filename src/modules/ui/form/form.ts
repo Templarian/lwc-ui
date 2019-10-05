@@ -29,42 +29,48 @@ export default class Form extends LightningElement {
   }
 
   handleInit() {
-    this.dispatchEvent(new CustomEvent('init', {
-      detail: {
-        inputs: this.inputs,
-        valid: this.inputs.find((input: FormInput) => !input.valid) !== null
-      }
-    }));
+    this.dispatchEvent(
+      new CustomEvent('init', {
+        detail: {
+          inputs: this.inputs,
+          valid: this.inputs.find((input: FormInput) => !input.valid) !== null
+        }
+      })
+    );
   }
 
   handleChange(e: any) {
     this.processChange(e.detail);
-    this.dispatchEvent(new CustomEvent('change', {
-      detail: {
-        inputs: this.inputs,
-        valid: this.inputs.find((input: any) => !input.valid) !== null
-      }
-    }));
+    this.dispatchEvent(
+      new CustomEvent('change', {
+        detail: {
+          inputs: this.inputs,
+          valid: this.inputs.find((input: any) => !input.valid) !== null
+        }
+      })
+    );
   }
 
   handleSubmit() {
-    this.dispatchEvent(new CustomEvent('submit', {
-      detail: {
-        inputs: this.inputs,
-        valid: this.inputs.find((input: any) => !input.valid) !== null
-      }
-    }));
+    this.dispatchEvent(
+      new CustomEvent('submit', {
+        detail: {
+          inputs: this.inputs,
+          valid: this.inputs.find((input: any) => !input.valid) !== null
+        }
+      })
+    );
   }
 }
 
 interface FormInput {
-  name: string,
-  value: string | number | null,
-  valid: boolean
+  name: string;
+  value: string | number | null;
+  valid: boolean;
 }
 
 interface FormDetail {
-  inputs: FormInput[]
+  inputs: FormInput[];
 }
 
 export interface FormEvent {

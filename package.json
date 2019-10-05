@@ -1,61 +1,61 @@
 {
-    "name": "lwc-ui",
-    "description": "Basic Components",
-    "version": "0.9.0",
-    "author": "Austin Andrews",
-    "bugs": "https://github.com/Templarian/lwc-ui/issues",
-    "main": "src/main.ts",
-    "dependencies": {
-        "@typescript-eslint/parser": "^2.3.2",
-        "lwc-services": "1.3.1"
-    },
-    "devDependencies": {
-        "@mdi/js": "^4.4.95",
-        "@types/jest": "^24.0.18",
-        "@typescript-eslint/eslint-plugin": "^2.3.2",
-        "husky": "^3.0.7",
-        "lint-staged": "^9.4.0",
-        "popper.js": "^1.15.0"
-    },
-    "engines": {
-        "node": ">=10.0.0 <11.0.0"
-    },
-    "homepage": "https://github.com/Templarian/lwc-ui",
-    "husky": {
-        "hooks": {
-            "pre-commit": "lint-staged"
-        }
-    },
-    "keywords": [
-        "lwc"
-    ],
-    "license": "MIT",
-    "lint-staged": {
-        "**/*.{css,html,js,json,md,ts,yaml,yml}": [
-            "prettier --write"
-        ],
-        "./src/**/*.ts": [
-            "eslint"
-        ],
-        "*": [
-            "git add"
-        ]
-    },
-    "repository": "Templarian/lwc-ui",
-    "scripts": {
-        "build": "lwc-services build -m production",
-        "build:development": "lwc-services build",
-        "lint": "eslint ./src/**/*.ts",
-        "prettier": "prettier --write '**/*.{css,html,js,json,md,ts,yaml,yml}'",
-        "prettier:verify": "prettier --list-different '**/*.{css,html,js,json,md,ts,yaml,yml}'",
-        "serve": "lwc-services serve",
-        "test:unit": "lwc-services test:unit",
-        "test:unit:coverage": "lwc-services test:unit --coverage",
-        "test:unit:debug": "lwc-services test:unit --debug",
-        "test:unit:watch": "lwc-services test:unit --watch",
-        "watch": "lwc-services watch"
-    },
-    "lwc": {
-        "mapNamespaceFromPath": true
+  "name": "lwc-ui",
+  "description": "Basic Components",
+  "version": "0.9.0",
+  "author": "Austin Andrews",
+  "bugs": "https://github.com/Templarian/lwc-ui/issues",
+  "main": "src/main.ts",
+  "dependencies": {
+    "@typescript-eslint/parser": "^2.3.2",
+    "lwc-services": "1.3.1"
+  },
+  "devDependencies": {
+    "@mdi/js": "^4.4.95",
+    "@types/jest": "^24.0.18",
+    "@typescript-eslint/eslint-plugin": "^2.3.2",
+    "husky": "^3.0.7",
+    "lint-staged": "^9.4.0",
+    "popper.js": "^1.15.0"
+  },
+  "engines": {
+    "node": ">=10.0.0 <11.0.0"
+  },
+  "homepage": "https://github.com/Templarian/lwc-ui",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
     }
+  },
+  "keywords": [
+    "lwc"
+  ],
+  "license": "MIT",
+  "lint-staged": {
+    "**/*.{css,html,js,json,md,ts,yaml,yml}": [
+      "prettier --write"
+    ],
+    "./src/**/*.ts": [
+      "eslint"
+    ],
+    "*": [
+      "git add"
+    ]
+  },
+  "repository": "Templarian/lwc-ui",
+  "scripts": {
+    "build": "lwc-services build -m production",
+    "build:development": "lwc-services build",
+    "lint": "eslint ./src/**/*.ts",
+    "prettier": "prettier --write '**/*.{css,html,js,json,md,ts,yaml,yml}'",
+    "prettier:verify": "prettier --list-different '**/*.{css,html,js,json,md,ts,yaml,yml}'",
+    "serve": "lwc-services serve",
+    "test:unit": "lwc-services test:unit",
+    "test:unit:coverage": "lwc-services test:unit --coverage",
+    "test:unit:debug": "lwc-services test:unit --debug",
+    "test:unit:watch": "lwc-services test:unit --watch",
+    "watch": "lwc-services watch"
+  },
+  "lwc": {
+    "mapNamespaceFromPath": true
+  }
 }

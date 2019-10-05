@@ -4,7 +4,6 @@ import { updateClass } from 'ui/util';
 const uiTabTabName = 'UI-TAB';
 
 export default class Nav extends LightningElement {
-
   _type = 'nav';
 
   connectedCallback() {
@@ -12,8 +11,8 @@ export default class Nav extends LightningElement {
     const parentElement = host.parentNode as HTMLElement;
     const tagName = parentElement.tagName;
     updateClass(host.classList, {
-      'nav': tagName !== uiTabTabName,
-      'tab': tagName === uiTabTabName,
+      nav: tagName !== uiTabTabName,
+      tab: tagName === uiTabTabName
     });
     this._type = tagName === uiTabTabName ? 'tab' : 'nav';
   }

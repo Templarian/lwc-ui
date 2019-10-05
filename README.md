@@ -14,13 +14,13 @@ npm install lwc-ui
 
 ```html
 <ui-attention variant="danger">
-  <ui-icon slot="left" path={mdiAlertOctagon}></ui-icon>
+  <ui-icon slot="left" path="{mdiAlertOctagon}"></ui-icon>
   Attention danger text.
 </ui-attention>
 ```
 
 | Slot    | Components |
-|---------|------------|
+| ------- | ---------- |
 | `left`  | `ui-icon`  |
 | default | Text       |
 | `right` | `ui-icon`  |
@@ -40,17 +40,17 @@ Work in Progress...
 
 ```html
 <ui-button>
-  <ui-icon slot="left" path={mdiAccount}></ui-icon>
+  <ui-icon slot="left" path="{mdiAccount}"></ui-icon>
   Account Button
 </ui-button>
 ```
 
-| Attribute  | Default | Values |
-|------------|---------|--------|
-| `block`    | `false` | `true`, `false` |
-| `onclick`  | n/a     | `MouseEvent`    |
+| Attribute  | Default | Values                    |
+| ---------- | ------- | ------------------------- |
+| `block`    | `false` | `true`, `false`           |
+| `onclick`  | n/a     | `MouseEvent`              |
 | `active`   | `null`  | index or `ui-button` name |
-| `onactive` | n/a     | `{ detail: true }` |
+| `onactive` | n/a     | `{ detail: true }`        |
 
 ### ButtonGroup - `ui-button-group`
 
@@ -61,10 +61,10 @@ Work in Progress...
 </ui-button-group>
 ```
 
-| Attribute  | Default | Values |
-|------------|---------|--------|
-| `block`    | `false` | `true`, `false` |
-| `active`   | `null`  | index or `ui-button` name |
+| Attribute  | Default | Values                                |
+| ---------- | ------- | ------------------------------------- |
+| `block`    | `false` | `true`, `false`                       |
+| `active`   | `null`  | index or `ui-button` name             |
 | `onactive` | n/a     | `{ detail: { index: 0, name: null }}` |
 
 > Note: `active` must be set for `onactive` to trigger.
@@ -87,8 +87,8 @@ Cards can section content.
 </ui-card>
 ```
 
-| Attribute | Default | Values |
-|-----------|---------|--------|
+| Attribute | Default | Values             |
+| --------- | ------- | ------------------ |
 | `shadow`  | `0`     | `0`, `1`, `2`, `3` |
 
 ### ContextMenu - `ui-context-menu`
@@ -104,8 +104,8 @@ Wrap any element to add a right click context menu.
 </ui-context-menu>
 ```
 
-| Attribute   | Default | Values |
-|-------------|---------|--------|
+| Attribute   | Default        | Values                               |
+| ----------- | -------------- | ------------------------------------ |
 | `placement` | `bottom-start` | [Popper Placement][popper-placement] |
 
 ### Dropdown - `ui-dropdown`
@@ -116,13 +116,13 @@ This works the same as `ui-picker` but will display a caret on button elements t
 <ui-dropdown>
   <ui-button>Down</ui-button>
   <ui-menu slot="menu">
-      <ui-menu-item>Option 1</ui-menu-item>
+    <ui-menu-item>Option 1</ui-menu-item>
   </ui-menu>
 </ui-dropdown>
 ```
 
-| Attribute   | Default | Values |
-|-------------|---------|--------|
+| Attribute   | Default        | Values                               |
+| ----------- | -------------- | ------------------------------------ |
 | `placement` | `bottom-start` | [Popper Placement][popper-placement] |
 
 > Note: The `menu` slot can be any element, but the most common will be `ui-menu`.
@@ -141,13 +141,13 @@ The form shold wrap any elements you plan to use. It will handle simple things l
 </ui-form>
 ```
 
-| Component          | ui-input type=* | Attributes |
-|--------------------|-----------|----------------------|
-| ui-input-text      | text      | value, minlength, maxlength, pattern |
-| ui-input-counter   | counter   | value, step, min, max |
-| ui-textarea        | textarea  | value, minlength, maxlength, pattern |
-| ui-input-number    | number    | value, min, max, step |
-| ui-input-password  | password  | value, minlength |
+| Component         | ui-input type=\* | Attributes                           |
+| ----------------- | ---------------- | ------------------------------------ |
+| ui-input-text     | text             | value, minlength, maxlength, pattern |
+| ui-input-counter  | counter          | value, step, min, max                |
+| ui-textarea       | textarea         | value, minlength, maxlength, pattern |
+| ui-input-number   | number           | value, min, max, step                |
+| ui-input-password | password         | value, minlength                     |
 
 ### Icon - `ui-icon`
 
@@ -160,7 +160,7 @@ import { mdiAccount } from '@mdi/js';
 ```
 
 ```html
-<ui-icon path={mdiAccount}></ui-icon>
+<ui-icon path="{mdiAccount}"></ui-icon>
 ```
 
 ### List - `ui-list`
@@ -175,8 +175,8 @@ List is often used with the `ui-card` component.
   <ui-list-section>
     <ui-list-header>Additional Items</ui-list-header>
     <ui-list-item>
-        <ui-icon slot="left" path={mdiNumeric1}></ui-icon>
-        Item 2
+      <ui-icon slot="left" path="{mdiNumeric1}"></ui-icon>
+      Item 2
     </ui-list-item>
   </ui-list-section>
 </ui-list>
@@ -191,7 +191,8 @@ The menu can be used by itself or with `ui-context-menu`, `ui-dropdown`, and `ui
   <ui-menu-item>Option 1</ui-menu-item>
   <ui-menu-separator></ui-menu-separator>
   <ui-menu-item>Option 2</ui-menu-item>
-<ui-menu>
+  <ui-menu></ui-menu
+></ui-menu>
 ```
 
 ### Modal - `ui-modal`
@@ -219,8 +220,8 @@ Exact same as `ui-dropdown`, but does not cause a inner `ui-button` to render a 
 </ui-dropdown>
 ```
 
-| Attribute   | Default | Values |
-|-------------|---------|--------|
+| Attribute   | Default        | Values                               |
+| ----------- | -------------- | ------------------------------------ |
 | `placement` | `bottom-start` | [Popper Placement][popper-placement] |
 
 ### Toast - `ui-toast`
@@ -233,12 +234,12 @@ To use the toast service you must include one `ui-toast` component in the root o
 
 ```typescript
 import {
-    showToast,
-    showWarningToast,
-    showErrorToast,
-    showLoadingToast,
-    removeToast,
-    removeAllToasts
+  showToast,
+  showWarningToast,
+  showErrorToast,
+  showLoadingToast,
+  removeToast,
+  removeAllToasts
 } from `lwc-ui`;
 // ...
 var id = showToast('Saved');

@@ -20,8 +20,21 @@ export default class Form extends LightningElement {
     }
   }
 
+  connectedCallback() {
+    this.handleInit();
+  }
+
   handleRegister(e: any) {
     this.processChange(e.detail);
+  }
+
+  handleInit() {
+    this.dispatchEvent(new CustomEvent('init', {
+      detail: {
+        inputs: this.inputs,
+        valid: this.inputs.find((input: FormInput) => !input.valid) !== null
+      }
+    }));
   }
 
   handleChange(e: any) {
@@ -42,4 +55,18 @@ export default class Form extends LightningElement {
       }
     }));
   }
+}
+
+interface FormInput {
+  name: string,
+  value: string | number | null,
+  valid: boolean
+}
+
+interface FormDetail {
+  inputs: FormInput[]
+}
+
+export interface FormEvent {
+  detail: FormDetail;
 }

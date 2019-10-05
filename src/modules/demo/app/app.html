@@ -199,7 +199,7 @@
     </demo-component>
 
     <demo-component name="Form" tag="ui-form" file="form">
-      <ui-form onchange={handleFormChange} onsubmit={handleFormSubmit}>
+      <ui-form oninit={handleFormInit} onchange={handleFormChange} onsubmit={handleFormSubmit}>
         <ui-label>
           Counter
           <ui-input-counter name="number"></ui-input-counter>
@@ -214,6 +214,10 @@
         </ui-label>
         <ui-button submit>Submit</ui-button>
       </ui-form>
+      <div>
+        <strong>Form Init Value:</strong>
+        <pre style="white-space: normal;">{formInitValue}</pre>
+      </div>
       <div>
         <strong>Form Change Value:</strong>
         <pre style="white-space: normal;">{formChangeValue}</pre>
@@ -315,6 +319,26 @@
           <ui-menu-item>Option 2</ui-menu-item>
         </ui-menu>
       </ui-picker>
+    </demo-component>
+
+    <demo-component name="Tab" tag="ui-tab" file="tab">
+      <ui-tab>
+        <ui-nav>
+          <ui-nav-item>
+            <ui-icon slot="left" path={mdiAccount}></ui-icon>
+            Tab 1
+          </ui-nav-item>
+          <ui-nav-item>
+            Tab 2
+          </ui-nav-item>
+        </ui-nav>
+        <ui-tab-item>
+          Tab 1 content
+        </ui-tab-item>
+        <ui-tab-item>
+          Tab 2 content
+        </ui-tab-item>
+      </ui-tab>
     </demo-component>
 
     <demo-component name="Toast" tag="ui-toast" file="toast">

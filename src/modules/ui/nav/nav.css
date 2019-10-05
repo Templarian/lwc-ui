@@ -1,8 +1,16 @@
-:host {
+:host(.nav) {
     display: flex;
     box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.3);
     background-color: #FFF;
     line-height: 2rem;
     font-size: 1.25rem;
     padding: 0.5rem 1.25rem;
+}
+
+:host(.tab) {
+    display: flex;
+    background-color: #FFF;
+    line-height: 2rem;
+    font-size: 1rem;
+    border-bottom: 1px solid #DDD;
 }

@@ -132,7 +132,7 @@ This works the same as `ui-picker` but will display a caret on button elements t
 The form shold wrap any elements you plan to use. It will handle simple things like validation.
 
 ```html
-<ui-form onsubmit={handleFormSubmit} onchange={handleFormChange}>
+<ui-form oninit={handleFormInit} onsubmit={handleFormSubmit} onchange={handleFormChange}>
   <ui-label>
     Type Textarea
     <ui-input type="textarea" value={value}></ui-textarea>
@@ -143,10 +143,11 @@ The form shold wrap any elements you plan to use. It will handle simple things l
 
 | Component          | ui-input type=* | Attributes |
 |--------------------|-----------|----------------------|
-| ui-input-text      | text      | minlength, maxlength |
-| ui-textarea        | textarea  | minlength, maxlength |
-| ui-input-number    | number    | min, max, step |
-| ui-input-passwrod  | password  | minlength |
+| ui-input-text      | text      | value, minlength, maxlength, pattern |
+| ui-input-counter   | counter   | value, step, min, max |
+| ui-textarea        | textarea  | value, minlength, maxlength, pattern |
+| ui-input-number    | number    | value, min, max, step |
+| ui-input-password  | password  | value, minlength |
 
 ### Icon - `ui-icon`
 

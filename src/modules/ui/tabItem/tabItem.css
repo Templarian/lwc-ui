@@ -1,0 +1,7 @@
+:host {
+    display: flex;
+}
+
+:host(.hide) {
+    display: none;
+}

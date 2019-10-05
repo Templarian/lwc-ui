@@ -20,6 +20,7 @@ import {
   mdiCheckCircle,
   mdiInformation
 } from '@mdi/js';
+import { FormEvent } from 'ui/form';
 
 export default class App extends LightningElement {
   @track mdiAccount: string = mdiAccount;
@@ -83,14 +84,19 @@ export default class App extends LightningElement {
   }
 
   // Form
+  @track formInitValue: string = '';
   @track formChangeValue: string = '';
   @track formSubmitValue: string = '';
 
-  handleFormChange(e: any) {
+  handleFormInit(e: FormEvent) {
+    this.formInitValue = JSON.stringify(e.detail);
+  }
+
+  handleFormChange(e: FormEvent) {
     this.formChangeValue = JSON.stringify(e.detail);
   }
 
-  handleFormSubmit(e: any) {
+  handleFormSubmit(e: FormEvent) {
     this.formSubmitValue = JSON.stringify(e.detail);
   }
 }

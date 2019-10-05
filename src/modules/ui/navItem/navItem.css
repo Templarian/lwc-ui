@@ -21,3 +21,16 @@
     box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.3) inset;
     background: #F1F1F1;
 }
+
+:host(.tab-item) button {
+    border-left: 1px solid #DDD;
+    border-top: 1px solid #DDD;
+    border-right: 1px solid #DDD;
+    border-bottom: 0;
+    margin-bottom: -1px;
+    border-radius: 0.25rem 0.25rem 0 0;
+    background: #FFF;
+    padding: 0.5rem 0.75rem;
+    font-size: 1rem;
+    color: #222;
+}

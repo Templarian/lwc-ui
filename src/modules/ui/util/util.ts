@@ -33,7 +33,7 @@ interface Slot {
 }
 
 // Error: https://github.com/Microsoft/TypeScript/issues/28357
-export const handleSlot = function (event: CustomEvent<Slot>) {
+export const handleSlot = function(event: CustomEvent<Slot>) {
   const { target, detail: slot } = event;
   const iconElement = target as Element;
   const slotName = slot.name ? `-${slot.name}` : '';
@@ -43,8 +43,8 @@ export const handleSlot = function (event: CustomEvent<Slot>) {
   });
 } as EventListener;
 
-export const handleSlotParentClass = function (element: Element) {
-  return function (event: CustomEvent<Slot>) {
+export const handleSlotParentClass = function(element: Element) {
+  return function(event: CustomEvent<Slot>) {
     const { detail: slot } = event;
     const slotName = slot.name ? `-${slot.name}` : '';
     updateClass(element.classList, {
@@ -58,4 +58,14 @@ export const handleSlotParentClass = function (element: Element) {
 
 export function dispatchSlot(element: Element, detail: Slot) {
   element.dispatchEvent(new CustomEvent('slot', { detail }));
+}
+
+export function dispatchParent<T>(element: Element | HTMLElement, detail: T) {
+  element.dispatchEvent(
+    new CustomEvent('parent', {
+      detail,
+      composed: true,
+      bubbles: true
+    })
+  );
 }

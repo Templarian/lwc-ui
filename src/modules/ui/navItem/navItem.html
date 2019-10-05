@@ -1,12 +1,16 @@
 <template>
   <template if:true={href}>
     <a href={href} target={target}>
+      <slot name="left"></slot>
       <slot></slot>
+      <slot name="right"></slot>
     </a>
   </template>
   <template if:false={href}>
     <button>
+      <slot name="left"></slot>
       <slot></slot>
+      <slot name="right"></slot>
     </button>
   </template>
 </template>

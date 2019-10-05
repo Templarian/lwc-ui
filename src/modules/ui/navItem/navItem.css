@@ -23,14 +23,25 @@
 }
 
 :host(.tab-item) button {
+  border: 1px solid transparent;
+  margin-bottom: -1px;
+  background: transparent;
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  color: #222;
+  outline: 0;
+}
+
+:host(.tab-item.selected) button {
   border-left: 1px solid #ddd;
   border-top: 1px solid #ddd;
   border-right: 1px solid #ddd;
-  border-bottom: 0;
+  border-bottom: 1px solid transparent;
   margin-bottom: -1px;
   border-radius: 0.25rem 0.25rem 0 0;
   background: #fff;
   padding: 0.5rem 0.75rem;
   font-size: 1rem;
   color: #222;
+  outline: 0;
 }

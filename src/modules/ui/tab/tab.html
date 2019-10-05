@@ -1,6 +1,6 @@
 <template>
   <div class="tabs">
-    <slot name="tabs" onslotchange={handleSlotChange}></slot>
+    <slot name="tabs"></slot>
   </div>
-  <slot></slot>
+  <slot onslotchange={handleSlotChange}></slot>
 </template>

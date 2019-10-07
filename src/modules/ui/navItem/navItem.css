@@ -101,7 +101,7 @@
   border-top-color: #eee;
   border-right-color: #eee;
   border-left-color: #eee;
-  background: #FFF;
+  background: #fff;
 }
 
 :host(.tab-item:not(.selected):hover) span.shadow {
@@ -159,7 +159,7 @@ button.close span {
 }
 
 button.close:hover span {
-  background: #EEE;
+  background: #eee;
 }
 
 button.close span ui-icon {

@@ -134,6 +134,7 @@ export default class App extends LightningElement {
 
   removeTab(e: MouseEvent) {
     const target = e.target as HTMLElement;
+    console.log('id:', target.dataset.id);
     const id = parseInt(target.dataset.id as string, 10);
     const index = this.tabItems.findIndex(t => t.id === id);
     this.tabItems.splice(index, 1);

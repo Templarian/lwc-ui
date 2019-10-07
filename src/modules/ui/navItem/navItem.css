@@ -1,73 +1,168 @@
 :host {
   display: flex;
   font-size: 1rem;
+  position: relative;
 }
 
-:host a {
+:host(.nav-item) a {
   display: inline-flex;
   align-items: center;
   text-decoration: none;
   color: #222;
-  padding: 0.5rem;
   padding: 0 0.5rem;
   border-radius: 0.25rem;
   border: 1px solid transparent;
 }
-:host a:hover {
+:host(.nav-item) a:hover {
   border-color: #ddd;
 }
-:host a:active {
+:host(.nav-item) a:active {
   border-color: #fff;
   box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.3) inset;
   background: #f1f1f1;
 }
 
-:host(.tab-item:not(.selected)) button {
+:host(.tab-item) button.action {
+  display: inline-flex;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  outline: 0;
+}
+:host(.tab-item) button.action span {
+  padding: 0.5rem 0.75rem;
+}
+:host(.tab-item:not(.selected)) {
+  display: flex;
+  align-items: center;
   border: 1px solid #eee;
   border-bottom: 1px solid transparent;
   margin-bottom: -1px;
   background: transparent;
-  padding: 0.5rem 0.75rem;
   font-size: 1rem;
   color: #222;
   outline: 0;
 }
-:host(.tab-item:not(.selected).selected-before) button {
-  background: linear-gradient(270deg, #eee 0%, transparent 0.5rem);
+:host(.tab-item:not(.selected).selected-before) {
+  background-image: linear-gradient(
+    to left,
+    hsl(0, 0%, 95%) 0%,
+    hsla(0, 0%, 95%, 0.987) 0.7%,
+    hsla(0, 0%, 95%, 0.951) 2.5%,
+    hsla(0, 0%, 95%, 0.896) 5.6%,
+    hsla(0, 0%, 95%, 0.825) 9.7%,
+    hsla(0, 0%, 95%, 0.741) 14.8%,
+    hsla(0, 0%, 95%, 0.648) 20.8%,
+    hsla(0, 0%, 95%, 0.55) 27.6%,
+    hsla(0, 0%, 95%, 0.45) 35.1%,
+    hsla(0, 0%, 95%, 0.352) 43.2%,
+    hsla(0, 0%, 95%, 0.259) 51.9%,
+    hsla(0, 0%, 95%, 0.175) 60.9%,
+    hsla(0, 0%, 95%, 0.104) 70.4%,
+    hsla(0, 0%, 95%, 0.049) 80.1%,
+    hsla(0, 0%, 95%, 0.013) 90%,
+    hsla(0, 0%, 95%, 0) 100%
+  );
   background-clip: padding-box;
   border-right: 0;
+  background-repeat: no-repeat;
+  background-size: 1rem;
+  background-position-x: 100%;
 }
-:host(.tab-item:not(.selected).selected-after) button {
-  background: linear-gradient(90deg, #eee 0%, transparent 0.5rem);
+:host(.tab-item:not(.selected).selected-after) {
+  background-image: linear-gradient(
+    to right,
+    hsl(0, 0%, 95%) 0%,
+    hsla(0, 0%, 95%, 0.987) 0.7%,
+    hsla(0, 0%, 95%, 0.951) 2.5%,
+    hsla(0, 0%, 95%, 0.896) 5.6%,
+    hsla(0, 0%, 95%, 0.825) 9.7%,
+    hsla(0, 0%, 95%, 0.741) 14.8%,
+    hsla(0, 0%, 95%, 0.648) 20.8%,
+    hsla(0, 0%, 95%, 0.55) 27.6%,
+    hsla(0, 0%, 95%, 0.45) 35.1%,
+    hsla(0, 0%, 95%, 0.352) 43.2%,
+    hsla(0, 0%, 95%, 0.259) 51.9%,
+    hsla(0, 0%, 95%, 0.175) 60.9%,
+    hsla(0, 0%, 95%, 0.104) 70.4%,
+    hsla(0, 0%, 95%, 0.049) 80.1%,
+    hsla(0, 0%, 95%, 0.013) 90%,
+    hsla(0, 0%, 95%, 0) 100%
+  );
   background-clip: padding-box;
   border-left: 0;
+  background-repeat: no-repeat;
+  background-size: 1rem;
 }
-:host(.tab-item:not(.selected):not(:last-of-type)) button {
+:host(.tab-item:not(.selected):not(:last-of-type)) {
   border-right: 0;
 }
-:host(.tab-item:not(.selected)) button:hover {
+:host(.tab-item:not(.selected):hover) {
   border-top-color: #eee;
   border-right-color: #eee;
   border-left-color: #eee;
+  background: #FFF;
 }
 
-:host(.tab-item.selected) button {
+:host(.tab-item:not(.selected):hover) span.shadow {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  bottom: -0.5rem;
+  left: 0;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+:host(.tab-item:not(.selected):hover) span.shadow::after {
+  content: ' ';
+  position: absolute;
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.3);
+  left: 0.125rem;
+  right: 0.125rem;
+  height: 0.5rem;
+  top: -0.5rem;
+}
+
+:host(.tab-item.selected) {
+  display: flex;
+  align-items: center;
   border-left: 1px solid #ddd;
   border-top: 1px solid #ddd;
   border-right: 1px solid #ddd;
   border-bottom: 1px solid transparent;
   margin-bottom: -1px;
   background: #fff;
-  padding: 0.5rem 0.75rem;
   font-size: 1rem;
   color: #222;
   outline: 0;
 }
 
-:host(.tab-item:first-of-type) button {
+:host(.tab-item:first-of-type) {
   border-radius: 0.25rem 0 0 0;
 }
 
-:host(.tab-item:last-of-type) button {
+:host(.tab-item:last-of-type) {
   border-radius: 0 0.25rem 0 0;
+}
+
+button.close {
+  padding: 0 0.25rem 0 0;
+  border: 0;
+  background: transparent;
+}
+button.close span {
+  display: flex;
+  border-radius: 50% 50%;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+button.close:hover span {
+  background: #EEE;
+}
+
+button.close span ui-icon {
+  width: 1.25rem;
+  height: 1.25rem;
 }

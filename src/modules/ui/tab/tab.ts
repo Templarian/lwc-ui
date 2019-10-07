@@ -1,5 +1,7 @@
 import { LightningElement, api } from 'lwc';
 
+declare const ResizeObserver;
+
 export default class Tab extends LightningElement {
   _nav: any = null;
   _items: any[] = [];
@@ -24,6 +26,12 @@ export default class Tab extends LightningElement {
       });
       this._nav.selectedIndex = detail.index;
     });
+    const resizeObserver = new ResizeObserver(this.handleResize);
+    resizeObserver.observe(this.template.host);
+  }
+
+  handleResize(entry) {
+    console.log(entry);
   }
 
   handleSlotChange() {

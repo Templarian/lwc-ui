@@ -1,5 +1,9 @@
 :host {
   display: flex;
+  border-left: 1px solid #DDD;
+  border-right: 1px solid #DDD;
+  border-bottom: 1px solid #DDD;
+  border-radius: 0 0 0.25rem 0.25rem;
 }
 
 :host(.hide) {

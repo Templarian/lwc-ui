@@ -341,12 +341,15 @@
       <br/>
       <ui-tab>
         <ui-nav>
-          <ui-nav-item for:each={tabItems} for:item="item" key={item.id}>
+          <ui-nav-item
+            for:each={tabItems}
+            for:item="item"
+            key={item.id}
+            close
+            onclose={removeTab}
+            data-id={item.id}>
             <ui-icon slot="left" path={item.icon}></ui-icon>
             {item.label}
-            <ui-button slot="right" onclick={removeTab} data-id={item.id}>
-              <ui-icon path={mdiClose}></ui-icon>
-            </ui-button>
           </ui-nav-item>
           <ui-button slot="right" onclick={addTab}>
             <ui-icon path={mdiPlus}></ui-icon>

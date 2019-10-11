@@ -1,6 +1,8 @@
 import { LightningElement, api } from 'lwc';
 import { updateClass, dispatchParent } from 'ui/util';
+import { dispatchSlot } from '../util';
 
+const COMPONENT = 'nav';
 const uiTabTabName = 'UI-TAB';
 
 export default class Nav extends LightningElement {
@@ -27,7 +29,7 @@ export default class Nav extends LightningElement {
   }
 
   handleSlotChange() {
-    const slot = this.template.childNodes[1] as HTMLSlotElement;
+    const slot = this.template.childNodes[2] as HTMLSlotElement;
     const elements = slot.assignedElements() as HTMLElement[];
     elements.forEach((element, i) => {
       updateClass(element.classList, {
@@ -50,6 +52,30 @@ export default class Nav extends LightningElement {
           });
         });
       };
+    });
+  }
+
+  handleLeftSlotChange() {
+    const slot = this.template.childNodes[1] as HTMLSlotElement;
+    const elements = slot.assignedElements() as HTMLElement[];
+    elements.forEach((element) => {
+      dispatchSlot(element, {
+        component: COMPONENT,
+        name: 'left',
+        variant: null
+      });
+    });
+  }
+
+  handleRightSlotChange() {
+    const slot = this.template.childNodes[3] as HTMLSlotElement;
+    const elements = slot.assignedElements() as HTMLElement[];
+    elements.forEach((element) => {
+      dispatchSlot(element, {
+        component: COMPONENT,
+        name: 'right',
+        variant: null
+      });
     });
   }
 }

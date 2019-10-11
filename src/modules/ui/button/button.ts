@@ -1,5 +1,6 @@
 import { LightningElement, api } from 'lwc';
 import {
+  updateClass,
   updateVariant,
   inArrayOrDefault,
   handleSlot,
@@ -57,13 +58,8 @@ export default class Button extends LightningElement {
 
   connectedCallback() {
     if (this._variant === DEFAULT_VARIANT) {
-      updateVariant(
-        this.template.host.classList,
-        this._variant,
-        VARIANTS
-      );
+      updateVariant(this.template.host.classList, this._variant, VARIANTS);
     }
-    this.addEventListener('slot', handleSlot);
     if (this.submit) {
       this.addEventListener('click', () => {
         this.dispatchEvent(
@@ -73,6 +69,21 @@ export default class Button extends LightningElement {
         );
       });
     }
+    this.addEventListener('slot', handleSlot);
+    this.addEventListener('mouseenter', this.handleMouseEnter.bind(this));
+    this.addEventListener('mouseleave', this.handleMouseLeave.bind(this));
+  }
+
+  handleMouseEnter() {
+    updateClass(this.template.host.classList, {
+      'button-hover': true
+    });
+  }
+
+  handleMouseLeave() {
+    updateClass(this.template.host.classList, {
+      'button-hover': false
+    });
   }
 
   updateHostClass() {

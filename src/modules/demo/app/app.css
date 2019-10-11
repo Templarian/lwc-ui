@@ -35,3 +35,9 @@ ui-form ui-label {
   color: #fff;
   background: #222;
 }
+
+@media (max-width: 480px) {
+  .npm {
+    display: none;
+  }
+}

@@ -1,4 +1,5 @@
 <template>
+  <slot name="left" onslotchange={handleLeftSlotChange}></slot>
   <slot onslotchange={handleSlotChange}></slot>
-  <slot name="right"></slot>
+  <slot name="right" onslotchange={handleRightSlotChange}></slot>
 </template>

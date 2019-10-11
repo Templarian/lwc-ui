@@ -36,9 +36,8 @@
   display: flex;
   align-items: center;
   border: 1px solid #eee;
-  border-bottom: 1px solid transparent;
   margin-bottom: -1px;
-  background: transparent;
+  background: #fff;
   font-size: 1rem;
   color: #222;
   outline: 0;
@@ -130,7 +129,6 @@
   border-left: 1px solid #ddd;
   border-top: 1px solid #ddd;
   border-right: 1px solid #ddd;
-  border-bottom: 1px solid transparent;
   margin-bottom: -1px;
   background: #fff;
   font-size: 1rem;

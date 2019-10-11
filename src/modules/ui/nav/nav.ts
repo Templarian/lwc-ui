@@ -58,7 +58,7 @@ export default class Nav extends LightningElement {
   handleLeftSlotChange() {
     const slot = this.template.childNodes[1] as HTMLSlotElement;
     const elements = slot.assignedElements() as HTMLElement[];
-    elements.forEach((element) => {
+    elements.forEach(element => {
       dispatchSlot(element, {
         component: COMPONENT,
         name: 'left',
@@ -70,7 +70,7 @@ export default class Nav extends LightningElement {
   handleRightSlotChange() {
     const slot = this.template.childNodes[3] as HTMLSlotElement;
     const elements = slot.assignedElements() as HTMLElement[];
-    elements.forEach((element) => {
+    elements.forEach(element => {
       dispatchSlot(element, {
         component: COMPONENT,
         name: 'right',

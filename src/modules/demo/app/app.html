@@ -209,6 +209,10 @@
           <ui-input-text name="text" value="foo"></ui-input-text>
         </ui-label>
         <ui-label>
+          Syntax
+          <ui-input-syntax name="code" value="Player.health Greater Than 5" parts={parts}></ui-input-syntax>
+        </ui-label>
+        <ui-label>
           Textarea
           <ui-textarea name="textarea" value="bar"></ui-textarea>
         </ui-label>
@@ -359,6 +363,29 @@
           {item.content}
         </ui-tab-item>
       </ui-tab>
+    </demo-component>
+
+    <demo-component name="Timeline" tag="ui-timeline" file="timeline">
+      <ui-timeline>
+        <ui-timeline-section>
+          <ui-icon slot="icon" path={mdiCalendar}></ui-icon>
+          Commits on Oct 14, 2019
+        </ui-timeline-section>
+        <ui-timeline-item>Timeline Item 1</ui-timeline-item>
+        <ui-timeline-item>
+          <ui-icon slot="icon" path={mdiAccount}></ui-icon>
+          Timeline Item with Icon
+        </ui-timeline-item>
+        <ui-timeline-item>
+          <ui-icon slot="icon" path={mdiAccount}></ui-icon>
+          Timeline Item with Icon
+        </ui-timeline-item>
+        <ui-timeline-section>Commits on Oct 13, 2019</ui-timeline-section>
+        <ui-timeline-item>
+          <ui-icon slot="icon" path={mdiAccount}></ui-icon>
+          Timeline Item with Icon
+        </ui-timeline-item>
+      </ui-timeline>
     </demo-component>
 
     <demo-component name="Toast" tag="ui-toast" file="toast">

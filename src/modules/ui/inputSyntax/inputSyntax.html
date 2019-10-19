@@ -1,0 +1,18 @@
+<template>
+    <input type="text"
+        value={value}
+        spellcheck="false"
+        onfocus={handleFocus}
+        onblur={handleBlur}
+        onchange={handleChange}
+        oninput={handleChange}
+        onkeyup={handleChange} />
+    <span></span>
+    <div class="values">
+        <div for:each={valuesList} for:item="item" key={item.id} class={item.computedClass}>{item.value}</div>
+    </div>
+    <div>{partName}</div>
+    <div>
+        <div for:each={list} for:item="item" key={item}>{item}</div>
+    </div>
+</template>

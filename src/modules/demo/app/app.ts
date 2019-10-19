@@ -21,7 +21,8 @@ import {
   mdiInformation,
   mdiClose,
   mdiPlus,
-  mdiWorker
+  mdiWorker,
+  mdiCalendar
 } from '@mdi/js';
 import { FormEvent } from 'ui/form';
 
@@ -40,6 +41,7 @@ export default class App extends LightningElement {
   @track mdiInformation: string = mdiInformation;
   @track mdiClose: string = mdiClose;
   @track mdiPlus: string = mdiPlus;
+  @track mdiCalendar: string = mdiCalendar;
 
   handleToast() {
     showToast('Testing 3 Seconds', 3);
@@ -140,4 +142,54 @@ export default class App extends LightningElement {
     this.tabItems.splice(index, 1);
     e.stopPropagation();
   }
+
+  // Input Syntax
+  @track parts = [
+    {
+      name: 'Resource',
+      color: 'blue',
+      values: [
+        'Player.health',
+        'Quests.rats.state.completed',
+        'Quests.rats.state.done',
+        'Quests.rats.state.count',
+        'Player.inventory[gold]'
+      ]
+    },
+    {
+      name: 'Operator',
+      color: '#222',
+      values: [
+        'Set',
+        'Not Set',
+        'Equal To',
+        'Not Equal To',
+        'Less Than',
+        'Less Than Or Equal',
+        'Greater Than',
+        'Greater Than Or Equal'
+      ]
+    },
+    {
+      name: 'Value',
+      color: '#222',
+      values: function(parts) {
+        switch (parts[1]) {
+          case 'Set':
+          case 'Not Set':
+            return null;
+          case 'Less Than':
+          case 'Less Than Or Equal':
+          case 'Greater Than':
+          case 'Greater Than Or Equal':
+            return '/[0-9]+/';
+          case 'Equal To':
+          case 'Not Equal To':
+            return '';
+          default:
+            return null;
+        }
+      }
+    }
+  ];
 }

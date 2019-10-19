@@ -27,6 +27,7 @@ export default class InputSyntax extends LightningElement {
   }
 
   updateValues() {
+    console.log(this._value);
     let iterateValue = this._value;
     this._values = [];
     this._parts.forEach((part, i) => {
@@ -50,7 +51,8 @@ export default class InputSyntax extends LightningElement {
         const regexMatch = values.match(/\/([^\/]+)\//);
         if (regexMatch) {
           // Regex Pattern
-          const regex = new RegExp(`^(${regexMatch[1]})${this.separator}?`);
+          const last = this._parts.length === i + 1 ? '$' : `(${this.separator})?`;
+          const regex = new RegExp(`^(${regexMatch[1]})${last}`);
           const match = iterateValue.match(regex);
           if (match) {
             iterateValue = iterateValue.replace(regex, '');
@@ -69,7 +71,7 @@ export default class InputSyntax extends LightningElement {
       if (this._values.length !== i + 1) {
         this._values.push({
           valid: false,
-          value: '?'
+          value: iterateValue
         });
       }
     });
@@ -150,28 +152,22 @@ export default class InputSyntax extends LightningElement {
   }
 
   handleKeyDown(e: InputEvent) {
-    if (e.which === 37 || e.which === 39) {
-      const input = (this.template.childNodes[1] as HTMLInputElement);
-      requestAnimationFrame(() => {
-        this._caret = input.selectionStart;
-        this.updatePart();
-      });
-    }
-  }
-
-  handleInput(e: InputEvent) {
     const input = (this.template.childNodes[1] as HTMLInputElement);
     requestAnimationFrame(() => {
       this._caret = input.selectionStart;
       this.updatePart();
     });
+  }
+
+  handleInput(e: InputEvent) {
     this.handleChange(e);
+    this.updateValues();
   }
 
   handleChange(e: InputEvent) {
-    const newValue = (e.target as HTMLTextAreaElement).value;
-    if (this.value !== newValue) {
-      this.value = (e.target as HTMLTextAreaElement).value;
+    const newValue = (e.target as HTMLInputElement).value;
+    if (this._value !== newValue) {
+      this._value = newValue;
       this.dispatchEvent(
         new CustomEvent('form_change', {
           bubbles: true,

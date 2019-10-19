@@ -43,7 +43,6 @@ input:focus + span {
 
 .values.focus {
   color: transparent;
-  border-bottom: 2px solid red;
 }
 
 .first {
@@ -52,10 +51,12 @@ input:focus + span {
 
 .property {
   color: blue;
+  border-bottom: 2px solid blue;
 }
 
 .property-invalid {
   color: orange;
+  border-bottom: 2px solid red;
 }
 
 .separator {

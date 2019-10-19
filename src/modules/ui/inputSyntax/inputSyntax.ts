@@ -27,7 +27,6 @@ export default class InputSyntax extends LightningElement {
   }
 
   updateValues() {
-    console.log(this._value);
     let iterateValue = this._value;
     this._values = [];
     this._parts.forEach((part, i) => {
@@ -75,7 +74,6 @@ export default class InputSyntax extends LightningElement {
         });
       }
     });
-    this.updatePart();
   }
 
   get valuesList() {
@@ -173,7 +171,7 @@ export default class InputSyntax extends LightningElement {
           bubbles: true,
           detail: {
             name: this.name,
-            value: this.value,
+            value: this._value,
             valid: true
           }
         })

@@ -136,8 +136,8 @@ export default class InputSyntax extends LightningElement {
       i += 1;
     };
     if (this._caret > endColumn) {
-      this._part = this._values.reduce((p, c, i) => c.valid ? i : p, 0);
-      console.log('asssuming', this._part);
+      this._part = this._values.reduce((p, c, i) => c.valid ? i + 1 : p, 0);
+      console.log('assuming', this._part);
     }
   }
 
@@ -159,6 +159,15 @@ export default class InputSyntax extends LightningElement {
     }
   }
 
+  handleInput(e: InputEvent) {
+    const input = (this.template.childNodes[1] as HTMLInputElement);
+    requestAnimationFrame(() => {
+      this._caret = input.selectionStart;
+      this.updatePart();
+    });
+    this.handleChange(e);
+  }
+
   handleChange(e: InputEvent) {
     const newValue = (e.target as HTMLTextAreaElement).value;
     if (this.value !== newValue) {
@@ -174,10 +183,5 @@ export default class InputSyntax extends LightningElement {
         })
       );
     }
-    const input = (this.template.childNodes[1] as HTMLInputElement);
-    requestAnimationFrame(() => {
-      this._caret = input.selectionStart;
-      this.updatePart();
-    });
   }
 }

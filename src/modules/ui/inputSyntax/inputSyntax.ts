@@ -1,5 +1,4 @@
 import { LightningElement, api } from 'lwc';
-import { match } from 'minimatch';
 
 export default class InputSyntax extends LightningElement {
   _value = '';
@@ -17,6 +16,7 @@ export default class InputSyntax extends LightningElement {
   _values = [];
   _parts = [];
   _part = 0;
+  _caret = 0;
   @api
   get parts() {
     return this._parts;
@@ -39,7 +39,10 @@ export default class InputSyntax extends LightningElement {
           if (match) {
             iterateValue = iterateValue.replace(regex, '');
             console.log('matched -', match[1], '-', iterateValue);
-            this._values.push(match[1]);
+            this._values.push({
+              valid: true,
+              value: match[1]
+            });
             return;
           }
         });
@@ -52,7 +55,10 @@ export default class InputSyntax extends LightningElement {
           if (match) {
             iterateValue = iterateValue.replace(regex, '');
             console.log('matched -', match[1], '-', iterateValue);
-            this._values.push(match[1]);
+            this._values.push({
+              valid: true,
+              value: match[1]
+            });
             return;
           }
         } else {
@@ -61,21 +67,26 @@ export default class InputSyntax extends LightningElement {
       }
       // Invalid Part Value
       if (this._values.length !== i + 1) {
-        this._values.push('?');
+        this._values.push({
+          valid: false,
+          value: '?'
+        });
       }
     });
+    this.updatePart();
   }
 
   get valuesList() {
+    const separators = this._values.length - 1;
     const list = [];
     let id = 0;
-    this._values.forEach((value, i) => {
+    this._values.forEach((item, i) => {
       list.push({
         id: id++,
-        value: value,
-        computedClass: 'property'
+        value: item.value,
+        computedClass: item.valid ? 'property' : 'property-invalid'
       });
-      if (this._values.length > i) {
+      if (separators > i) {
         list.push({
           id: id++,
           value: this.separator,
@@ -94,12 +105,58 @@ export default class InputSyntax extends LightningElement {
     return this._parts[this._part].values;
   }
 
+  get hasPartList() {
+    return this._parts[this._part].values instanceof Array;
+  }
+
+  handleMouseDown() {
+    const input = (this.template.childNodes[1] as HTMLInputElement);
+    requestAnimationFrame(() => {
+      this._caret = input.selectionStart;
+      this.updatePart();
+    });
+  }
+
+  updatePart() {
+    // Calculate Part
+    let startColumn = 0;
+    let endColumn = 0;
+    this._part = 0;
+    let i = 0;
+    for(let item of this._values) {
+      if (item.valid) {
+        endColumn = startColumn + item.value.length;
+        console.log(i, this._caret, startColumn, endColumn)
+        if (this._caret >= startColumn && this._caret <= endColumn) {
+          this._part = i;
+          break;
+        }
+        startColumn = endColumn + this.separator.length;
+      }
+      i += 1;
+    };
+    if (this._caret > endColumn) {
+      this._part = this._values.reduce((p, c, i) => c.valid ? i + 1 : p, 0);
+      console.log('asssuming', this._part);
+    }
+  }
+
   handleFocus() {
     (this.template.childNodes[3] as HTMLElement).classList.add('focus');
   }
 
   handleBlur() {
     (this.template.childNodes[3] as HTMLElement).classList.remove('focus');
+  }
+
+  handleKeyDown(e: InputEvent) {
+    if (e.which === 37 || e.which === 39) {
+      const input = (this.template.childNodes[1] as HTMLInputElement);
+      requestAnimationFrame(() => {
+        this._caret = input.selectionStart;
+        this.updatePart();
+      });
+    }
   }
 
   handleChange(e: InputEvent) {

@@ -174,7 +174,7 @@ export default class App extends LightningElement {
       name: 'Value',
       color: '#222',
       values: function(parts) {
-        switch (parts[1]) {
+        switch (parts[1].value) {
           case 'Set':
           case 'Not Set':
             return null;

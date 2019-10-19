@@ -54,6 +54,10 @@ input:focus + span {
   color: blue;
 }
 
+.property-invalid {
+  color: orange;
+}
+
 .separator {
-  color: red;
+  background-color: red;
 }

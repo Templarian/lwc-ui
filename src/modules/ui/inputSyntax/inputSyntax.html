@@ -2,8 +2,10 @@
     <input type="text"
         value={value}
         spellcheck="false"
+        onmousedown={handleMouseDown}
         onfocus={handleFocus}
         onblur={handleBlur}
+        onkeydown={handleKeyDown}
         onchange={handleChange}
         oninput={handleChange}
         onkeyup={handleChange} />
@@ -12,7 +14,14 @@
         <div for:each={valuesList} for:item="item" key={item.id} class={item.computedClass}>{item.value}</div>
     </div>
     <div>{partName}</div>
-    <div>
-        <div for:each={list} for:item="item" key={item}>{item}</div>
-    </div>
+    <template if:true={hasPartList}>
+        <div>
+            <div for:each={list} for:item="item" key={item}>{item}</div>
+        </div>
+    </template>
+    <template if:false={hasPartList}>
+        <div>
+            Pattern: [0-9]+
+        </div>
+    </template>
 </template>

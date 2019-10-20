@@ -20,9 +20,10 @@
             onmouseleave={handleMenuMouseLeave}>
             <button for:each={list}
                 for:item="item"
-                key={item}
+                key={item.id}
                 onclick={handleSelect}
-                data-value={item}>{item}</button>
+                data-value={item.value}
+                class={item.computedClass}>{item.value}</button>
         </div>
     </template>
     <template if:true={hasDescription}>

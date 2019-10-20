@@ -120,6 +120,10 @@ input.focus + span {
 .list button:hover {
   background: #eee;
 }
+.list button.select {
+  background: #2680EB;
+  color: #fff;
+}
 
 .description {
   display: flex;

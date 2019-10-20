@@ -140,14 +140,22 @@ export default class InputSyntax extends LightningElement {
     return this._parts[this._part].name;
   }
 
+  _selected = 0;
   get list() {
-    return this._filter
+    const list = this._filter
       ? this._parts[this._part]
         .values
         .filter((item: string) => {
           return item.toLowerCase().includes(this._filter.toLowerCase())
         })
       : this._parts[this._part].values;
+    return list.map((item: string, i) => {
+        return {
+          id: i,
+          value: item,
+          computedClass: i === this._selected ? 'select' : ''
+        };
+    });
   }
 
   _showList = false;
@@ -162,6 +170,7 @@ export default class InputSyntax extends LightningElement {
   handleMouseDown() {
     const input = (this.template.childNodes[1] as HTMLInputElement);
     requestAnimationFrame(() => {
+      this._filter = '';
       this._caret = input.selectionStart;
       this.updatePart();
     });
@@ -213,6 +222,11 @@ export default class InputSyntax extends LightningElement {
       e.preventDefault();
       return;
     }
+    if (e.which === 13) {
+      this.select(this.list[this._selected].value);
+      e.preventDefault();
+      return;
+    }
     const input = (this.template.childNodes[1] as HTMLInputElement);
     requestAnimationFrame(() => {
       this._caret = input.selectionStart;
@@ -221,11 +235,15 @@ export default class InputSyntax extends LightningElement {
   }
 
   focusPrevious() {
-
+    if (this._selected != 0) {
+      this._selected -= 1;
+    }
   }
 
   focusNext() {
-
+    if (this._selected !== this.list.length - 1) {
+      this._selected += 1;
+    }
   }
 
   getColumns(part) {
@@ -255,9 +273,13 @@ export default class InputSyntax extends LightningElement {
 
   handleSelect(e: Event) {
     const target = e.target as HTMLElement;
+    const { value } = target.dataset;
+    this.select(value);
+  }
+
+  select(value) {
     const input = (this.template.childNodes[1] as HTMLInputElement);
     const { startColumn, endColumn } = this.getColumns(this._part);
-    const { value } = target.dataset;
     this._value = this.spliceSlice(this._value, startColumn, endColumn, value);
     let valueEndColumn = startColumn + value.length;
     const space = this._value.slice(valueEndColumn) === '' && this._part !== this.parts.length - 1;
@@ -267,12 +289,14 @@ export default class InputSyntax extends LightningElement {
     }
     this.updateValues();
     this._menuFocus = false;
+    this._filter = '';
     if (space) {
       requestAnimationFrame(() => {
         this._caret = valueEndColumn;
         input.setSelectionRange(valueEndColumn, valueEndColumn);
         input.focus();
         this.updatePart();
+        this._selected = 0;
       });
     }
   }
@@ -291,6 +315,7 @@ export default class InputSyntax extends LightningElement {
     this.handleChange(e);
     this.updateValues();
     this._filter = this._values[this._part].value;
+    this._selected = 0;
   }
 
   handleChange(e: InputEvent) {

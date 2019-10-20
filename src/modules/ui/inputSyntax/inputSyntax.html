@@ -13,14 +13,20 @@
     <div class="values">
         <div for:each={valuesList} for:item="item" key={item.id} class={item.computedClass}>{item.value}</div>
     </div>
-    <div>{partName}</div>
+    <div style="display: none;">{partName}</div>
     <template if:true={hasPartList}>
-        <div>
-            <div for:each={list} for:item="item" key={item}>{item}</div>
+        <div class="list"
+            onmouseenter={handleMenuMouseEnter}
+            onmouseleave={handleMenuMouseLeave}>
+            <button for:each={list}
+                for:item="item"
+                key={item}
+                onclick={handleSelect}
+                data-value={item}>{item}</button>
         </div>
     </template>
-    <template if:false={hasPartList}>
-        <div>
+    <template if:true={hasDescription}>
+        <div class="description">
             Pattern: [0-9]+
         </div>
     </template>

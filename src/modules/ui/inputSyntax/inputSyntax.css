@@ -5,6 +5,11 @@
     'Helvetica Neue', Arial, sans-serif;
 }
 
+* {
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
+}
+
 input {
   width: calc(100% - 0.75rem - 4px);
   border: 1px solid #ddd;
@@ -12,12 +17,10 @@ input {
   border-radius: 0.25rem;
   outline: 0;
   background: transparent;
-  font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    'Helvetica Neue', Arial, sans-serif;
   font-size: 1rem;
 }
 
-input:focus + span {
+input.focus + span {
   pointer-events: none;
   z-index: 1;
   content: ' ';
@@ -33,15 +36,18 @@ input:focus + span {
 
 .values {
   position: absolute;
-  left: 9px;
-  top: 5px;
+  left: 0;
+  top: 0;
+  padding-left: 9px;
+  height: calc(2rem - 1px);
   display: flex;
   flex-direction: row;
   pointer-events: none;
   white-space: pre;
 }
 
-.values.focus {
+.values.focus .property,
+.values.focus .property-invalid {
   color: transparent;
 }
 
@@ -50,15 +56,79 @@ input:focus + span {
 }
 
 .property {
-  color: blue;
-  border-bottom: 2px solid blue;
+  display: flex;
+  align-content: center;
+  padding-top: 5px;
+  color: transparent;
 }
 
 .property-invalid {
-  color: orange;
-  border-bottom: 2px solid red;
+  display: flex;
+  align-content: center;
+  padding-top: 5px;
+  color: red;
+  border-bottom: 2px dotted red;
+  z-index: 1;
 }
 
 .separator {
-  background-color: red;
+  position: relative;
+}
+
+.separator::after {
+  content: ' ';
+  background: #DDD;
+  width: 2px;
+  height: 4px;
+  position: absolute;
+  top: 0;
+  left: 1px;
+}
+
+.separator::before {
+  content: ' ';
+  background: #DDD;
+  width: 2px;
+  height: 4px;
+  position: absolute;
+  bottom: 0;
+  left: 1px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: calc(2rem + 1px);
+  left: 3px;
+  background: #FFF;
+  z-index: 1;
+  border: 1px solid #999;
+  border-radius: 0.25rem;
+  overflow: hidden;;
+}
+
+.list button {
+  border: 0;
+  padding: 0.25rem;
+  background: #FFF;
+  text-align: left;
+  font-size: 1rem;
+  outline: 0;
+}
+.list button:hover {
+  background: #eee;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: calc(2rem + 1px);
+  left: 3px;
+  background: #FFF;
+  z-index: 1;
+  border: 1px solid #999;
+  border-radius: 0.25rem;
+  padding: 0.25rem;
 }

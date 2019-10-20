@@ -1,6 +1,7 @@
 import { LightningElement, api } from 'lwc';
 
 export default class InputSyntax extends LightningElement {
+  // Note this is just a very messy prototype
   _value = '';
   @api
   get value() {
@@ -26,25 +27,55 @@ export default class InputSyntax extends LightningElement {
     this.updateValues();
   }
 
+  regexSafe(value) {
+    return value.replace(/([\(\)\.\[\]])/g, "\\$1");
+  }
+
   updateValues() {
     let iterateValue = this._value;
+    let valid = true;
     this._values = [];
     this._parts.forEach((part, i) => {
+      if (!valid) {
+        this._values.push({
+          valid: false,
+          value: null
+        });
+        return;
+      }
       const values =
-        part.values instanceof Array ? part.values : part.values(this._values);
+        part.values instanceof Array ? [...part.values] : part.values(this._values);
       if (values instanceof Array) {
-        values.forEach(partValue => {
-          const regex = new RegExp(`^(${partValue})${this.separator}?`);
+        let found = false;
+        values.sort((a, b) => {
+          return b.length - a.length;
+        }).forEach(partValue => {
+          const escapedPartValue = this.regexSafe(partValue);
+          const last = this._parts.length === i + 1 ? '$' : `(${this.separator})?`;
+          const regex = new RegExp(`^(${escapedPartValue})${last}`);
           const match = iterateValue.match(regex);
-          if (match) {
+          if (!found && match) {
             iterateValue = iterateValue.replace(regex, '');
             console.log('matched -', match[1], '-', iterateValue);
             this._values.push({
               valid: true,
               value: match[1]
             });
-            return;
+            found = true;
           }
+        });
+        if (!found) {
+          this._values.push({
+            valid: false,
+            value: iterateValue
+          });
+          valid = false;
+        }
+      } else if (typeof values === 'string' && values === '') {
+        // Allow Any Value
+        this._values.push({
+          valid: true,
+          value: iterateValue
         });
       } else if (typeof values === 'string') {
         const regexMatch = values.match(/\/([^\/]+)\//);
@@ -65,13 +96,21 @@ export default class InputSyntax extends LightningElement {
         } else {
           // No idea
         }
+      } else {
+        /*this._values.push({
+          valid: false,
+          value: iterateValue
+        });
+        valid = false;
+        return;*/
       }
       // Invalid Part Value
-      if (this._values.length !== i + 1) {
+      if (this._values.length !== i + 1 && valid) {
         this._values.push({
           valid: false,
           value: iterateValue
         });
+        valid = false;
       }
     });
   }
@@ -105,8 +144,13 @@ export default class InputSyntax extends LightningElement {
     return this._parts[this._part].values;
   }
 
+  _showList = false;
   get hasPartList() {
-    return this._parts[this._part].values instanceof Array;
+    return this._parts[this._part].values instanceof Array && (this._showList || this._menuFocus);
+  }
+
+  get hasDescription() {
+    return !(this._parts[this._part].values instanceof Array) && (this._showList || this._menuFocus);
   }
 
   handleMouseDown() {
@@ -142,19 +186,96 @@ export default class InputSyntax extends LightningElement {
   }
 
   handleFocus() {
+    (this.template.childNodes[1] as HTMLElement).classList.add('focus');
     (this.template.childNodes[3] as HTMLElement).classList.add('focus');
+    this._showList = true;
   }
 
   handleBlur() {
     (this.template.childNodes[3] as HTMLElement).classList.remove('focus');
+    this._showList = false;
   }
 
   handleKeyDown(e: InputEvent) {
+    if (e.which === 38) {
+      this.focusPrevious();
+      e.preventDefault();
+      return;
+    }
+    if (e.which === 40) {
+      this.focusNext();
+      e.preventDefault();
+      return;
+    }
     const input = (this.template.childNodes[1] as HTMLInputElement);
     requestAnimationFrame(() => {
       this._caret = input.selectionStart;
       this.updatePart();
     });
+  }
+
+  focusPrevious() {
+
+  }
+
+  focusNext() {
+
+  }
+
+  getColumns(part) {
+    let startColumn = 0;
+    let endColumn = 0;
+    let i = 0;
+    for(let item of this._values) {
+      if (item === null) {
+        break;
+      }
+      endColumn = startColumn + item.value.length;
+      if (i === part) {
+        break;
+      }
+      startColumn += endColumn + this.separator.length;
+      i++;
+    }
+    return {
+      startColumn,
+      endColumn
+    }
+  }
+
+  spliceSlice(str, startColumn, endColumn, add) {
+    return `${str.slice(0, startColumn)}${add || ''}${str.slice(endColumn)}`;
+  }
+
+  handleSelect(e: Event) {
+    const target = e.target as HTMLElement;
+    const input = (this.template.childNodes[1] as HTMLInputElement);
+    const { startColumn, endColumn } = this.getColumns(this._part);
+    const { value } = target.dataset;
+    this._value = this.spliceSlice(this._value, startColumn, endColumn, value);
+    let valueEndColumn = endColumn + value.length;
+    const space = this._value.slice(valueEndColumn, valueEndColumn + 1);
+    if (space === '') {
+      this._value = this.spliceSlice(this._value, valueEndColumn, valueEndColumn, ' ');
+      valueEndColumn += 1;
+    }
+    this.updateValues();
+    this._menuFocus = false;
+    requestAnimationFrame(() => {
+      this._caret = valueEndColumn;
+      input.setSelectionRange(valueEndColumn, valueEndColumn);
+      input.focus();
+      this.updatePart();
+    });
+  }
+
+  _menuFocus = false;
+  handleMenuMouseEnter() {
+    this._menuFocus = true;
+  }
+
+  handleMenuMouseLeave() {
+    this._menuFocus = false;
   }
 
   handleInput(e: InputEvent) {

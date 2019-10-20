@@ -28,7 +28,7 @@ export default class InputSyntax extends LightningElement {
   }
 
   regexSafe(value) {
-    return value.replace(/([\(\)\.\[\]])/g, "\\$1");
+    return value.replace(/([\\\/\(\)\.\[\]])/g, "\\$1");
   }
 
   updateValues() {

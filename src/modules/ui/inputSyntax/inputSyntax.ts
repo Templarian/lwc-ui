@@ -123,7 +123,6 @@ export default class InputSyntax extends LightningElement {
         computedClass: item.valid ? 'property' : 'property-invalid'
       });
       if (separators > i) {
-        console.log(this.name, ' - ', this._values[i + 1].value, this._values[i + 1].hasNull)
         if (!this._values[i + 1].hasNull && this._values[i + 1].value !== null) {
           list.push({
             id: id++,
@@ -210,10 +209,28 @@ export default class InputSyntax extends LightningElement {
     }
   }
 
-  handleFocus() {
-    (this.template.childNodes[1] as HTMLElement).classList.add('focus');
+  handleFocus(e: FocusEvent) {
+    const input = (this.template.childNodes[1] as HTMLInputElement);
+    input.classList.add('focus');
     (this.template.childNodes[3] as HTMLElement).classList.add('focus');
     this._showList = true;
+    const self = this;
+    function keyUp(e: KeyboardEvent) {
+      const { which, shiftKey} = e;
+      if (which === 9) {
+        if (shiftKey) {
+          const index = self._values.findIndex(x => !x.valid);
+          const part = index === -1 ? self._values.length - 1 : index;
+          console.log(part);
+          self.selectPart(part);
+        } else {
+          self.selectPart(0);
+        }
+      }
+      input.removeEventListener('keyup', keyUp);
+    }
+    input.addEventListener('keyup', keyUp);
+    input.setSelectionRange(0, 0);
   }
 
   handleBlur() {
@@ -222,21 +239,29 @@ export default class InputSyntax extends LightningElement {
     this._showList = false;
   }
 
-  handleKeyDown(e: InputEvent) {
-    if (e.which === 38) {
-      this.focusPrevious();
-      e.preventDefault();
-      return;
-    }
-    if (e.which === 40) {
-      this.focusNext();
-      e.preventDefault();
-      return;
-    }
-    if (e.which === 13) {
-      this.select(this.list[this._selected].value);
-      e.preventDefault();
-      return;
+  handleKeyDown(e: KeyboardEvent) {
+    switch (e.which) {
+      case 38:
+        this.focusPrevious();
+        e.preventDefault();
+        return;
+      case 40:
+        this.focusNext();
+        e.preventDefault();
+        return;
+      case 13:
+        this.select(this.list[this._selected].value);
+        e.preventDefault();
+        return;
+      case 16:
+        return;
+      case 9:
+        if (e.shiftKey) {
+          this.shiftTab(e);
+        } else {
+          this.tab(e);
+        }
+        return;
     }
     const input = (this.template.childNodes[1] as HTMLInputElement);
     requestAnimationFrame(() => {
@@ -255,6 +280,33 @@ export default class InputSyntax extends LightningElement {
     if (this._selected !== this.list.length - 1) {
       this._selected += 1;
     }
+  }
+
+  tab(e: KeyboardEvent) {
+    const values = this._values;
+    const item = values[this._part];
+    if (item.valid) {
+      const next = values[this._part + 1];
+      if (next && !next.hasNull) {
+        this.selectPart(this._part + 1);
+        e.preventDefault();
+      }
+    }
+  }
+
+  shiftTab(e: KeyboardEvent) {
+    if (this._part !== 0) {
+      this.selectPart(this._part - 1);
+      e.preventDefault();
+    }
+  }
+
+  selectPart(part: number) {
+    const input = (this.template.childNodes[1] as HTMLInputElement);
+    const { startColumn, endColumn } = this.getColumns(part);
+    input.setSelectionRange(startColumn, endColumn);
+    this._caret = startColumn;
+    this.updatePart();
   }
 
   getColumns(part) {

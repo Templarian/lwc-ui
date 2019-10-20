@@ -21,6 +21,7 @@
             <button for:each={list}
                 for:item="item"
                 key={item.id}
+                tabindex="-1"
                 onclick={handleSelect}
                 data-value={item.value}
                 class={item.computedClass}>{item.value}</button>

@@ -205,4 +205,42 @@ export default class App extends LightningElement {
       }
     }
   ];
+
+  @track folders = [
+    {
+      name: 'Folder',
+      color: 'blue',
+      values: [
+        'Home'
+      ]
+    },
+    {
+      name: 'Folder',
+      color: '#222',
+      values: [
+        'Folder 1',
+        'Folder 2'
+      ]
+    },
+    {
+      name: 'Folder',
+      color: '#222',
+      values: function(parts) {
+        switch (parts[1].value) {
+          case 'Folder 1':
+            return [
+              'Subfolder 1',
+              'Subfolder 2',
+              'foo.txt'
+            ];
+          case 'Folder 2':
+            return [
+              'Subfolder A',
+              'Subfolder B',
+              'bar.txt'
+            ];
+        }
+      }
+    }
+  ];
 }

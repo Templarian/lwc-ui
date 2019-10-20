@@ -143,12 +143,10 @@ export default class InputSyntax extends LightningElement {
   _selected = 0;
   get list() {
     const list = this._filter
-      ? this._parts[this._part]
-        .values
-        .filter((item: string) => {
+      ? this.values.filter((item: string) => {
           return item.toLowerCase().includes(this._filter.toLowerCase())
         })
-      : this._parts[this._part].values;
+      : this.values;
     return list.map((item: string, i) => {
         return {
           id: i,
@@ -158,13 +156,18 @@ export default class InputSyntax extends LightningElement {
     });
   }
 
+  get values() {
+    const values = this._parts[this._part].values;
+    return values instanceof Array ? [...values] : values(this._values);
+  }
+
   _showList = false;
   get hasPartList() {
-    return this._parts[this._part].values instanceof Array && (this._showList || this._menuFocus);
+    return this.values instanceof Array && (this._showList || this._menuFocus);
   }
 
   get hasDescription() {
-    return !(this._parts[this._part].values instanceof Array) && (this._showList || this._menuFocus);
+    return !(this.values instanceof Array) && (this._showList || this._menuFocus);
   }
 
   handleMouseDown() {
@@ -284,7 +287,7 @@ export default class InputSyntax extends LightningElement {
     let valueEndColumn = startColumn + value.length;
     const space = this._value.slice(valueEndColumn) === '' && this._part !== this.parts.length - 1;
     if (space) {
-      this._value = this.spliceSlice(this._value, valueEndColumn, valueEndColumn, ' ');
+      this._value = this.spliceSlice(this._value, valueEndColumn, valueEndColumn, this.separator);
       valueEndColumn += 1;
     }
     this.updateValues();

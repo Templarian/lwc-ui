@@ -73,6 +73,7 @@ input.focus + span {
 
 .separator {
   position: relative;
+  color: transparent;
 }
 
 .separator::after {

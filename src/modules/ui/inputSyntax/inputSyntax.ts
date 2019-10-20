@@ -210,6 +210,7 @@ export default class InputSyntax extends LightningElement {
   }
 
   handleBlur() {
+    (this.template.childNodes[1] as HTMLElement).classList.remove('focus');
     (this.template.childNodes[3] as HTMLElement).classList.remove('focus');
     this._showList = false;
   }

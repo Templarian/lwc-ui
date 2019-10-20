@@ -123,11 +123,14 @@ export default class InputSyntax extends LightningElement {
         computedClass: item.valid ? 'property' : 'property-invalid'
       });
       if (separators > i) {
-        list.push({
-          id: id++,
-          value: this.separator,
-          computedClass: 'separator'
-        });
+        console.log(this.name, ' - ', this._values[i + 1].value)
+        if (!this._values[i + 1].hasNull && this._values[i + 1].value !== null) {
+          list.push({
+            id: id++,
+            value: this.separator,
+            computedClass: 'separator'
+          });
+        }
       }
     });
     return list;

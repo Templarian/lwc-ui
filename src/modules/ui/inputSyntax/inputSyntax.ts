@@ -103,7 +103,7 @@ export default class InputSyntax extends LightningElement {
       // Invalid Part Value
       if (this._values.length !== i + 1 && valid) {
         this._values.push({
-          hasNull: true,
+          hasNull,
           valid: false,
           value: iterateValue
         });
@@ -123,7 +123,7 @@ export default class InputSyntax extends LightningElement {
         computedClass: item.valid ? 'property' : 'property-invalid'
       });
       if (separators > i) {
-        console.log(this.name, ' - ', this._values[i + 1].value)
+        console.log(this.name, ' - ', this._values[i + 1].value, this._values[i + 1].hasNull)
         if (!this._values[i + 1].hasNull && this._values[i + 1].value !== null) {
           list.push({
             id: id++,

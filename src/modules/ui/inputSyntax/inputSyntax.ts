@@ -224,8 +224,8 @@ export default class InputSyntax extends LightningElement {
         if (shiftKey) {
           const index = self._values.findIndex(x => !x.valid);
           const part = index === -1 ? self._values.length - 1 : index;
-          console.log(part);
-          self.selectPart(part);
+          const offsetPart = [...self._values].reverse().findIndex(x => !x.hasNull);
+          self.selectPart(part - offsetPart);
         } else {
           self.selectPart(0);
         }

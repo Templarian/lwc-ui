@@ -105,7 +105,8 @@ input.focus + span {
   z-index: 1;
   border: 1px solid #999;
   border-radius: 0.25rem;
-  overflow: hidden;;
+  overflow-y: auto;
+  max-height: 11rem;
 }
 
 .list button {

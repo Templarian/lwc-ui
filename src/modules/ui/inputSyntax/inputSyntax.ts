@@ -141,7 +141,13 @@ export default class InputSyntax extends LightningElement {
   }
 
   get list() {
-    return this._parts[this._part].values;
+    return this._filter
+      ? this._parts[this._part]
+        .values
+        .filter((item: string) => {
+          return item.toLowerCase().includes(this._filter.toLowerCase())
+        })
+      : this._parts[this._part].values;
   }
 
   _showList = false;
@@ -254,19 +260,21 @@ export default class InputSyntax extends LightningElement {
     const { value } = target.dataset;
     this._value = this.spliceSlice(this._value, startColumn, endColumn, value);
     let valueEndColumn = startColumn + value.length;
-    const space = this._value.slice(valueEndColumn);
-    if (space === '') {
+    const space = this._value.slice(valueEndColumn) === '' && this._part !== this.parts.length - 1;
+    if (space) {
       this._value = this.spliceSlice(this._value, valueEndColumn, valueEndColumn, ' ');
       valueEndColumn += 1;
     }
     this.updateValues();
     this._menuFocus = false;
-    requestAnimationFrame(() => {
-      this._caret = valueEndColumn;
-      input.setSelectionRange(valueEndColumn, valueEndColumn);
-      input.focus();
-      this.updatePart();
-    });
+    if (space) {
+      requestAnimationFrame(() => {
+        this._caret = valueEndColumn;
+        input.setSelectionRange(valueEndColumn, valueEndColumn);
+        input.focus();
+        this.updatePart();
+      });
+    }
   }
 
   _menuFocus = false;
@@ -278,9 +286,11 @@ export default class InputSyntax extends LightningElement {
     this._menuFocus = false;
   }
 
+  _filter = null;
   handleInput(e: InputEvent) {
     this.handleChange(e);
     this.updateValues();
+    this._filter = this._values[this._part].value;
   }
 
   handleChange(e: InputEvent) {

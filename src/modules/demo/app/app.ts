@@ -150,9 +150,22 @@ export default class App extends LightningElement {
       color: 'blue',
       values: [
         'Player.health',
+        'Player.mana',
+        'Player.strength',
+        'Player.experience',
+        'Player.level',
+        'Player.constitution',
+        'Player.dexterity',
+        'Player.intelligence',
+        'Player.wisdom',
+        'Player.charisma',
         'Quests.rats.state.completed',
         'Quests.rats.state.done',
         'Quests.rats.state.count',
+        'Player.inventory[arrow.wood]',
+        'Player.inventory[arrow.copper]',
+        'Player.inventory[arrow.silver]',
+        'Player.inventory[arrow.glass]',
         'Player.inventory[gold]'
       ]
     },

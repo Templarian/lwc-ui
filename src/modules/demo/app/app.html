@@ -208,10 +208,20 @@
           Text
           <ui-input-text name="text" value="foo"></ui-input-text>
         </ui-label>
-        <ui-label>
-          Syntax
-          <ui-input-syntax name="code" value="Player.health Greater Than 5" parts={parts}></ui-input-syntax>
-        </ui-label>
+        <ui-flex row>
+          <ui-flex column flex="1" style="padding-right: 2rem;">
+            <ui-label>
+              Syntax
+              <ui-input-syntax name="code1" value="Player.health Greater Than 5" parts={parts}></ui-input-syntax>
+            </ui-label>
+          </ui-flex>
+          <ui-flex column flex="1">
+            <ui-label>
+              Syntax Empty
+              <ui-input-syntax name="code2" value="" parts={parts}></ui-input-syntax>
+            </ui-label>
+          </ui-flex>
+        </ui-flex>
         <ui-label>
           Textarea
           <ui-textarea name="textarea" value="bar"></ui-textarea>

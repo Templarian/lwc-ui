@@ -1,7 +1,7 @@
 import { LightningElement, api } from 'lwc';
 
 export default class InputSyntax extends LightningElement {
-  // Note this is just a very messy prototype
+  // Note: I'll clean up this code eventually, very ugly
   _value = '';
   @api
   get value() {
@@ -34,6 +34,7 @@ export default class InputSyntax extends LightningElement {
   updateValues() {
     let iterateValue = this._value;
     let valid = true;
+    let hasNull = false;
     this._values = [];
     this._parts.forEach((part, i) => {
       if (!valid) {
@@ -96,17 +97,13 @@ export default class InputSyntax extends LightningElement {
         } else {
           // No idea
         }
-      } else {
-        /*this._values.push({
-          valid: false,
-          value: iterateValue
-        });
-        valid = false;
-        return;*/
+      } else if (values === null) {
+        hasNull = true;
       }
       // Invalid Part Value
       if (this._values.length !== i + 1 && valid) {
         this._values.push({
+          hasNull: true,
           valid: false,
           value: iterateValue
         });
@@ -157,7 +154,14 @@ export default class InputSyntax extends LightningElement {
   }
 
   get values() {
-    const values = this._parts[this._part].values;
+    return this.getValues();
+  }
+
+  getValues(offset: number = 0) {
+    if (this._parts.length <= this._part + offset) {
+      return null;
+    }
+    const values = this._parts[this._part + offset].values;
     return values instanceof Array ? [...values] : values(this._values);
   }
 
@@ -167,7 +171,7 @@ export default class InputSyntax extends LightningElement {
   }
 
   get hasDescription() {
-    return !(this.values instanceof Array) && (this._showList || this._menuFocus);
+    return !(this.values instanceof Array || this.values === null) && (this._showList || this._menuFocus);
   }
 
   handleMouseDown() {
@@ -286,15 +290,20 @@ export default class InputSyntax extends LightningElement {
     const { startColumn, endColumn } = this.getColumns(this._part);
     this._value = this.spliceSlice(this._value, startColumn, endColumn, value);
     let valueEndColumn = startColumn + value.length;
-    const space = this._value.slice(valueEndColumn) === '' && this._part !== this.parts.length - 1;
-    if (space) {
+    const createSeperator = this._value.slice(valueEndColumn) === ''
+      && this._part !== this.parts.length - 1;
+    this.updateValues();
+    const nextRequired = this.getValues(1) !== null;
+    if (createSeperator && nextRequired) {
       this._value = this.spliceSlice(this._value, valueEndColumn, valueEndColumn, this.separator);
       valueEndColumn += 1;
+    } else if (!nextRequired) {
+      this._value = this._value.slice(0, valueEndColumn);
     }
     this.updateValues();
     this._menuFocus = false;
     this._filter = '';
-    if (space) {
+    if (createSeperator && nextRequired) {
       requestAnimationFrame(() => {
         this._caret = valueEndColumn;
         input.setSelectionRange(valueEndColumn, valueEndColumn);

@@ -262,7 +262,7 @@ export default class InputSyntax extends LightningElement {
       if (i === part) {
         break;
       }
-      startColumn += endColumn + this.separator.length;
+      startColumn = endColumn + this.separator.length;
       i++;
     }
     return {

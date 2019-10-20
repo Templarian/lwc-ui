@@ -176,7 +176,9 @@ export default class InputSyntax extends LightningElement {
     return !(this.values instanceof Array || this.values === null) && (this._showList || this._menuFocus);
   }
 
+  _mouseFocus = false;
   handleMouseDown() {
+    this._mouseFocus = true;
     const input = (this.template.childNodes[1] as HTMLInputElement);
     requestAnimationFrame(() => {
       this._filter = '';
@@ -229,7 +231,10 @@ export default class InputSyntax extends LightningElement {
       }
       input.removeEventListener('keyup', keyUp);
     }
-    input.addEventListener('keyup', keyUp);
+    if (!this._mouseFocus) {
+      input.addEventListener('keyup', keyUp);
+    }
+    this._mouseFocus = false;
     input.setSelectionRange(0, 0);
   }
 

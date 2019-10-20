@@ -212,6 +212,7 @@ export default class InputSyntax extends LightningElement {
   }
 
   handleFocus(e: FocusEvent) {
+    console.log('focus')
     const input = (this.template.childNodes[1] as HTMLInputElement);
     input.classList.add('focus');
     (this.template.childNodes[3] as HTMLElement).classList.add('focus');
@@ -363,11 +364,12 @@ export default class InputSyntax extends LightningElement {
     this.updateValues();
     this._menuFocus = false;
     this._filter = '';
-    if (createSeperator && nextRequired) {
+    console.log('focus input', createSeperator, nextRequired)
+    if (nextRequired) {
       requestAnimationFrame(() => {
         this._caret = valueEndColumn;
-        input.setSelectionRange(valueEndColumn, valueEndColumn);
         input.focus();
+        this.selectPart(this._part + 1);
         this.updatePart();
         this._selected = 0;
       });

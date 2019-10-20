@@ -227,7 +227,7 @@ export default class InputSyntax extends LightningElement {
     let endColumn = 0;
     let i = 0;
     for(let item of this._values) {
-      if (item === null) {
+      if (item.value === null) {
         break;
       }
       endColumn = startColumn + item.value.length;
@@ -253,8 +253,8 @@ export default class InputSyntax extends LightningElement {
     const { startColumn, endColumn } = this.getColumns(this._part);
     const { value } = target.dataset;
     this._value = this.spliceSlice(this._value, startColumn, endColumn, value);
-    let valueEndColumn = endColumn + value.length;
-    const space = this._value.slice(valueEndColumn, valueEndColumn + 1);
+    let valueEndColumn = startColumn + value.length;
+    const space = this._value.slice(valueEndColumn);
     if (space === '') {
       this._value = this.spliceSlice(this._value, valueEndColumn, valueEndColumn, ' ');
       valueEndColumn += 1;

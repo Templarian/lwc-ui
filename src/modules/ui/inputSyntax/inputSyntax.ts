@@ -270,7 +270,7 @@ export default class InputSyntax extends LightningElement {
     const valuesEle = (this.template.childNodes[3] as HTMLElement);
     const ele = valuesEle.childNodes[0] as HTMLDivElement;
     x = x === null ? input.scrollLeft : x;
-    ele.style.left = `-${x * 1.5}px`;
+    ele.style.left = `-${x * window.devicePixelRatio}px`;
   }
 
   handleKeyDown(e: KeyboardEvent) {
@@ -333,7 +333,6 @@ export default class InputSyntax extends LightningElement {
       const next = values[this._part + 1];
       if (next && !next.hasNull) {
         this.selectPart(this._part + 1);
-        console.log('mm', this._part, this._value)
         this._value = `${this._value}${this.separator}`;
         e.preventDefault();
       }

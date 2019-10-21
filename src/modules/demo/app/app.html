@@ -222,10 +222,20 @@
             </ui-label>
           </ui-flex>
         </ui-flex>
-        <ui-label>
-          Folder Syntax
-          <ui-input-syntax name="code3" value="Home" parts={folders} separator="/"></ui-input-syntax>
-        </ui-label>
+        <ui-flex row>
+          <ui-flex column flex="1" style="padding-right: 2rem;">
+            <ui-label>
+              Set Unset Syntax
+              <ui-input-syntax name="code1" value="Set Player.health 10" parts={modifyParts}></ui-input-syntax>
+            </ui-label>
+          </ui-flex>
+          <ui-flex column flex="1">
+            <ui-label>
+              Folder Syntax
+              <ui-input-syntax name="code3" value="Home" parts={folders} separator="/"></ui-input-syntax>
+            </ui-label>
+          </ui-flex>
+        </ui-flex>
         <ui-label>
           Textarea
           <ui-textarea name="textarea" value="bar"></ui-textarea>

@@ -206,6 +206,50 @@ export default class App extends LightningElement {
     }
   ];
 
+  @track modifyParts = [
+    {
+      name: 'Resource',
+      color: 'blue',
+      values: [
+        'Set',
+        'Unset',
+        'Add',
+        'Subtract'
+      ]
+    },
+    {
+      name: 'Operator',
+      color: '#222',
+      values: [
+        'Player.health',
+        'Player.mana',
+        'Player.strength',
+        'Player.experience',
+        'Player.level',
+        'Player.constitution',
+        'Player.dexterity',
+        'Player.intelligence',
+        'Player.wisdom',
+        'Player.charisma',
+        'Quests.rats.state.completed',
+        'Quests.rats.state.done',
+        'Quests.rats.state.count',
+        'Player.inventory[arrow.wood]',
+        'Player.inventory[arrow.copper]',
+        'Player.inventory[arrow.silver]',
+        'Player.inventory[arrow.glass]',
+        'Player.inventory[gold]'
+      ]
+    },
+    {
+      name: 'Value',
+      color: '#222',
+      values: function(parts) {
+        return '/[0-9]+/';
+      }
+    }
+  ]
+
   @track folders = [
     {
       name: 'Folder',

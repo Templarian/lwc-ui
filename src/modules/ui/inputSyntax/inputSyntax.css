@@ -36,6 +36,7 @@ input.focus + span {
 
 .values {
   position: absolute;
+  display: flex;
   left: 0;
   top: 0;
   padding-left: 9px;

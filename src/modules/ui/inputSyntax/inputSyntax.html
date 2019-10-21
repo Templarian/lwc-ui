@@ -8,10 +8,13 @@
         onkeydown={handleKeyDown}
         onchange={handleChange}
         oninput={handleInput}
-        onkeyup={handleChange} />
+        onkeyup={handleChange}
+        onmousewheel={handleScroll} />
     <span></span>
     <div class="values">
-        <div for:each={valuesList} for:item="item" key={item.id} class={item.computedClass}>{item.value}</div>
+        <div>
+            <div for:each={valuesList} for:item="item" key={item.id} class={item.computedClass}>{item.value}</div>
+        </div>
     </div>
     <div style="display: none;"></div>
     <template if:true={hasPartList}>

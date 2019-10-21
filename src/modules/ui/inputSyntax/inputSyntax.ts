@@ -259,6 +259,19 @@ export default class InputSyntax extends LightningElement {
     if (!this._menuFocus) {
       this._showList = false;
     }
+    this.offsetOverlay(0);
+  }
+
+  handleScroll(e: MouseWheelEvent) {
+    this.offsetOverlay();
+  }
+
+  offsetOverlay(x: number = null) {
+    const input = this.template.childNodes[1] as HTMLInputElement;
+    const valuesEle = (this.template.childNodes[3] as HTMLElement);
+    const ele = valuesEle.childNodes[0] as HTMLDivElement;
+    x = x === null ? input.scrollLeft : x;
+    ele.style.left = `-${x * 1.5}px`;
   }
 
   handleKeyDown(e: KeyboardEvent) {
@@ -423,6 +436,7 @@ export default class InputSyntax extends LightningElement {
     this.handleChange(e);
     this.updateValues();
     requestAnimationFrame(() => {
+      this.offsetOverlay();
       this._filter = this._values[this._part].value;
       this._selected = 0;
     })

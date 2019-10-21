@@ -333,7 +333,10 @@ export default class InputSyntax extends LightningElement {
       const next = values[this._part + 1];
       if (next && !next.hasNull) {
         this.selectPart(this._part + 1);
-        this._value = `${this._value}${this.separator}`;
+        const { startColumn } = this.getColumns(this._part);
+        if (this._value.length < startColumn) {
+          this._value = `${this._value}${this.separator}`;
+        }
         e.preventDefault();
       }
     }

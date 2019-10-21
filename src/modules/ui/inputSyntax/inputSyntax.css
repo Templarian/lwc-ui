@@ -39,8 +39,8 @@ input.focus + span {
   display: flex;
   left: 0;
   top: 0;
+  bottom: 0;
   padding-left: 9px;
-  height: calc(2rem - 1px);
   pointer-events: none;
   white-space: pre;
   overflow: hidden;

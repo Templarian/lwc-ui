@@ -169,11 +169,12 @@ export default class InputSyntax extends LightningElement {
 
   _showList = false;
   get hasPartList() {
-    return this.values instanceof Array && (this._showList || this._menuFocus);
+    console.log('render?', this.values instanceof Array && this._showList)
+    return this.values instanceof Array && this._showList;
   }
 
   get hasDescription() {
-    return !(this.values instanceof Array || this.values === null) && (this._showList || this._menuFocus);
+    return !(this.values instanceof Array || this.values === null) && this._showList;
   }
 
   _mouseFocus = false;
@@ -198,6 +199,7 @@ export default class InputSyntax extends LightningElement {
     // Calculate Part
     let startColumn = 0;
     let endColumn = 0;
+    const prevPart = this._part;
     this._part = 0;
     let i = 0;
     for(let item of this._values) {
@@ -216,6 +218,12 @@ export default class InputSyntax extends LightningElement {
       this._part = this._values.reduce((p, c, i) => c.valid ? i + 1 : p, 0);
       console.log('assuming', this._part);
     }
+    if (this.values) {
+      this._showList = true;
+    }
+    if (prevPart !== this._part) {
+      this._filter = null;
+    }
   }
 
   handleFocus(e: FocusEvent) {
@@ -223,7 +231,6 @@ export default class InputSyntax extends LightningElement {
     const input = (this.template.childNodes[1] as HTMLInputElement);
     input.classList.add('focus');
     (this.template.childNodes[3] as HTMLElement).classList.add('focus');
-    this._showList = true;
     const self = this;
     function keyUp(e: KeyboardEvent) {
       const { which, shiftKey} = e;
@@ -249,7 +256,9 @@ export default class InputSyntax extends LightningElement {
   handleBlur() {
     (this.template.childNodes[1] as HTMLElement).classList.remove('focus');
     (this.template.childNodes[3] as HTMLElement).classList.remove('focus');
-    this._showList = false;
+    if (!this._menuFocus) {
+      this._showList = false;
+    }
   }
 
   handleKeyDown(e: KeyboardEvent) {
@@ -284,18 +293,28 @@ export default class InputSyntax extends LightningElement {
   }
 
   focusPrevious() {
+    if (!this._showList) {
+      return;
+    }
     if (this._selected != 0) {
       this._selected -= 1;
     }
+    this._showList = true;
   }
 
   focusNext() {
+    if (!this._showList) {
+      console.log(this._values, this._part)
+      return;
+    }
     if (this._selected !== this.list.length - 1) {
       this._selected += 1;
     }
+    this._showList = true;
   }
 
   tab(e: KeyboardEvent) {
+    this._showList = false;
     const values = this._values;
     const item = values[this._part];
     if (item.valid) {
@@ -308,6 +327,7 @@ export default class InputSyntax extends LightningElement {
   }
 
   shiftTab(e: KeyboardEvent) {
+    this._showList = false;
     if (this._part !== 0) {
       this.selectPart(this._part - 1);
       e.preventDefault();
@@ -320,6 +340,8 @@ export default class InputSyntax extends LightningElement {
     input.setSelectionRange(startColumn, endColumn);
     this._caret = startColumn;
     this.updatePart();
+    this._showList = true;
+    console.log('show list')
   }
 
   getColumns(part) {
@@ -354,6 +376,9 @@ export default class InputSyntax extends LightningElement {
   }
 
   select(value) {
+    if (!this._showList) {
+      return;
+    }
     const input = (this.template.childNodes[1] as HTMLInputElement);
     const { startColumn, endColumn } = this.getColumns(this._part);
     this._value = this.spliceSlice(this._value, startColumn, endColumn, value);
@@ -371,6 +396,7 @@ export default class InputSyntax extends LightningElement {
     this.updateValues();
     this._menuFocus = false;
     this._filter = '';
+    this._showList = false;
     console.log('focus input', createSeperator, nextRequired)
     if (nextRequired) {
       requestAnimationFrame(() => {

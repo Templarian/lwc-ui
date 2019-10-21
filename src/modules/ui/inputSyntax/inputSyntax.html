@@ -13,7 +13,7 @@
     <div class="values">
         <div for:each={valuesList} for:item="item" key={item.id} class={item.computedClass}>{item.value}</div>
     </div>
-    <div style="display: none;">{partName}</div>
+    <div style="display: none;"></div>
     <template if:true={hasPartList}>
         <div class="list"
             onmouseenter={handleMenuMouseEnter}
@@ -29,7 +29,7 @@
     </template>
     <template if:true={hasDescription}>
         <div class="description">
-            Pattern: [0-9]+
+            {partName}
         </div>
     </template>
 </template>

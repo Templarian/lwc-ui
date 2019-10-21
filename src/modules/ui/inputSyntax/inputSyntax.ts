@@ -396,8 +396,10 @@ export default class InputSyntax extends LightningElement {
   handleInput(e: InputEvent) {
     this.handleChange(e);
     this.updateValues();
-    this._filter = this._values[this._part].value;
-    this._selected = 0;
+    requestAnimationFrame(() => {
+      this._filter = this._values[this._part].value;
+      this._selected = 0;
+    })
   }
 
   handleChange(e: InputEvent) {

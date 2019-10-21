@@ -177,7 +177,7 @@ export default class InputSyntax extends LightningElement {
   }
 
   _mouseFocus = false;
-  handleMouseDown() {
+  handleMouseDown(e: MouseEvent) {
     this._mouseFocus = true;
     const input = (this.template.childNodes[1] as HTMLInputElement);
     requestAnimationFrame(() => {
@@ -185,6 +185,13 @@ export default class InputSyntax extends LightningElement {
       this._caret = input.selectionStart;
       this.updatePart();
     });
+    if (e.detail === 2) {
+      this.selectPart(this._part);
+      e.preventDefault();
+    } else if (e.detail === 2) {
+      input.setSelectionRange(0, this._value.length);
+      e.preventDefault();
+    }
   }
 
   updatePart() {

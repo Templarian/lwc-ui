@@ -169,7 +169,6 @@ export default class InputSyntax extends LightningElement {
 
   _showList = false;
   get hasPartList() {
-    console.log('render?', this.values instanceof Array && this._showList)
     return this.values instanceof Array && this._showList;
   }
 
@@ -334,6 +333,8 @@ export default class InputSyntax extends LightningElement {
       const next = values[this._part + 1];
       if (next && !next.hasNull) {
         this.selectPart(this._part + 1);
+        console.log('mm', this._part, this._value)
+        this._value = `${this._value}${this.separator}`;
         e.preventDefault();
       }
     }
@@ -410,7 +411,6 @@ export default class InputSyntax extends LightningElement {
     this._menuFocus = false;
     this._filter = '';
     this._showList = false;
-    console.log('focus input', createSeperator, nextRequired)
     if (nextRequired) {
       requestAnimationFrame(() => {
         this._caret = valueEndColumn;

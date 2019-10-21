@@ -438,6 +438,7 @@ export default class InputSyntax extends LightningElement {
       this.offsetOverlay();
       this._filter = this._values[this._part].value;
       this._selected = 0;
+      this._menuFocus = false;
     })
   }
 

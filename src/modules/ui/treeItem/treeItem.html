@@ -1,0 +1,15 @@
+<template>
+    <div class="item">
+        <button if:true={hasMenu} onclick={handleClick}>
+            <ui-icon path={icon}></ui-icon>
+        </button>
+        <div style="background-color: #fff;z-index:1;">
+            <slot onslotchange={handleSlotChange}></slot>
+        </div>
+    </div>
+    <template if:true={isOpened}>
+        <div class="items">
+            <slot onslotchange={handleSlotItemsChange} name="items"></slot>
+        </div>
+    </template>
+</template>

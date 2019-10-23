@@ -432,6 +432,45 @@
       >
     </demo-component>
 
+    <demo-component name="Tree" tag="ui-tree" file="tree">
+      <h3>Basic <code>[folder=<button onclick={toggleFolder}>{isFolder}</button>]</code></h3>
+      <ui-tree folder={isFolder}>
+        <ui-tree-item>
+          Item 1
+          <ui-tree-item-group>
+            <ui-tree-item>
+              Sub Item 1
+              <ui-tree-item-group>
+                <ui-tree-item>Sub Item A</ui-tree-item>
+                <ui-tree-item>Sub Item B<br/>More Content</ui-tree-item>
+                <ui-tree-item>Sub Item C<br/>More Content</ui-tree-item>
+              </ui-tree-item-group>
+            </ui-tree-item>
+            <ui-tree-item>Sub Item 2</ui-tree-item>
+          </ui-tree-item-group>
+        </ui-tree-item>
+        <ui-tree-item>
+          Item 2
+        </ui-tree-item>
+        <ui-tree-item>
+          Item 3
+        </ui-tree-item>
+      </ui-tree>
+      <h3>File Tree</h3>
+      <ui-tree>
+        <ui-tree-item>
+          <ui-input-text></ui-input-text>
+          <ui-tree-item-group>
+            <ui-tree-item>Sub Item 1</ui-tree-item>
+            <ui-tree-item>Sub Item 2</ui-tree-item>
+          </ui-tree-item-group>
+        </ui-tree-item>
+        <ui-tree-item>
+          Item 2
+        </ui-tree-item>
+      </ui-tree>
+    </demo-component>
+
     <ui-card>
       <ui-card-header>Why?</ui-card-header>
       <ui-card-body>

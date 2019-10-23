@@ -10,8 +10,9 @@ textarea {
   font-family: Consolas;
   border: 1px solid #ddd;
   border-radius: 0.25rem;
-  padding: 0.5rem;
+  padding: 0.25rem 0.5rem;
   outline: 0;
+  font-size: 1rem;
 }
 
 textarea:focus + span {

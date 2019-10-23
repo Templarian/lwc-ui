@@ -287,4 +287,9 @@ export default class App extends LightningElement {
       }
     }
   ];
+
+  @track isFolder = true;
+  toggleFolder() {
+    this.isFolder = !this.isFolder;
+  }
 }

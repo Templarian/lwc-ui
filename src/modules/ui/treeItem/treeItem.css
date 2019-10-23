@@ -1,0 +1,54 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+:host(:not(.root))::before {
+    position: absolute;
+    content: ' ';
+    border-left: 1px solid #444;
+    border-bottom: 1px solid #444;
+    width: 1rem;
+    height: 1.4rem;
+    margin-left: -0.8rem;
+    margin-top: -0.65rem;
+    pointer-events: none;
+}
+
+:host(:not(.root):not(.last))::after {
+    position: absolute;
+    content: ' ';
+    top: 0;
+    bottom: 0.55rem;
+    border-left: 1px solid #444;
+    width: 1rem;
+    margin-left: -0.8rem;
+    margin-top: -0.65rem;
+    pointer-events: none;
+}
+
+.item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.item button {
+    border: 0;
+    padding: 0;
+    width: 1.5rem;
+    height: 1.5rem;
+    background: transparent;
+    outline: 0;
+}
+
+.item div {
+    display: flex;
+}
+
+.items {
+    display: flex;
+    flex-direction: column;
+    padding-left: 1.5rem;
+}

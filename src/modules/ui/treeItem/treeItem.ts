@@ -76,4 +76,30 @@ export default class TreeItem extends LightningElement {
   handleSlotItemsChange() {
     this.template.host.classList.remove('node');
   }
+
+  handleMouseEnter(e) {
+    const target = e.target as HTMLDivElement;
+    const { height, top } = target.getBoundingClientRect();
+    this.dispatchEvent(new CustomEvent('privatehover', {
+      detail: {
+        top,
+        height,
+        hidden: false
+      },
+      bubbles: true
+    }));
+  }
+
+  handleItemsMouseEnter(e) {
+    const target = e.target as HTMLDivElement;
+    const { height, top } = target.getBoundingClientRect();
+    this.dispatchEvent(new CustomEvent('privatehover', {
+      detail: {
+        top,
+        height,
+        hidden: true
+      },
+      bubbles: true
+    }));
+  }
 }

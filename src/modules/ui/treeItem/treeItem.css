@@ -9,7 +9,7 @@
     content: ' ';
     border-left: 1px solid #444;
     border-bottom: 1px solid #444;
-    width: 1rem;
+    width: 0.75rem;
     height: 1.4rem;
     margin-left: -0.8rem;
     margin-top: -0.65rem;
@@ -22,7 +22,7 @@
     top: 0;
     bottom: 0.55rem;
     border-left: 1px solid #444;
-    width: 1rem;
+    width: 0.75rem;
     margin-left: -0.8rem;
     margin-top: -0.65rem;
     pointer-events: none;

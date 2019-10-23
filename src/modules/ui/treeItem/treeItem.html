@@ -1,14 +1,16 @@
 <template>
-    <div class="item">
+    <div class="item"
+        onmouseenter={handleMouseEnter}>
         <button if:true={hasMenu} onclick={handleClick}>
             <ui-icon path={icon}></ui-icon>
         </button>
-        <div style="background-color: #fff;z-index:1;">
+        <div>
             <slot onslotchange={handleSlotChange}></slot>
         </div>
     </div>
     <template if:true={isOpened}>
-        <div class="items">
+        <div class="items"
+            onmouseover={handleItemsMouseEnter}>
             <slot onslotchange={handleSlotItemsChange} name="items"></slot>
         </div>
     </template>

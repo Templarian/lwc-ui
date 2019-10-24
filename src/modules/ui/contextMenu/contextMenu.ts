@@ -46,7 +46,6 @@ export default class ContextMenu extends LightningElement {
   handleMenuSlotChange() {
     const slot = this.template.childNodes[2] as HTMLSlotElement;
     if (slot) {
-      console.log('menu slot changed');
       const slotElements = slot.assignedElements() as HTMLElement[];
       if (slotElements.length === 0) {
         throw new Error('contextMenu missing menu slot.');

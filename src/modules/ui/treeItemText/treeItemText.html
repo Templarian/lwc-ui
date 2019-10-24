@@ -1,0 +1,14 @@
+<template>
+  <ui-context-menu>
+    <div>
+      {value}
+    </div>
+    <ui-menu slot="menu">
+      <ui-menu-item>Custom Items</ui-menu-item>
+      <ui-menu-separator></ui-menu-separator>
+      <ui-menu-item>Rename</ui-menu-item>
+      <ui-menu-item>Delete</ui-menu-item>
+    </ui-menu>
+  </ui-context-menu>
+  <input type="text" value={value} onchange={handleChange} />
+</template>

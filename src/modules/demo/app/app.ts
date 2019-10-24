@@ -22,7 +22,8 @@ import {
   mdiClose,
   mdiPlus,
   mdiWorker,
-  mdiCalendar
+  mdiCalendar,
+  mdiFile
 } from '@mdi/js';
 import { FormEvent } from 'ui/form';
 
@@ -42,6 +43,7 @@ export default class App extends LightningElement {
   @track mdiClose: string = mdiClose;
   @track mdiPlus: string = mdiPlus;
   @track mdiCalendar: string = mdiCalendar;
+  @track mdiFile: string = mdiFile;
 
   handleToast() {
     showToast('Testing 3 Seconds', 3);

@@ -1,16 +1,24 @@
 :host {
     display: flex;
     align-items: center;
+    flex: 1;
+}
+
+ui-context-menu {
+    flex: 1;
 }
 
 div {
     white-space: pre;
+    font-size: 1rem;
+    line-height: 1.5rem;
 }
 
 input {
     border: 0;
+    padding: 0;
     background: transparent;
     font-size: 1rem;
     width: 100%;
-    padding: 0.0625rem 0;
+    line-height: 1.5rem;
 }

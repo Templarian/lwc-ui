@@ -14,12 +14,13 @@ export default class Tree extends LightningElement {
   }
 
   get hoverElement() {
-    return this.template.childNodes[1] as HTMLDivElement;
+    return this.template.childNodes[1].childNodes[0] as HTMLDivElement;
   }
 
   get slotElements() {
-    const slot = this.template.childNodes[2] as HTMLSlotElement;
-    return slot ? slot.assignedElements() : [];
+    const div = this.template.childNodes[2];
+    const slot = div ? div.childNodes[0] as HTMLSlotElement : null;
+    return div ? slot.assignedElements() : [];
   }
 
   handleSlotChange() {
@@ -36,7 +37,7 @@ export default class Tree extends LightningElement {
   }
 
   handleMouseEnter() {
-    this.hoverElement.style.display = 'initial';
+    this.hoverElement.style.display = 'block';
   }
 
   handleMouseLeave() {
@@ -46,7 +47,7 @@ export default class Tree extends LightningElement {
   handlePrivateHover(event: CustomEvent) {
     event.stopPropagation();
     const { top } = this.template.host.getBoundingClientRect();
-    this.hoverElement.style.display = event.detail.hidden ? 'none' : 'initial';
+    this.hoverElement.style.display = event.detail.hidden ? 'none' : 'block';
     this.hoverElement.style.height = `${event.detail.height}px`;
     this.hoverElement.style.top = `${event.detail.top - top}px`;
   }

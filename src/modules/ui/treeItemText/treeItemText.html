@@ -1,7 +1,7 @@
 <template>
   <template if:false={isEditing}>
     <ui-context-menu>
-      <div>
+      <div onmousedown={handleMouseDown}>
         {value}
       </div>
       <ui-menu slot="menu">

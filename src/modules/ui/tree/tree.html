@@ -1,4 +1,8 @@
 <template>
-    <div style="display:none;position:absolute;top:0;left:0;right:0;height:1.5rem;background:#eee;"></div>
-    <slot onslotchange={handleSlotChange}></slot>
+    <div style="overflow:visible;height:0;">
+        <div style="display:none;position:relative;left:0;right:0;background:#eee;border-bottom-style: solid; border-bottom: #eee;"></div>
+    </div>
+    <div style="z-index:1">
+        <slot onslotchange={handleSlotChange}></slot>
+    </div>
 </template>

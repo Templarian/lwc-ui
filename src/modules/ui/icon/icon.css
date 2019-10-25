@@ -1,4 +1,5 @@
 :host {
+  pointer-events: none;
   display: inline-block;
   width: 1.5rem;
   height: 1.5rem;

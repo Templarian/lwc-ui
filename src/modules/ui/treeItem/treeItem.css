@@ -54,6 +54,7 @@
 .item div {
     display: flex;
     align-self: center;
+    flex: 1;
 }
 
 .items {

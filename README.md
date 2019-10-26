@@ -148,6 +148,7 @@ The form shold wrap any elements you plan to use. It will handle simple things l
 | ui-textarea       | textarea         | value, minlength, maxlength, pattern |
 | ui-input-number   | number           | value, min, max, step                |
 | ui-input-password | password         | value, minlength                     |
+| ui-input-syntax   | syntax           | value, parts |
 
 ### Icon - `ui-icon`
 
@@ -251,6 +252,29 @@ removeToast(id);
 // Or remove all toasts
 removeAllToasts();
 ```
+
+### Tree - `ui-tree`
+
+```html
+<ui-tree folder={isFolder}>
+  <ui-tree-item>
+    Item 1
+    <ui-tree-item-group>
+      <ui-tree-item>
+        Sub Item 1
+      </ui-tree-item>
+      <ui-tree-item>
+        <ui-icon path={mdiFile}></ui-icon>
+        Sub Item 2
+      </ui-tree-item>
+    </ui-tree-item-group>
+  </ui-tree-item>
+</ui-tree>
+```
+
+| Attribute   | Default        | Values                               |
+| ----------- | -------------- | ------------------------------------ |
+| `variant`   | `default`      | `default`, `chevron`, `folder`       |
 
 ## Why?
 

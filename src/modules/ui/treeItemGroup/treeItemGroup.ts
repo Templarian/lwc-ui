@@ -1,20 +1,22 @@
 import { LightningElement, api } from 'lwc';
+import { updateClass } from '../util';
 
 export default class TreeItemGroup extends LightningElement {
-  _folder = false;
+  _variant = 'default';
   @api
-  get folder() {
-    return this.folder;
+  get variant() {
+    return this._variant;
   }
-  set folder(value: boolean) {
+  set variant(value) {
     const elements = this.slotElements;
     elements.forEach((element, i) => {
-      (element as any).folder = value;
-      if (i === elements.length - 1) {
-        element.classList.add('last');
-      }
+      (element as any).variant = value;
+      updateClass(element.classList, {
+        'first': i === 0,
+        'last': i === elements.length - 1
+      });
     });
-    this._folder = value;
+    this._variant = value;
   }
 
   get slotElements() {

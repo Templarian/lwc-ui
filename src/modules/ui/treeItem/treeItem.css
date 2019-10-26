@@ -15,6 +15,11 @@
     pointer-events: none;
 }
 
+:host(:not(.root).first)::after {
+    height: 1.0rem;
+    margin-top: -0.25rem;
+}
+
 :host(:not(.root):not(.node)) .items::before {
     content: '';
     border-left: 1px solid #444;

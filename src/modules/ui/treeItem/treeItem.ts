@@ -3,20 +3,22 @@ import {
   mdiPlusBox,
   mdiMinusBox,
   mdiFolder,
-  mdiFolderOpen
+  mdiFolderOpen,
+  mdiChevronRight,
+  mdiChevronDown
 } from '@mdi/js';
 
 export default class TreeItem extends LightningElement {
-  _folder = false;
+  _variant = 'default';
   @api
-  get folder() {
-    return this.folder;
+  get variant() {
+    return this._variant;
   }
-  set folder(value: boolean) {
+  set variant(value) {
     this.slotItemsElements.forEach(element => {
-      (element as any).folder = value;
+      (element as any).variant = value;
     })
-    this._folder = value;
+    this._variant = value;
     this.updateIcon();
   }
 
@@ -38,13 +40,23 @@ export default class TreeItem extends LightningElement {
   @track hasMenu = false;
 
   updateIcon() {
-    this.icon = this._folder
-      ? this._isOpened
-        ? mdiFolderOpen
-        : mdiFolder
-      : this._isOpened
+    switch (this._variant) {
+      case 'default':
+        this.icon = this._isOpened
         ? mdiMinusBox
         : mdiPlusBox;
+        break;
+      case 'folder':
+        this.icon = this._isOpened
+          ? mdiFolderOpen
+          : mdiFolder;
+        break;
+      case 'chevron':
+        this.icon = this._isOpened
+          ? mdiChevronDown
+          : mdiChevronRight;
+        break;
+    }
   }
 
   get slotItemsElements() {

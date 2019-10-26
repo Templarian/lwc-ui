@@ -69,3 +69,15 @@ export function dispatchParent<T>(element: Element | HTMLElement, detail: T) {
     })
   );
 }
+
+export function normalizeString(value, {
+  fallbackValue = '',
+  possibleValues = []
+}) {
+  const normalizeValue = typeof value === 'number' || value ? value.toString() : fallbackValue;
+  const values = [fallbackValue, ...possibleValues];
+  if (values.includes(normalizeValue)) {
+    return normalizeValue;
+  }
+  return fallbackValue;
+}

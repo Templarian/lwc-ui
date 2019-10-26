@@ -1,16 +1,21 @@
 import { LightningElement, api } from 'lwc';
+import { normalizeString } from 'ui/util';
 
 export default class Tree extends LightningElement {
-  _folder = false;
+  _variant = "default";
   @api
-  get folder() {
-    return this._folder;
+  get variant() {
+    return this._variant;
   }
-  set folder(value) {
-    this.slotElements.forEach(element => {
-      (element as any).folder = value;
-    })
-    this._folder = value;
+  set variant(value) {
+    this._variant = normalizeString(value, {
+      fallbackValue: 'default',
+      possibleValues: [
+        'folder',
+        'chevron'
+      ]
+    });
+    this.updateVariant();
   }
 
   get hoverElement() {
@@ -24,9 +29,13 @@ export default class Tree extends LightningElement {
   }
 
   handleSlotChange() {
+    this.updateVariant();
+  }
+
+  updateVariant() {
     this.slotElements.forEach(element => {
       element.classList.add('root');
-      (element as any).folder = this._folder;
+      (element as any).variant = this._variant;
     });
   }
 

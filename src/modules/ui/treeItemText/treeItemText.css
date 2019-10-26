@@ -12,7 +12,7 @@ div {
     white-space: pre;
     font-size: 1rem;
     line-height: 1.5rem;
-    cursor: pointer;
+    cursor: default;
 }
 
 input {

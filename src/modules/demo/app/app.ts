@@ -290,8 +290,12 @@ export default class App extends LightningElement {
     }
   ];
 
-  @track isFolder = true;
+  @track treeVariant = 'default';
   toggleFolder() {
-    this.isFolder = !this.isFolder;
+    const variants = ['default', 'folder', 'chevron'];
+    const index = variants.findIndex(x => x === this.treeVariant);
+    this.treeVariant = index === variants.length - 1
+      ? variants[0]
+      : variants[index + 1];
   }
 }

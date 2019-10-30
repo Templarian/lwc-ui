@@ -1,4 +1,5 @@
 import { LightningElement, track, api } from 'lwc';
+import { getUniqueId } from 'ui/util';
 import {
   mdiPlusBox,
   mdiMinusBox,
@@ -17,7 +18,7 @@ export default class TreeItem extends LightningElement {
   set variant(value) {
     this.slotItemsElements.forEach(element => {
       (element as any).variant = value;
-    })
+    });
     this._variant = value;
     this.updateIcon();
   }
@@ -32,6 +33,14 @@ export default class TreeItem extends LightningElement {
     this.updateIcon();
   }
 
+  @api
+  get items() {
+    const elements = this.slotItemsElements as any[];
+    return elements.length === 0 ? [] : elements[0].items;
+  }
+
+  @api value: string = getUniqueId();
+
   @track icon: string = mdiPlusBox;
 
   @track mdiPlusBox: string = mdiPlusBox;
@@ -42,25 +51,31 @@ export default class TreeItem extends LightningElement {
   updateIcon() {
     switch (this._variant) {
       case 'default':
-        this.icon = this._isOpened
-        ? mdiMinusBox
-        : mdiPlusBox;
+        this.icon = this._isOpened ? mdiMinusBox : mdiPlusBox;
         break;
       case 'folder':
-        this.icon = this._isOpened
-          ? mdiFolderOpen
-          : mdiFolder;
+        this.icon = this._isOpened ? mdiFolderOpen : mdiFolder;
         break;
       case 'chevron':
-        this.icon = this._isOpened
-          ? mdiChevronDown
-          : mdiChevronRight;
+        this.icon = this._isOpened ? mdiChevronDown : mdiChevronRight;
         break;
     }
   }
 
+  get divElement() {
+    const index = this.template.childNodes[1].childNodes.length - 1;
+    return this.template.childNodes[1].childNodes[index] as HTMLDivElement;
+  }
+
+  @api
+  getItemBoundingClientRect() {
+    return this.divElement.getBoundingClientRect();
+  }
+
   get slotItemsElements() {
-    const slot = this.template.querySelector('slot[name=items]') as HTMLSlotElement;
+    const slot = this.template.querySelector(
+      'slot[name=items]'
+    ) as HTMLSlotElement;
     return slot ? slot.assignedElements() : [];
   }
 
@@ -68,8 +83,18 @@ export default class TreeItem extends LightningElement {
     this.template.host.classList.add('node');
   }
 
-  handleClick() {
+  handleClick(e: MouseEvent) {
     this.isOpened = !this.isOpened;
+    e.stopPropagation();
+  }
+
+  handleSelect() {
+    this.dispatchEvent(
+      new CustomEvent('privateselect', {
+        detail: this.value,
+        bubbles: true
+      })
+    );
   }
 
   handleSlotChange() {
@@ -92,26 +117,30 @@ export default class TreeItem extends LightningElement {
   handleMouseEnter(e) {
     const target = e.target as HTMLDivElement;
     const { height, top } = target.getBoundingClientRect();
-    this.dispatchEvent(new CustomEvent('privatehover', {
-      detail: {
-        top,
-        height,
-        hidden: false
-      },
-      bubbles: true
-    }));
+    this.dispatchEvent(
+      new CustomEvent('privatehover', {
+        detail: {
+          top,
+          height,
+          hidden: false
+        },
+        bubbles: true
+      })
+    );
   }
 
-  handleItemsMouseEnter(e) {
+  handleItemsMouseEnter(e: MouseEvent) {
     const target = e.target as HTMLDivElement;
     const { height, top } = target.getBoundingClientRect();
-    this.dispatchEvent(new CustomEvent('privatehover', {
-      detail: {
-        top,
-        height,
-        hidden: true
-      },
-      bubbles: true
-    }));
+    this.dispatchEvent(
+      new CustomEvent('privatehover', {
+        detail: {
+          top,
+          height,
+          hidden: true
+        },
+        bubbles: true
+      })
+    );
   }
 }

@@ -1,6 +1,7 @@
 <template>
     <div class="item"
-        onmouseenter={handleMouseEnter}>
+        onmouseenter={handleMouseEnter}
+        onclick={handleSelect}>
         <button if:true={hasMenu} onclick={handleClick}>
             <ui-icon path={icon}></ui-icon>
         </button>

@@ -2,7 +2,7 @@ import { LightningElement, api } from 'lwc';
 import { normalizeString } from 'ui/util';
 
 export default class Tree extends LightningElement {
-  _variant = "default";
+  _variant = 'default';
   @api
   get variant() {
     return this._variant;
@@ -10,22 +10,27 @@ export default class Tree extends LightningElement {
   set variant(value) {
     this._variant = normalizeString(value, {
       fallbackValue: 'default',
-      possibleValues: [
-        'folder',
-        'chevron'
-      ]
+      possibleValues: ['folder', 'chevron']
     });
     this.updateVariant();
   }
 
-  get hoverElement() {
+  get selectElement() {
     return this.template.childNodes[1].childNodes[0] as HTMLDivElement;
   }
 
+  get hoverElement() {
+    return this.template.childNodes[2].childNodes[0] as HTMLDivElement;
+  }
+
   get slotElements() {
-    const div = this.template.childNodes[2];
-    const slot = div ? div.childNodes[0] as HTMLSlotElement : null;
+    const div = this.template.childNodes[3];
+    const slot = div ? (div.childNodes[0] as HTMLSlotElement) : null;
     return div ? slot.assignedElements() : [];
+  }
+
+  get items() {
+    return this.slotElements;
   }
 
   handleSlotChange() {
@@ -42,6 +47,7 @@ export default class Tree extends LightningElement {
   connectedCallback() {
     this.addEventListener('mouseenter', this.handleMouseEnter.bind(this));
     this.addEventListener('mouseleave', this.handleMouseLeave.bind(this));
+    this.addEventListener('privateselect', this.handlePrivateSelect.bind(this));
     this.addEventListener('privatehover', this.handlePrivateHover.bind(this));
   }
 
@@ -52,12 +58,32 @@ export default class Tree extends LightningElement {
   handleMouseLeave() {
     this.hoverElement.style.display = 'none';
   }
-  
-  handlePrivateHover(event: CustomEvent) {
-    event.stopPropagation();
+
+  getItems(node) {
+    const items = [];
+    node.items.forEach((i: any) => {
+      items.push(i);
+      items.push(...this.getItems(i));
+    });
+    return items;
+  }
+
+  handlePrivateSelect(e: CustomEvent) {
+    e.stopPropagation();
+    const items = this.getItems(this);
+    const item = items.find(item => item.value === e.detail);
+    const { height, top } = (item as any).getItemBoundingClientRect();
+    const { top: parentTop } = this.template.host.getBoundingClientRect();
+    this.selectElement.style.display = false ? 'none' : 'block';
+    this.selectElement.style.height = `${height}px`;
+    this.selectElement.style.top = `${top - parentTop}px`;
+  }
+
+  handlePrivateHover(e: CustomEvent) {
+    e.stopPropagation();
     const { top } = this.template.host.getBoundingClientRect();
-    this.hoverElement.style.display = event.detail.hidden ? 'none' : 'block';
-    this.hoverElement.style.height = `${event.detail.height}px`;
-    this.hoverElement.style.top = `${event.detail.top - top}px`;
+    this.hoverElement.style.display = e.detail.hidden ? 'none' : 'block';
+    this.hoverElement.style.height = `${e.detail.height}px`;
+    this.hoverElement.style.top = `${e.detail.top - top}px`;
   }
 }

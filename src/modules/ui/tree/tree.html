@@ -1,6 +1,9 @@
 <template>
-    <div style="overflow:visible;height:0;">
-        <div style="display:none;position:relative;left:0;right:0;background:#eee;border-bottom-style: solid; border-bottom: #eee;"></div>
+    <div class="meta">
+        <div class="select"></div>
+    </div>
+    <div class="meta">
+        <div class="hover"></div>
     </div>
     <div style="z-index:1">
         <slot onslotchange={handleSlotChange}></slot>

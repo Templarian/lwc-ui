@@ -149,7 +149,6 @@ export default class App extends LightningElement {
   @track parts = [
     {
       name: 'Resource',
-      color: 'blue',
       values: [
         'Player.health',
         'Player.mana',
@@ -173,7 +172,6 @@ export default class App extends LightningElement {
     },
     {
       name: 'Operator',
-      color: '#222',
       values: [
         'Set',
         'Not Set',
@@ -187,7 +185,6 @@ export default class App extends LightningElement {
     },
     {
       name: 'Value',
-      color: '#222',
       values: function(parts) {
         switch (parts[1].value) {
           case 'Set':
@@ -211,17 +208,10 @@ export default class App extends LightningElement {
   @track modifyParts = [
     {
       name: 'Resource',
-      color: 'blue',
-      values: [
-        'Set',
-        'Unset',
-        'Add',
-        'Subtract'
-      ]
+      values: ['Set', 'Unset', 'Add', 'Subtract']
     },
     {
       name: 'Operator',
-      color: '#222',
       values: [
         'Player.health',
         'Player.mana',
@@ -245,46 +235,29 @@ export default class App extends LightningElement {
     },
     {
       name: 'Value',
-      color: '#222',
       values: function(parts) {
         return '/[0-9]+/';
       }
     }
-  ]
+  ];
 
   @track folders = [
     {
       name: 'Folder',
-      color: 'blue',
-      values: [
-        'Home'
-      ]
+      values: ['Home']
     },
     {
       name: 'Folder',
-      color: '#222',
-      values: [
-        'Folder 1',
-        'Folder 2'
-      ]
+      values: ['Folder 1', 'Folder 2']
     },
     {
       name: 'Folder',
-      color: '#222',
       values: function(parts) {
         switch (parts[1].value) {
           case 'Folder 1':
-            return [
-              'Subfolder 1',
-              'Subfolder 2',
-              'foo.txt'
-            ];
+            return ['Subfolder 1', 'Subfolder 2', 'foo.txt'];
           case 'Folder 2':
-            return [
-              'Subfolder A',
-              'Subfolder B',
-              'bar.txt'
-            ];
+            return ['Subfolder A', 'Subfolder B', 'bar.txt'];
         }
       }
     }
@@ -294,8 +267,31 @@ export default class App extends LightningElement {
   toggleFolder() {
     const variants = ['default', 'folder', 'chevron'];
     const index = variants.findIndex(x => x === this.treeVariant);
-    this.treeVariant = index === variants.length - 1
-      ? variants[0]
-      : variants[index + 1];
+    this.treeVariant =
+      index === variants.length - 1 ? variants[0] : variants[index + 1];
   }
+
+  @track treeFiles = [
+    {
+      name: 'Folder',
+      items: [
+        {
+          name: 'Subfolder',
+          items: [
+            {
+              name: 'test1.txt'
+            },
+            {
+              name: 'test2.txt'
+            }
+          ]
+        },
+        {
+          name: 'root1.txt'
+        }
+      ]
+    }
+  ];
+
+  handleTreeFilesChange(e: CustomEvent) {}
 }

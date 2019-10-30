@@ -1,4 +1,25 @@
 :host {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
+}
+
+.meta {
+  overflow: visible;
+  height: 0;
+}
+
+.hover {
+  display: none;
+  position: relative;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.select {
+  display: none;
+  position: relative;
+  left: 0;
+  right: 0;
+  background: #007bff;
 }

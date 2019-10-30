@@ -148,7 +148,15 @@ The form shold wrap any elements you plan to use. It will handle simple things l
 | ui-textarea       | textarea         | value, minlength, maxlength, pattern |
 | ui-input-number   | number           | value, min, max, step                |
 | ui-input-password | password         | value, minlength                     |
-| ui-input-syntax   | syntax           | value, parts |
+| ui-input-syntax   | syntax           | value, parts                         |
+
+### Input Syntax
+
+This is a text input with auto complete.
+
+```ts
+@track
+```
 
 ### Icon - `ui-icon`
 
@@ -256,7 +264,7 @@ removeAllToasts();
 ### Tree - `ui-tree`
 
 ```html
-<ui-tree folder={isFolder}>
+<ui-tree folder="{isFolder}">
   <ui-tree-item>
     Item 1
     <ui-tree-item-group>
@@ -264,7 +272,7 @@ removeAllToasts();
         Sub Item 1
       </ui-tree-item>
       <ui-tree-item>
-        <ui-icon path={mdiFile}></ui-icon>
+        <ui-icon path="{mdiFile}"></ui-icon>
         Sub Item 2
       </ui-tree-item>
     </ui-tree-item-group>
@@ -272,9 +280,9 @@ removeAllToasts();
 </ui-tree>
 ```
 
-| Attribute   | Default        | Values                               |
-| ----------- | -------------- | ------------------------------------ |
-| `variant`   | `default`      | `default`, `chevron`, `folder`       |
+| Attribute | Default   | Values                         |
+| --------- | --------- | ------------------------------ |
+| `variant` | `default` | `default`, `chevron`, `folder` |
 
 ## Why?
 

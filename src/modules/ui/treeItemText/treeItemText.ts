@@ -1,5 +1,11 @@
 import { LightningElement, api, track } from 'lwc';
-import { mdiDelete, mdiPencil, mdiFolderPlus, mdiFilePlus } from '@mdi/js';
+import {
+  mdiDelete,
+  mdiPencil,
+  mdiFolderPlus,
+  mdiFilePlus,
+  mdiDotsHorizontal
+} from '@mdi/js';
 import { dispatchParent } from 'ui/util';
 
 interface ParentFileTreeEvent {
@@ -15,6 +21,7 @@ export default class TreeItemText extends LightningElement {
   mdiPencil: string = mdiPencil;
   mdiFolderPlus: string = mdiFolderPlus;
   mdiFilePlus: string = mdiFilePlus;
+  mdiDotsHorizontal: string = mdiDotsHorizontal
 
   get inputElement(): HTMLInputElement {
     return this.template.querySelector('input');

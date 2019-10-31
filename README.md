@@ -14,7 +14,7 @@ npm install lwc-ui
 
 ```html
 <ui-attention variant="danger">
-  <ui-icon slot="left" path="{mdiAlertOctagon}"></ui-icon>
+  <ui-icon slot="left" path={mdiAlertOctagon}></ui-icon>
   Attention danger text.
 </ui-attention>
 ```
@@ -40,7 +40,7 @@ Work in Progress...
 
 ```html
 <ui-button>
-  <ui-icon slot="left" path="{mdiAccount}"></ui-icon>
+  <ui-icon slot="left" path={mdiAccount}></ui-icon>
   Account Button
 </ui-button>
 ```
@@ -169,7 +169,7 @@ import { mdiAccount } from '@mdi/js';
 ```
 
 ```html
-<ui-icon path="{mdiAccount}"></ui-icon>
+<ui-icon path={mdiAccount}></ui-icon>
 ```
 
 ### List - `ui-list`
@@ -184,7 +184,7 @@ List is often used with the `ui-card` component.
   <ui-list-section>
     <ui-list-header>Additional Items</ui-list-header>
     <ui-list-item>
-      <ui-icon slot="left" path="{mdiNumeric1}"></ui-icon>
+      <ui-icon slot="left" path={mdiNumeric1}></ui-icon>
       Item 2
     </ui-list-item>
   </ui-list-section>
@@ -200,8 +200,8 @@ The menu can be used by itself or with `ui-context-menu`, `ui-dropdown`, and `ui
   <ui-menu-item>Option 1</ui-menu-item>
   <ui-menu-separator></ui-menu-separator>
   <ui-menu-item>Option 2</ui-menu-item>
-  <ui-menu></ui-menu
-></ui-menu>
+  <ui-menu-item>Option 3</ui-menu-item>
+</ui-menu>
 ```
 
 ### Modal - `ui-modal`
@@ -264,7 +264,7 @@ removeAllToasts();
 ### Tree - `ui-tree`
 
 ```html
-<ui-tree folder="{isFolder}">
+<ui-tree folder={isFolder}>
   <ui-tree-item>
     Item 1
     <ui-tree-item-group>
@@ -272,7 +272,7 @@ removeAllToasts();
         Sub Item 1
       </ui-tree-item>
       <ui-tree-item>
-        <ui-icon path="{mdiFile}"></ui-icon>
+        <ui-icon path={mdiFile}></ui-icon>
         Sub Item 2
       </ui-tree-item>
     </ui-tree-item-group>

@@ -47,7 +47,8 @@ this.afterMenuPromise.then((menu: any) => {
 });*/
   }
 
-  handleClick() {
+  handleClick(e: MouseEvent) {
+    e.stopPropagation();
     if (this.isOpen && this.$menuFocus) {
       this.isOpen = false;
     } else {

@@ -31,4 +31,19 @@
   <button class="delete" onclick={handleRemove}>
     <ui-icon path={mdiDelete}></ui-icon>
   </button>
+  <ui-dropdown placement="bottom-end">
+    <button class="actions" onclick={handleRemove}>
+      <ui-icon path={mdiDotsHorizontal}></ui-icon>
+    </button>
+    <ui-menu slot="menu">
+      <ui-menu-item onclick={handleEdit}>
+        <ui-icon slot="left" path={mdiPencil}></ui-icon>
+        Rename
+      </ui-menu-item>
+      <ui-menu-item>
+        <ui-icon slot="left" path={mdiDelete}></ui-icon>
+        Delete File
+      </ui-menu-item>
+    </ui-menu>
+  </ui-dropdown>
 </template>

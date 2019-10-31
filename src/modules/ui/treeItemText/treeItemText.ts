@@ -45,7 +45,7 @@ export default class TreeItemText extends LightningElement {
 
   handleMouseDown(e: MouseEvent) {
     if (e.detail === 2) {
-      this.handleEdit();
+      this.edit();
     }
   }
 

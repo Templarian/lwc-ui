@@ -8,7 +8,7 @@ export default class Flex extends LightningElement {
 
   connectedCallback() {
     this.template.host.style.flex = `${this.flex}`;
-    updateClass(this.template.host.classList, {
+    updateClass(this.classList, {
       'flex-column': this.column,
       'flex-row': this.row
     });

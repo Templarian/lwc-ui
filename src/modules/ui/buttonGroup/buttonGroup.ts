@@ -14,7 +14,7 @@ export default class ButtonGroup extends LightningElement {
 
   renderedCallback() {
     if (this.block) {
-      this.template.host.classList.add('block');
+      this.classList.add('block');
     }
   }
 

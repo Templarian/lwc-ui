@@ -1,9 +1,20 @@
 import { LightningElement, api, track } from 'lwc';
+import { mdiDelete, mdiPencil, mdiFolderPlus, mdiFilePlus } from '@mdi/js';
+import { dispatchParent } from 'ui/util';
+
+interface ParentFileTreeEvent {
+  action: string;
+  type?: string;
+}
 
 export default class TreeItemText extends LightningElement {
   @api value = '';
 
   @track isEditing = false;
+  mdiDelete: string = mdiDelete;
+  mdiPencil: string = mdiPencil;
+  mdiFolderPlus: string = mdiFolderPlus;
+  mdiFilePlus: string = mdiFilePlus;
 
   get inputElement(): HTMLInputElement {
     return this.template.querySelector('input');
@@ -27,13 +38,7 @@ export default class TreeItemText extends LightningElement {
 
   handleMouseDown(e: MouseEvent) {
     if (e.detail === 2) {
-      this.isEditing = true;
-      this._previousValue = this.value;
-      requestAnimationFrame(() => {
-        this.inputElement.focus();
-        const length = this.inputElement.value.length;
-        this.inputElement.setSelectionRange(0, length);
-      });
+      this.handleEdit();
     }
   }
 
@@ -43,9 +48,42 @@ export default class TreeItemText extends LightningElement {
     }
     if (e.which === 27) {
       this.isEditing = false;
-
-      console.log(this._previousValue, '--', this.value);
       this.value = this._previousValue;
     }
+  }
+
+  handleNewGroup() {
+    dispatchParent<ParentFileTreeEvent>(this, {
+      action: 'new',
+      type: 'folder'
+    });
+  }
+
+  handleNewNode() {
+    dispatchParent<ParentFileTreeEvent>(this, {
+      action: 'new',
+      type: 'file'
+    });
+  }
+
+  handleRemove() {
+    dispatchParent<ParentFileTreeEvent>(this, {
+      action: 'remove'
+    });
+  }
+
+  handleEdit(e: MouseEvent) {
+    e.stopPropagation();
+    this.edit();
+  }
+
+  edit() {
+    this.isEditing = true;
+    this._previousValue = this.value;
+    requestAnimationFrame(() => {
+      this.inputElement.focus();
+      const length = this.inputElement.value.length;
+      this.inputElement.setSelectionRange(0, length);
+    });
   }
 }

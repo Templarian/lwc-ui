@@ -8,6 +8,7 @@ import {
   mdiChevronRight,
   mdiChevronDown
 } from '@mdi/js';
+import { updateClass } from '../util';
 
 export default class TreeItem extends LightningElement {
   _variant = 'default';
@@ -41,6 +42,34 @@ export default class TreeItem extends LightningElement {
 
   @api value: string = getUniqueId();
 
+  _selected = false;
+  @api
+  get selected() {
+    return this._selected;
+  }
+  set selected(value) {
+    this._selected = value;
+    if (this.iconElement !== null) {
+      updateClass(this.iconElement.classList, {
+        'treeItem-variant-select': value
+      });
+    }
+  }
+
+  _hover = false;
+  @api
+  get hover() {
+    return this._hover;
+  }
+  set hover(value) {
+    this._hover = value;
+    this.slotElements.forEach(item => {
+      updateClass(item.classList, {
+        hover: value
+      });
+    });
+  }
+
   @track icon: string = mdiPlusBox;
 
   @track mdiPlusBox: string = mdiPlusBox;
@@ -62,9 +91,24 @@ export default class TreeItem extends LightningElement {
     }
   }
 
+  get iconElement() {
+    return this.hasMenu
+      ? (this.template.childNodes[1].childNodes[0]
+          .childNodes[0] as HTMLDivElement)
+      : null;
+  }
+
   get divElement() {
-    const index = this.template.childNodes[1].childNodes.length - 1;
+    const index = this.hasMenu ? 1 : 0;
     return this.template.childNodes[1].childNodes[index] as HTMLDivElement;
+  }
+
+  get slotElements() {
+    if (!this.divElement) {
+      return [];
+    }
+    return (this.divElement
+      .childNodes[0] as HTMLSlotElement).assignedElements();
   }
 
   @api
@@ -80,7 +124,7 @@ export default class TreeItem extends LightningElement {
   }
 
   connectedCallback() {
-    this.template.host.classList.add('node');
+    this.classList.add('node');
   }
 
   handleClick(e: MouseEvent) {
@@ -111,7 +155,7 @@ export default class TreeItem extends LightningElement {
   }
 
   handleSlotItemsChange() {
-    this.template.host.classList.remove('node');
+    this.classList.remove('node');
   }
 
   handleMouseEnter(e) {
@@ -122,7 +166,8 @@ export default class TreeItem extends LightningElement {
         detail: {
           top,
           height,
-          hidden: false
+          hidden: false,
+          value: this.value
         },
         bubbles: true
       })
@@ -137,7 +182,8 @@ export default class TreeItem extends LightningElement {
         detail: {
           top,
           height,
-          hidden: true
+          hidden: true,
+          value: this.value
         },
         bubbles: true
       })

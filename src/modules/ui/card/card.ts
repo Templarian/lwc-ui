@@ -13,10 +13,10 @@ export default class Card extends LightningElement {
   }
 
   updateHostClass() {
-    this.template.host.classList.remove(`shadow-1`);
-    this.template.host.classList.remove(`shadow-2`);
-    this.template.host.classList.remove(`shadow-3`);
-    this.template.host.classList.add(`shadow-${this._shadow}`);
+    this.classList.remove(`shadow-1`);
+    this.classList.remove(`shadow-2`);
+    this.classList.remove(`shadow-3`);
+    this.classList.add(`shadow-${this._shadow}`);
   }
 
   handleSlotChange() {
@@ -27,10 +27,10 @@ export default class Card extends LightningElement {
       elementTagNames.push(element.tagName.toLocaleLowerCase());
     });
     if (!elementTagNames.includes('ui-card-header')) {
-      this.template.host.classList.add('no-header');
+      this.classList.add('no-header');
     }
     if (!elementTagNames.includes('ui-card-footer')) {
-      this.template.host.classList.add('no-footer');
+      this.classList.add('no-footer');
     }
   }
 }

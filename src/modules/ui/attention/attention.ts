@@ -20,16 +20,12 @@ export default class Attention extends LightningElement {
   }
   set variant(variant) {
     this._variant = inArrayOrDefault(variant, VARIANTS, DEFAULT_VARIANT);
-    updateVariant(this.template.host.classList, this._variant, VARIANTS);
+    updateVariant(this.classList, this._variant, VARIANTS);
   }
 
   connectedCallback() {
     if (this._variant === DEFAULT_VARIANT) {
-      updateVariant(
-        this.template.host.classList,
-        this._variant,
-        VARIANTS
-      );
+      updateVariant(this.classList, this._variant, VARIANTS);
     }
   }
 

@@ -23,7 +23,7 @@ export default class Button extends LightningElement {
   }
   set variant(variant: string) {
     this._variant = inArrayOrDefault(variant, VARIANTS, DEFAULT_VARIANT);
-    updateVariant(this.template.host.classList, this._variant, VARIANTS);
+    updateVariant(this.classList, this._variant, VARIANTS);
   }
 
   _block: boolean = false;
@@ -58,7 +58,7 @@ export default class Button extends LightningElement {
 
   connectedCallback() {
     if (this._variant === DEFAULT_VARIANT) {
-      updateVariant(this.template.host.classList, this._variant, VARIANTS);
+      updateVariant(this.classList, this._variant, VARIANTS);
     }
     if (this.submit) {
       this.addEventListener('click', () => {
@@ -75,27 +75,27 @@ export default class Button extends LightningElement {
   }
 
   handleMouseEnter() {
-    updateClass(this.template.host.classList, {
+    updateClass(this.classList, {
       'button-hover': true
     });
   }
 
   handleMouseLeave() {
-    updateClass(this.template.host.classList, {
+    updateClass(this.classList, {
       'button-hover': false
     });
   }
 
   updateHostClass() {
     if (this.block) {
-      this.template.host.classList.add('block');
+      this.classList.add('block');
     } else {
-      this.template.host.classList.remove('block');
+      this.classList.remove('block');
     }
     if (this.active) {
-      this.template.host.classList.add('active');
+      this.classList.add('active');
     } else {
-      this.template.host.classList.remove('active');
+      this.classList.remove('active');
     }
   }
 

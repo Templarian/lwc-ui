@@ -81,3 +81,8 @@ svg {
 :host(.attention-variant-info) svg {
   fill: #0c5460;
 }
+
+/* - treeItem */
+:host(.treeItem-variant-select) svg {
+  fill: #111;
+}

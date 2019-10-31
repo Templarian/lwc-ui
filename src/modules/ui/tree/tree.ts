@@ -72,6 +72,12 @@ export default class Tree extends LightningElement {
     e.stopPropagation();
     const items = this.getItems(this);
     const item = items.find(item => item.value === e.detail);
+    items.forEach(item => {
+      item.classList.remove('select');
+      item.selected = false;
+    });
+    item.classList.add('select');
+    item.selected = true;
     const { height, top } = (item as any).getItemBoundingClientRect();
     const { top: parentTop } = this.template.host.getBoundingClientRect();
     this.selectElement.style.display = false ? 'none' : 'block';
@@ -81,6 +87,14 @@ export default class Tree extends LightningElement {
 
   handlePrivateHover(e: CustomEvent) {
     e.stopPropagation();
+    const items = this.getItems(this);
+    const item = items.find(item => item.value === e.detail.value);
+    items.forEach(item => {
+      item.classList.remove('hover');
+      item.hover = false;
+    });
+    item.classList.add('hover');
+    item.hover = true;
     const { top } = this.template.host.getBoundingClientRect();
     this.hoverElement.style.display = e.detail.hidden ? 'none' : 'block';
     this.hoverElement.style.height = `${e.detail.height}px`;

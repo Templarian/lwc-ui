@@ -1,69 +1,73 @@
 :host {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
+}
+
+:host(.select) .item {
+  color: #000;
 }
 
 :host(:not(.root))::after {
-    position: absolute;
-    content: ' ';
-    border-left: 1px solid #444;
-    border-bottom: 1px solid #444;
-    width: 0.75rem;
-    height: 1.5rem;
-    margin-left: -0.8rem;
-    margin-top: -0.75rem;
-    pointer-events: none;
+  position: absolute;
+  content: ' ';
+  border-left: 1px solid #444;
+  border-bottom: 1px solid #444;
+  width: 0.75rem;
+  height: 1.5rem;
+  margin-left: -0.8rem;
+  margin-top: -0.75rem;
+  pointer-events: none;
 }
 
 :host(:not(.root).first)::after {
-    height: 1.0rem;
-    margin-top: -0.25rem;
+  height: 1rem;
+  margin-top: -0.25rem;
 }
 
 :host(:not(.root):not(.node)) .items::before {
-    content: '';
-    border-left: 1px solid #444;
-    width: 0.75rem;
-    margin-top: -0.75rem;
-    padding-top: 0.75rem;
-    margin-left: -2.3125rem;
-    padding-left: 1.5rem;
-    pointer-events: none;
-    align-self: stretch;
+  content: '';
+  border-left: 1px solid #444;
+  width: 0.75rem;
+  margin-top: -0.75rem;
+  padding-top: 0.75rem;
+  margin-left: -2.3125rem;
+  padding-left: 1.5rem;
+  pointer-events: none;
+  align-self: stretch;
 }
 
 :host(:not(.root):not(.last).node) .item::before {
-    content: '';
-    border-left: 1px solid #444;
-    width: 0.75rem;
-    padding-top: 0.75rem;
-    margin-left: -0.8125rem;
-    pointer-events: none;
-    align-self: stretch;
+  content: '';
+  border-left: 1px solid #444;
+  width: 0.75rem;
+  padding-top: 0.75rem;
+  margin-left: -0.8125rem;
+  pointer-events: none;
+  align-self: stretch;
 }
 
 .item {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 .item button {
-    border: 0;
-    padding: 0;
-    width: 1.5rem;
-    height: 1.5rem;
-    background: transparent;
-    outline: 0;
+  border: 0;
+  padding: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  background: transparent;
+  outline: 0;
 }
 
 .item div {
-    display: flex;
-    align-self: center;
-    flex: 1;
+  display: flex;
+  align-self: stretch;
+  flex: 1;
 }
 
 .items {
-    display: flex;
-    flex-direction: row;
-    padding-left: 1.5rem;
+  display: flex;
+  flex-direction: row;
+  padding-left: 1.5rem;
 }

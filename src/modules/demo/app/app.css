@@ -11,6 +11,14 @@
   padding: 0 1rem 2rem 1rem;
 }
 
+h2 {
+  margin: 0 0.5rem;
+}
+
+p {
+  margin: 0.5rem 0.5rem 1.25rem 0.5rem;
+}
+
 h3 {
   margin: 0 0 0.5rem 0;
   border-bottom: 1px solid #DDD;

@@ -30,6 +30,7 @@ button {
   padding: 0;
   border: 0;
   background-color: transparent;
+  outline: none;
 }
 
 :host(.hover) button {

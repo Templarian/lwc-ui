@@ -38,7 +38,8 @@ export default class TreeItemText extends LightningElement {
 
   handleBlur(e: any) {
     if (this.isEditing) {
-      this.value = e.target.value;
+      const { value } = e.target;
+      this.value = value === '' ? this._previousValue : value;
       this.isEditing = false;
     }
   }
@@ -80,7 +81,6 @@ export default class TreeItemText extends LightningElement {
   }
 
   handleEdit(e: MouseEvent) {
-    e.stopPropagation();
     this.edit();
   }
 

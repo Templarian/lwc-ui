@@ -253,7 +253,7 @@ Exact same as `ui-dropdown`, but does not cause a inner `ui-button` to render a 
 
 ### Tab - `ui-tab`
 
-The `ui-tab
+The `ui-tab` creates tabs using the existing `ui-nav` and `ui-nav-item` elements.
 
 ```html
 <ui-tab>

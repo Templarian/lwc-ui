@@ -127,6 +127,24 @@ This works the same as `ui-picker` but will display a caret on button elements t
 
 > Note: The `menu` slot can be any element, but the most common will be `ui-menu`.
 
+### Flex - `ui-flex`
+
+Flex layout helper tags.
+
+```html
+<ui-flex>
+  <ui-flex flex="1">Column 1 (flex=1)</ui-flex>
+  <ui-flex flex="2">Column 2 (flex=2)</ui-flex>
+  <ui-flex>Column 3 (flex=content)</ui-flex>
+</ui-flex>
+```
+
+| Attribute   | Default        | Values                               |
+| ----------- | -------------- | ------------------------------------ |
+| `flex` | `content` | Usually an integer |
+| `column` | | `flex-direction: column` |
+| `row` | | `flex-direction: row` |
+
 ### Form - `ui-form`
 
 The form shold wrap any elements you plan to use. It will handle simple things like validation.
@@ -232,6 +250,29 @@ Exact same as `ui-dropdown`, but does not cause a inner `ui-button` to render a 
 | Attribute   | Default        | Values                               |
 | ----------- | -------------- | ------------------------------------ |
 | `placement` | `bottom-start` | [Popper Placement][popper-placement] |
+
+### Tab - `ui-tab`
+
+The `ui-tab
+
+```html
+<ui-tab>
+  <ui-nav>
+    <ui-nav-item>
+      Basic Tab 1
+    </ui-nav-item>
+    <ui-nav-item>
+      Basic Tab 2
+    </ui-nav-item>
+  </ui-nav>
+  <ui-tab-item>
+    Basic Tab 1 content
+  </ui-tab-item>
+  <ui-tab-item>
+    Basic Tab 2 content
+  </ui-tab-item>
+</ui-tab>
+```
 
 ### Toast - `ui-toast`
 

@@ -46,7 +46,7 @@
     "build": "lwc-services build -m production",
     "build:development": "lwc-services build",
     "lint": "eslint ./src/**/*.ts",
-    "prettier": "prettier --write '**/*.{css,html,js,json,md,ts,yaml,yml}'",
+    "prettier": "prettier --write '**/*.{css,html,js,json,ts,yaml,yml}'",
     "prettier:verify": "prettier --list-different '**/*.{css,html,js,json,ts,yaml,yml}'",
     "serve": "lwc-services serve",
     "test:unit": "lwc-services test:unit",
